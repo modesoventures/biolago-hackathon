@@ -1,7 +1,17 @@
-# sila-js-fdl-parser
+# @sila-standard/fdl-parser
 
-This library was generated with [Nx](https://nx.dev).
+### Dependencies
+```
+xml-js
+```
 
-## Running unit tests
+### Create `featureDefinition` object from SiLA XML FeatureDefinition
+```
+const silaXML = fs.readFileSync('SiLAService.sila.xml', 'utf-8');
 
-Run `nx test sila-js-fdl-parser` to execute the unit tests via [Jest](https://jestjs.io).
+const featureDefinition: IFeatureDefinition = silaXMLtoFeatureDefinition(silaXML);
+
+console.log(featureDefinition.fullyQualifiedFeatureIdentifier);
+```
+
+For further reference, see type definition for IFeatureDefinition in /src/types/index.ts

@@ -11,6 +11,7 @@
     "sila-js-fdl-parser": "libs/sila-js/fdl-parser",
     "sila-js-feature": "libs/sila-js/feature",
     "sila-js-proto-builder": "libs/sila-js/proto-builder",
+    "sila-js-server": "libs/sila-js/server",
     "sila-js-sila-base": "libs/sila-js/sila-base",
     "sila-js-static-client": "libs/sila-js/static-client"
   }

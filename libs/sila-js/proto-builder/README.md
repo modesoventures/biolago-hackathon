@@ -1,7 +1,16 @@
-# sila-js-proto-builder
+# @sila-standard/proto-builder
 
-This library was generated with [Nx](https://nx.dev).
+### Purpose
+## Create .proto file from a `featureDefinition` object
+```
+const featureDefinition: IFeatureDefinition = ...;
 
-## Running unit tests
+fs.writeFileSync(`${featureDefinition.title}.proto`, protoFromFeatureDefinition(featureDefinition));
 
-Run `nx test sila-js-proto-builder` to execute the unit tests via [Jest](https://jestjs.io).
+```
+
+### Dependencies
+```
+@sila-standard/fdl-parser
+```
+

@@ -27,6 +27,7 @@
       "@sila-standard/proto-builder": [
         "libs/sila-js/proto-builder/src/index.ts"
       ],
+      "@sila-standard/server": ["libs/sila-js/server/src/index.ts"],
       "@sila-standard/sila-base": ["libs/sila-js/sila-base/src/index.ts"],
       "@sila-standard/static-client": [
         "libs/sila-js/static-client/src/index.ts"
