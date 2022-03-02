@@ -1,0 +1,456 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Feature SiLA2Version="1.0" FeatureVersion="1.0" Originator="org.silastandard" Category="test"
+         xmlns="http://www.sila-standard.org"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://www.sila-standard.org https://gitlab.com/SiLA2/sila_base/raw/master/schema/FeatureDefinition.xsd">
+    <Identifier>ParameterConstraintsTest</Identifier>
+    <DisplayName>Parameter Constraints Test</DisplayName>
+    <Description>
+        This is a test feature to generically test constrained parameters.
+        A validation Error must be raised if the constraints are not fulfilled.
+    </Description>
+
+    <Command>
+        <Identifier>ExactStringLength</Identifier>
+        <DisplayName>Exact String Length</DisplayName>
+        <Description>Tests the Length constraint on String type</Description>
+        <Observable>No</Observable>
+        <Parameter>
+            <Identifier>StringLength</Identifier>
+            <DisplayName>Length of String</DisplayName>
+            <Description>Tests the Length constraint on String type</Description>
+            <DataType>
+                <Constrained>
+                    <DataType>
+                        <Basic>String</Basic>
+                    </DataType>
+                    <Constraints>
+                        <Length>10</Length>
+                    </Constraints>
+                </Constrained>
+            </DataType>
+        </Parameter>
+        <Parameter>
+            <Identifier>MaximalLengthString</Identifier>
+            <DisplayName>String Maximal Length</DisplayName>
+            <Description>Tests the MaximalLength constraint on String type</Description>
+            <DataType>
+                <Constrained>
+                    <DataType>
+                        <Basic>String</Basic>
+                    </DataType>
+                    <Constraints>
+                        <MaximalLength>20</MaximalLength>
+                    </Constraints>
+                </Constrained>
+            </DataType>
+        </Parameter>
+        <Parameter>
+            <Identifier>MinimalLengthString</Identifier>
+            <DisplayName>String Minimal Length</DisplayName>
+            <Description>Tests the MinimalLength constraint on String type</Description>
+            <DataType>
+                <Constrained>
+                    <DataType>
+                        <Basic>String</Basic>
+                    </DataType>
+                    <Constraints>
+                        <MinimalLength>5</MinimalLength>
+                    </Constraints>
+                </Constrained>
+            </DataType>
+        </Parameter>
+        <Parameter>
+            <Identifier>MinMaxLengthString</Identifier>
+            <DisplayName>String MinMax Length</DisplayName>
+            <Description>Tests the combination of MinimalLength and MaximalLength constraints on String type</Description>
+            <DataType>
+                <Constrained>
+                    <DataType>
+                        <Basic>String</Basic>
+                    </DataType>
+                    <Constraints>
+                        <MinimalLength>5</MinimalLength>
+                        <MaximalLength>20</MaximalLength>
+                    </Constraints>
+                </Constrained>
+            </DataType>
+        </Parameter>
+        <Parameter>
+            <Identifier>SetString</Identifier>
+            <DisplayName>Set of Strings</DisplayName>
+            <Description>Tests the Set constraint on String type</Description>
+            <DataType>
+                <Constrained>
+                    <DataType>
+                        <Basic>String</Basic>
+                    </DataType>
+                    <Constraints>
+                        <Set>
+                            <Value>First option</Value>
+                            <Value>Second option</Value>
+                            <Value>Third option</Value>
+                        </Set>
+                    </Constraints>
+                </Constrained>
+            </DataType>
+        </Parameter>
+        <Parameter>
+            <Identifier>PatternString</Identifier>
+            <DisplayName>String Pattern</DisplayName>
+            <Description>Tests the Pattern constraint on String type (date of birth in dd/mm/yyyy format)</Description>
+            <DataType>
+                <Constrained>
+                    <DataType>
+                        <Basic>String</Basic>
+                    </DataType>
+                    <Constraints>
+                        <Pattern>[0-9]{2}/[0-9]{2}/[0-9]{2}/[0-9]{4}</Pattern>
+                    </Constraints>
+                </Constrained>
+            </DataType>
+        </Parameter>
+    </Command>
+    <Command>
+        <Identifier>ConstrainedNumericParameters</Identifier>
+        <DisplayName>Constrained Numeric Parameters</DisplayName>
+        <Description>A command with constrained parameters of type Integer or Real</Description>
+        <Observable>No</Observable>
+        <Parameter>
+            <Identifier>IntegersSet</Identifier>
+            <DisplayName>Set Of Integers</DisplayName>
+            <Description>Tests the Set constraint on Integer type</Description>
+            <DataType>
+                <Constrained>
+                    <DataType>
+                        <Basic>Integer</Basic>
+                    </DataType>
+                    <Constraints>
+                        <Set>
+                            <Value>1</Value>
+                            <Value>2</Value>
+                            <Value>3</Value>
+                        </Set>
+                    </Constraints>
+                </Constrained>
+            </DataType>
+        </Parameter>
+        <Parameter>
+            <Identifier>MaximalExclusiveReal</Identifier>
+            <DisplayName>Maximal Exclusive Real</DisplayName>
+            <Description>Tests the MaximalExclusive constraint on Real type</Description>
+            <DataType>
+                <Constrained>
+                    <DataType>
+                        <Basic>Real</Basic>
+                    </DataType>
+                    <Constraints>
+                        <MaximalExclusive>10</MaximalExclusive>
+                    </Constraints>
+                </Constrained>
+            </DataType>
+        </Parameter>
+        <Parameter>
+            <Identifier>MinimalExclusiveReal</Identifier>
+            <DisplayName>Minimal Exclusive Real</DisplayName>
+            <Description>Tests the MinimalExclusive constraint on Real type</Description>
+            <DataType>
+                <Constrained>
+                    <DataType>
+                        <Basic>Real</Basic>
+                    </DataType>
+                    <Constraints>
+                        <MinimalExclusive>0</MinimalExclusive>
+                    </Constraints>
+                </Constrained>
+            </DataType>
+        </Parameter>
+        <Parameter>
+            <Identifier>MinMaxExclusiveReal</Identifier>
+            <DisplayName>Minimal Maximal Exclusive Real</DisplayName>
+            <Description>Tests the combination of MinimalExclusive and MaximalExclusive constraints on Real type</Description>
+            <DataType>
+                <Constrained>
+                    <DataType>
+                        <Basic>Real</Basic>
+                    </DataType>
+                    <Constraints>
+                        <MinimalExclusive>0</MinimalExclusive>
+                        <MaximalExclusive>10</MaximalExclusive>
+                    </Constraints>
+                </Constrained>
+            </DataType>
+        </Parameter>
+        <Parameter>
+            <Identifier>MaximalInclusiveInteger</Identifier>
+            <DisplayName>Maximal Inclusive Integer</DisplayName>
+            <Description>Tests the MaximalInclusive constraint on Integer type</Description>
+            <DataType>
+                <Constrained>
+                    <DataType>
+                        <Basic>Integer</Basic>
+                    </DataType>
+                    <Constraints>
+                        <MaximalInclusive>10</MaximalInclusive>
+                    </Constraints>
+                </Constrained>
+            </DataType>
+        </Parameter>
+        <Parameter>
+            <Identifier>MinimalInclusiveInteger</Identifier>
+            <DisplayName>Minimal Inclusive Integer</DisplayName>
+            <Description>Tests the MinimalInclusive constraint on Integer type</Description>
+            <DataType>
+                <Constrained>
+                    <DataType>
+                        <Basic>Integer</Basic>
+                    </DataType>
+                    <Constraints>
+                        <MinimalInclusive>0</MinimalInclusive>
+                    </Constraints>
+                </Constrained>
+            </DataType>
+        </Parameter>
+        <Parameter>
+            <Identifier>MinMaxInclusiveInteger</Identifier>
+            <DisplayName>Minimal Maximal Inclusive Integer</DisplayName>
+            <Description>Tests the combination of MinimalInclusive and MaximalInclusive constraints on Integer type</Description>
+            <DataType>
+                <Constrained>
+                    <DataType>
+                        <Basic>Integer</Basic>
+                    </DataType>
+                    <Constraints>
+                        <MinimalInclusive>0</MinimalInclusive>
+                        <MaximalInclusive>10</MaximalInclusive>
+                    </Constraints>
+                </Constrained>
+            </DataType>
+        </Parameter>
+        <Parameter>
+            <Identifier>Unit</Identifier>
+            <DisplayName>Unit</DisplayName>
+            <Description>Tests the Unit constraint</Description>
+            <DataType>
+                <Constrained>
+                    <DataType>
+                        <Basic>Integer</Basic>
+                    </DataType>
+                    <Constraints>
+                        <Unit>
+                            <Label>mL</Label>
+                            <Factor>0.000001</Factor>
+                            <Offset>0</Offset>
+                            <UnitComponent>
+                                <SIUnit>Meter</SIUnit>
+                                <Exponent>3</Exponent>
+                            </UnitComponent>
+                        </Unit>
+                    </Constraints>
+                </Constrained>
+            </DataType>
+        </Parameter>
+    </Command>
+    <Command>
+        <Identifier>ConstrainedDateTimeParameters</Identifier>
+        <DisplayName>Constrained Date and Time Parameters</DisplayName>
+        <Description>A command with constrained parameters of type Date, Time or Timestamp</Description>
+        <Observable>No</Observable>
+        <Parameter>
+            <Identifier>DateSet</Identifier>
+            <DisplayName>Set of Dates</DisplayName>
+            <Description>Tests the Set constraint on Date type</Description>
+            <DataType>
+                <Constrained>
+                    <DataType>
+                        <Basic>Date</Basic>
+                    </DataType>
+                    <Constraints>
+                        <Set>
+                            <Value>20190909</Value>
+                            <Value>20190910</Value>
+                            <Value>20190911</Value>
+                            <Value>20190912</Value>
+                            <Value>20190913</Value>
+                        </Set>
+                    </Constraints>
+                </Constrained>
+            </DataType>
+        </Parameter>
+        <Parameter>
+            <Identifier>MaximalExclusiveDate</Identifier>
+            <DisplayName>Maximal Exclusive Date</DisplayName>
+            <Description>Tests the MaximalExclusive constraint on Date type</Description>
+            <DataType>
+                <Constrained>
+                    <DataType>
+                        <Basic>Date</Basic>
+                    </DataType>
+                    <Constraints>
+                        <MaximalExclusive>20191231</MaximalExclusive>
+                    </Constraints>
+                </Constrained>
+            </DataType>
+        </Parameter>
+        <Parameter>
+            <Identifier>MinimalExclusiveDate</Identifier>
+            <DisplayName>Minimal Exclusive Date</DisplayName>
+            <Description>Tests the MinimalExclusive constraint on Date type</Description>
+            <DataType>
+                <Constrained>
+                    <DataType>
+                        <Basic>Date</Basic>
+                    </DataType>
+                    <Constraints>
+                        <MinimalExclusive>20190101</MinimalExclusive>
+                    </Constraints>
+                </Constrained>
+            </DataType>
+        </Parameter>
+        <Parameter>
+            <Identifier>MinMaxExclusiveDate</Identifier>
+            <DisplayName>Minimal Maximal Exclusive Date</DisplayName>
+            <Description>Tests the combination of MinimalExclusive and MaximalExclusive constraints on Date type</Description>
+            <DataType>
+                <Constrained>
+                    <DataType>
+                        <Basic>Date</Basic>
+                    </DataType>
+                    <Constraints>
+                        <MinimalExclusive>20190201</MinimalExclusive>
+                        <MaximalExclusive>20191130</MaximalExclusive>
+                    </Constraints>
+                </Constrained>
+            </DataType>
+        </Parameter>
+        <Parameter>
+            <Identifier>MaximalInclusiveTime</Identifier>
+            <DisplayName>Maximal Inclusive Time</DisplayName>
+            <Description>Tests the MaximalInclusive constraint on Time type</Description>
+            <DataType>
+                <Constrained>
+                    <DataType>
+                        <Basic>Time</Basic>
+                    </DataType>
+                    <Constraints>
+                        <MaximalInclusive>185959</MaximalInclusive>
+                    </Constraints>
+                </Constrained>
+            </DataType>
+        </Parameter>
+        <Parameter>
+            <Identifier>MinimalInclusiveTime</Identifier>
+            <DisplayName>Minimal Inclusive Time</DisplayName>
+            <Description>Tests the MinimalInclusive constraint on Time type</Description>
+            <DataType>
+                <Constrained>
+                    <DataType>
+                        <Basic>Time</Basic>
+                    </DataType>
+                    <Constraints>
+                        <MinimalInclusive>080000</MinimalInclusive>
+                    </Constraints>
+                </Constrained>
+            </DataType>
+        </Parameter>
+        <Parameter>
+            <Identifier>MinMaxInclusiveTime</Identifier>
+            <DisplayName>Minimal Maximal Inclusive Time</DisplayName>
+            <Description>Tests the combination of MinimalInclusive and MaximalInclusive constraints on Time type</Description>
+            <DataType>
+                <Constrained>
+                    <DataType>
+                        <Basic>Time</Basic>
+                    </DataType>
+                    <Constraints>
+                        <MinimalInclusive>080000</MinimalInclusive>
+                        <MaximalInclusive>185959</MaximalInclusive>
+                    </Constraints>
+                </Constrained>
+            </DataType>
+        </Parameter>
+    </Command>
+    <Command>
+        <Identifier>ConstrainedListParameters</Identifier>
+        <DisplayName>Constrained List Parameters</DisplayName>
+        <Description>A command with constrained parameters of type List</Description>
+        <Observable>No</Observable>
+        <Parameter>
+            <Identifier>ElementCountList</Identifier>
+            <DisplayName>List with Element Count</DisplayName>
+            <Description>Tests the ElementCount constraint on List type</Description>
+            <DataType>
+                <Constrained>
+                    <DataType>
+                        <List>
+                            <DataType>
+                                <Basic>String</Basic>
+                            </DataType>
+                        </List>
+                    </DataType>
+                    <Constraints>
+                        <ElementCount>5</ElementCount>
+                    </Constraints>
+                </Constrained>
+            </DataType>
+        </Parameter>
+        <Parameter>
+            <Identifier>MaximalElementCountList</Identifier>
+            <DisplayName>List with Maximal Element Count</DisplayName>
+            <Description>Test the MaximalElementCount constraint on List type</Description>
+            <DataType>
+                <Constrained>
+                    <DataType>
+                        <List>
+                            <DataType>
+                                <Basic>String</Basic>
+                            </DataType>
+                        </List>
+                    </DataType>
+                    <Constraints>
+                        <MaximalElementCount>5</MaximalElementCount>
+                    </Constraints>
+                </Constrained>
+            </DataType>
+        </Parameter>
+        <Parameter>
+            <Identifier>MinimalElementCountList</Identifier>
+            <DisplayName>List with a Minimal Element Count</DisplayName>
+            <Description>Tests the MinimalElementCount constraint on List type</Description>
+            <DataType>
+                <Constrained>
+                    <DataType>
+                        <List>
+                            <DataType>
+                                <Basic>String</Basic>
+                            </DataType>
+                        </List>
+                    </DataType>
+                    <Constraints>
+                        <MinimalElementCount>3</MinimalElementCount>
+                    </Constraints>
+                </Constrained>
+            </DataType>
+        </Parameter>
+        <Parameter>
+            <Identifier>MinMaxElementCountList</Identifier>
+            <DisplayName>List with a Interval Element Count</DisplayName>
+            <Description>Tests the combination of MinimalElementCount and MaximalElementCount constraints on List type</Description>
+            <DataType>
+                <Constrained>
+                    <DataType>
+                        <List>
+                            <DataType>
+                                <Basic>String</Basic>
+                            </DataType>
+                        </List>
+                    </DataType>
+                    <Constraints>
+                        <MinimalElementCount>2</MinimalElementCount>
+                        <MaximalElementCount>5</MaximalElementCount>
+                    </Constraints>
+                </Constrained>
+            </DataType>
+        </Parameter>
+    </Command>
+</Feature>

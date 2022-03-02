@@ -2,7 +2,7 @@
 import * as grpc from '@grpc/grpc-js';
 import * as protobuf from 'protobufjs';
 
-const root = protobuf.loadSync(`${__dirname}/protobuf/SiLAFramework.proto`);
+const root = protobuf.loadSync(`${__dirname}/assets/protobuf/SiLAFramework.proto`);
 const SiLAError = root.lookupType('SiLAError');
 
 function encode(error: any): string {

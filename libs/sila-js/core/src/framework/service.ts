@@ -5,6 +5,8 @@ import { readFileSync } from 'fs';
 import * as path from 'path';
 import * as grpc from '@grpc/grpc-js';
 
+console.log('start');
+
 import { Get_ImplementedFeatures_Parameters } from './static/sila2/org/silastandard/core/silaservice/v1/Get_ImplementedFeatures_Parameters';
 import { Get_ImplementedFeatures_Responses } from './static/sila2/org/silastandard/core/silaservice/v1/Get_ImplementedFeatures_Responses';
 import { Get_ServerDescription_Parameters } from './static/sila2/org/silastandard/core/silaservice/v1/Get_ServerDescription_Parameters';
@@ -34,9 +36,12 @@ import {
   SiLAServiceHandlers,
 } from './static/sila2/org/silastandard/core/silaservice/v1/SiLAService';
 import { SiLAValidationError } from './errors';
+console.log('end1');
 import { logger } from '../logging';
 
 const log = logger('SiLAService');
+
+
 
 export {
   GetFeatureDefinition_Parameters,
@@ -61,6 +66,8 @@ export {
   SetServerName_Responses,
   SiLAServiceClient,
 };
+
+
 
 export interface SiLAServiceOptions {
   serverName: string;
@@ -89,10 +96,13 @@ export class SiLAService {
     this.serverVersion = options.serverVersion || '';
     this.implementedFeatures = new Map();
 
+    console.log('hereeeeeeeeeeeeeeee');
+
     this.registerFeature(
       'SiLAService',
       path.join(
-        __dirname,
+        __dirname +
+        '/assets',
         'feature_definitions',
         'org',
         'silastandard',

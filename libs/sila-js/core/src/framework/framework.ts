@@ -1,4 +1,3 @@
-/* eslint-disable import/prefer-default-export */
 import * as path from 'path';
 
 import * as grpc from '@grpc/grpc-js';
@@ -8,18 +7,17 @@ import { ProtoGrpcType as ServiceType } from './static/SiLAService';
 import { ProtoGrpcType as SimulationType } from './static/SimulationController';
 
 const silaBasePath = path.join(__dirname);
-
 const serviceDefn = protoLoader.loadSync('SiLAService.proto', {
   includeDirs: [
-    path.join(silaBasePath, 'protobuf'),
-    path.join(silaBasePath, 'protobuf', 'org.silastandard'),
+    path.join(silaBasePath + '/assets', 'protobuf'),
+    path.join(silaBasePath+ '/assets', 'protobuf', 'org.silastandard'),
   ],
 });
 
 const simDefn = protoLoader.loadSync('SimulationController.proto', {
   includeDirs: [
-    path.join(silaBasePath, 'protobuf'),
-    path.join(silaBasePath, 'protobuf', 'org.silastandard'),
+    path.join(silaBasePath+ '/assets', 'protobuf'),
+    path.join(silaBasePath+ '/assets', 'protobuf', 'org.silastandard'),
   ],
 });
 
@@ -31,7 +29,7 @@ export const SimulationControllerRoot = grpc.loadPackageDefinition(
 ) as unknown as SimulationType;
 
 export const standardFeatureDefinitionDir = path.join(
-  silaBasePath,
+  silaBasePath + '/assets',
   'feature_definitions',
   'org',
   'silastandard',
