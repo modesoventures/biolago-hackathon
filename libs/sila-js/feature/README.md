@@ -1,7 +1,16 @@
-# sila-js-feature
+# @sila-standard/feature
 
-This library was generated with [Nx](https://nx.dev).
+### Purpose
+## Instanciate a SiLA Feature
+```
+const featureDefinition: IFeatureDefinition = ...;
 
-## Running unit tests
+fs.writeFileSync(`${featureDefinition.title}.proto`, protoFromFeatureDefinition(featureDefinition));
 
-Run `nx test sila-js-feature` to execute the unit tests via [Jest](https://jestjs.io).
+```
+
+### Dependencies
+```
+@sila-standard/fdl-parser
+```
+
