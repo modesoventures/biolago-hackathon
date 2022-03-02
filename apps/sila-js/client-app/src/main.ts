@@ -1,4 +1,5 @@
 import DynamicClient, { Endpoint } from '@sila-standard/dynamic-client';
+import path from 'path';
 
 import logger from 'winston';
 
@@ -12,12 +13,15 @@ logger.add(transport);
 logger.level = 'info';
 
 const endpoint: Endpoint = {
-  hostname: '127.0.0.1',
-  port: 50051,
+  hostname: 'localhost',
+  port: 55001,
 };
 
 export default async function go(): Promise<void> {
-  const dynamicClient = new DynamicClient(endpoint);
+  const dynamicClient = new DynamicClient(endpoint, {
+    protobufPath: path.join(__dirname, 'assets', 'protobuf'),
+    silaBasePath:  path.join(__dirname, 'assets'),
+  });
 
   await dynamicClient.initSiLAFeatures();
 

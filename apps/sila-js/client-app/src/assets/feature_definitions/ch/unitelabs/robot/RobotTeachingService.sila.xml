@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Feature SiLA2Version="1.0" FeatureVersion="1.0" MaturityLevel="Draft" Originator="ch.unitelabs" Category="robot"
+         xmlns="http://www.sila-standard.org"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://www.sila-standard.org https://gitlab.com/SiLA2/sila_base/raw/master/schema/FeatureDefinition.xsd">
+    <Identifier>RobotTeachingService</Identifier>
+    <DisplayName>Robot Teaching Service</DisplayName>
+    <Description>
+        Functionality to teach the access to specific positions or pre-calibrated devices to the robot.
+    </Description>
+    <Command>
+        <Identifier>TeachMode</Identifier>
+        <DisplayName>Teach Mode</DisplayName>
+        <Description>Turning the Teaching mode on or off.</Description>
+        <Observable>No</Observable>
+        <Parameter>
+            <Identifier>On</Identifier>
+            <DisplayName>On</DisplayName>
+            <Description>Boolean describing turning on or off.</Description>
+            <DataType>
+                <Basic>Boolean</Basic>
+            </DataType>
+        </Parameter>
+    </Command>
+    <Property>
+        <Identifier>TeachMode</Identifier>
+        <DisplayName>Teach Mode</DisplayName>
+        <Description>Indicating if robot is in teach mode or not.</Description>
+        <Observable>No</Observable>
+        <DataType>
+            <Basic>Boolean</Basic>
+        </DataType>
+    </Property>
+    <Command>
+        <Identifier>TeachDevice</Identifier>
+        <DisplayName>Teach Device</DisplayName>
+        <Description>
+            Associate the current position of the robot to a given device.
+
+            For robots with computer vision: Place the robots camera field of view (FoV) over the target
+            device's markers.
+            For robots without computer vision: Place the robot gripper with a teaching jig onto the reference site
+            of the device.
+        </Description>
+        <Observable>No</Observable>
+        <Parameter>
+            <Identifier>Device</Identifier>
+            <DisplayName>Device</DisplayName>
+            <Description>The device that the marker or reference site (without computer vision) is associated with.</Description>
+            <DataType>
+                <Basic>String</Basic>
+            </DataType>
+        </Parameter>
+        <DefinedExecutionErrors>
+            <Identifier>UnhealthyState</Identifier>
+        </DefinedExecutionErrors>
+    </Command>
+    <Command>
+        <Identifier>TeachPosition</Identifier>
+        <DisplayName>Teach Position</DisplayName>
+        <Description>
+            Associate the current position of the robot to a given name. If a marker is seen with computer vision,
+            the closest marker will be used as a reference, if none is seen the robot will use it's own estimate.
+
+            These positions should usually be used to define intermediate points where the robot has to drive to avoid
+            collisions with an expected obstacle in its pathway.
+        </Description>
+        <Observable>No</Observable>
+        <Parameter>
+            <Identifier>Position</Identifier>
+            <DisplayName>Position</DisplayName>
+            <Description>The position to refer to.</Description>
+            <DataType>
+                <Basic>String</Basic>
+            </DataType>
+        </Parameter>
+        <DefinedExecutionErrors>
+            <Identifier>UnhealthyState</Identifier>
+        </DefinedExecutionErrors>
+    </Command>
+    <Property>
+        <Identifier>TaughtPositions</Identifier>
+        <DisplayName>Taught Positions</DisplayName>
+        <Description>All positions taught on this robot</Description>
+        <Observable>No</Observable>
+        <DataType>
+            <List>
+                <DataType>
+                    <Basic>String</Basic>
+                </DataType>
+            </List>
+        </DataType>
+    </Property>
+    <Command>
+        <Identifier>GetCalibrationPlate</Identifier>
+        <DisplayName>Get Calibration Plate</DisplayName>
+        <Description>Pick up the plate from the calibration nest on the robot</Description>
+        <Observable>No</Observable>
+        <Parameter>
+            <Identifier>Orientation</Identifier>
+            <DisplayName>Orientation</DisplayName>
+            <Description>Specifies orientation to pick the sample in.</Description>
+            <DataType>
+                <Constrained>
+                    <DataType>
+                        <Basic>String</Basic>
+                    </DataType>
+                    <Constraints>
+                        <Set>
+                            <Value>Portrait</Value>
+                            <Value>Landscape</Value>
+                        </Set>
+                    </Constraints>
+                </Constrained>
+            </DataType>
+        </Parameter>
+    </Command>
+    <DefinedExecutionError>
+        <Identifier>UnhealthyState</Identifier>
+        <DisplayName>Unhealthy State</DisplayName>
+        <Description>Gets thrown if there is an unhealthy state so the robot can not be taught</Description>
+    </DefinedExecutionError>
+</Feature>
