@@ -96,8 +96,6 @@ export class SiLAService {
     this.serverVersion = options.serverVersion || '';
     this.implementedFeatures = new Map();
 
-    console.log('hereeeeeeeeeeeeeeee');
-
     this.registerFeature(
       'SiLAService',
       path.join(

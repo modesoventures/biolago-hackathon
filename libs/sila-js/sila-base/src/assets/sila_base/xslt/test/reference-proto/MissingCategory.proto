@@ -1,7 +1,0 @@
-syntax = "proto3";
-
-package sila2.org.silastandard.none.missingcategory.v1;
-
-/* A feature without explicit category. The default value 'none' should be used. */
-service MissingCategory {
-}
