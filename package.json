@@ -23,9 +23,14 @@
     "@nestjs/core": "^8.0.0",
     "@nestjs/platform-express": "^8.0.0",
     "@nrwl/angular": "13.8.3",
+    "@sila-standard/dynamic-client": "^0.0.1",
+    "@sila-standard/feature": "^0.0.1",
+    "@sila-standard/sila-base": "^0.0.1",
+    "fs-extra": "^10.0.1",
     "reflect-metadata": "^0.1.13",
     "rxjs": "~7.4.0",
     "tslib": "^2.0.0",
+    "winston": "^3.6.0",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
