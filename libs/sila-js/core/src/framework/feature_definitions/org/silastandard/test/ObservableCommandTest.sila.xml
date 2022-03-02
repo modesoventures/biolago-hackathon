@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Feature SiLA2Version="1.0" FeatureVersion="1.0" Originator="org.silastandard" Category="test"
+         xmlns="http://www.sila-standard.org"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://www.sila-standard.org https://gitlab.com/SiLA2/sila_base/raw/master/schema/FeatureDefinition.xsd">
+    <Identifier>ObservableCommandTest</Identifier>
+    <DisplayName>Observable Command Test</DisplayName>
+    <Description>
+        This is a test feature to test observable commands.
+        It specifies various observable commands and returns defined answers to validate against.
+    </Description>
+
+    <Command>
+        <Identifier>ObservableIteration</Identifier>
+        <DisplayName>Observable iteration</DisplayName>
+        <Description>Observable iteration, running NumberIterations times and returning the current count as intermediate result.</Description>
+        <Observable>Yes</Observable>
+        <Parameter>
+            <Identifier>NumberIterations</Identifier>
+            <DisplayName>Number Iterations</DisplayName>
+            <Description>Number of Iterations to perform</Description>
+            <DataType>
+                <Basic>Integer</Basic>
+            </DataType>
+        </Parameter>
+        <Response>
+            <Identifier>IterationResponse</Identifier>
+            <DisplayName>Iteration Response</DisplayName>
+            <Description>If the command ended successfully the response should be NumberIterations - 1</Description>
+            <DataType>
+                <Basic>Integer</Basic>
+            </DataType>
+        </Response>
+        <IntermediateResponse>
+            <Identifier>CurrentIteration</Identifier>
+            <DisplayName>Current Iteration</DisplayName>
+            <Description>Return the current iteration in progress, starting from 0 to NumberIterations (excluded).</Description>
+            <DataType>
+                <Basic>Integer</Basic>
+            </DataType>
+        </IntermediateResponse>
+    </Command>
+
+    <Command>
+        <Identifier>EchoValueAsync</Identifier>
+        <DisplayName>Echo Value Async</DisplayName>
+        <Description>Echo the given value asynchronously after the specified delay</Description>
+        <Observable>Yes</Observable>
+        <Parameter>
+            <Identifier>Value</Identifier>
+            <DisplayName>Value</DisplayName>
+            <Description>The value to echo</Description>
+            <DataType>
+                <Basic>Integer</Basic>
+            </DataType>
+        </Parameter>
+        <Parameter>
+            <Identifier>DelayInMs</Identifier>
+            <DisplayName>Delay In Ms</DisplayName>
+            <Description>The delay in milliseconds</Description>
+            <DataType>
+                <Basic>Integer</Basic>
+            </DataType>
+        </Parameter>
+        <Response>
+            <Identifier>ReceivedValue</Identifier>
+            <DisplayName>Received Value</DisplayName>
+            <Description>The Received Value</Description>
+            <DataType>
+                <Basic>Integer</Basic>
+            </DataType>
+        </Response>
+    </Command>
+</Feature>

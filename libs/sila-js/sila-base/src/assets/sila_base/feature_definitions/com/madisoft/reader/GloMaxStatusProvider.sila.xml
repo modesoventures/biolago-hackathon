@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Feature SiLA2Version="1.0" FeatureVersion="1.0" MaturityLevel="Draft" Originator="com.madisoft" Category="reader"
+         xmlns="http://www.sila-standard.org"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://www.sila-standard.org https://gitlab.com/SiLA2/sila_base/raw/master/schema/FeatureDefinition.xsd">
+    <Identifier>ReaderStatusProvider</Identifier>
+    <DisplayName>Reader Status Provider</DisplayName>
+    <Description>Status of reader specific to Promega's GloMax</Description>
+    <Property>
+        <Identifier>Status</Identifier>
+        <DisplayName>Reader Status</DisplayName>
+        <Description>Current status of the Reader device.
+            Possible values are:
+            - Idle: Reader is online and ready for command execution
+            - Busy: Reader is executing a command and because of that is busy and cannot execute other command
+            - Unavailable: This combines Offline and Disconnected statuses which means that Reader cannot execute any command or get a property.
+        </Description>
+        <Observable>Yes</Observable>
+        <DataType>
+            <Constrained>
+                <DataType>
+                    <Basic>String</Basic>
+                </DataType>
+                <Constraints>
+                    <Set>
+                        <Value>Idle</Value>
+                        <Value>Busy</Value>
+                        <Value>Unavailable</Value>
+                    </Set>
+                </Constraints>
+            </Constrained>
+        </DataType>
+    </Property>
+    <Property>
+        <Identifier>PlateType</Identifier>
+        <DisplayName>Plate Type</DisplayName>
+        <Description>The plate type for the device reader. Defines plate dimension. Number of wells in the plate.
+            Support several types of plates: 6, 12, 24, 48, 96 and 384 wells.
+        </Description>
+        <Observable>No</Observable>
+        <DataType>
+            <Constrained>
+                <DataType>
+                    <Basic>Integer</Basic>
+                </DataType>
+                <Constraints>
+                    <Set>
+                        <Value>6</Value>
+                        <Value>12</Value>
+                        <Value>24</Value>
+                        <Value>48</Value>
+                        <Value>96</Value>
+                        <Value>384</Value>
+                    </Set>
+                </Constraints>
+            </Constrained>
+        </DataType>
+    </Property>
+</Feature>

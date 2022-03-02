@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Feature SiLA2Version="1.0" FeatureVersion="1.0" Originator="org.silastandard"
+         Category="tests"
+         xmlns="http://www.sila-standard.org"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://www.sila-standard.org https://gitlab.com/SiLA2/sila_base/raw/master/schema/FeatureDefinition.xsd">
+    <Identifier>NestedList</Identifier>
+    <DisplayName>Nested List</DisplayName>
+    <Description>Contains a nested list data type</Description>
+    <DataTypeDefinition>
+        <Identifier>NestedList</Identifier>
+        <DisplayName>Nested List</DisplayName>
+        <Description>A nested list</Description>
+        <DataType>
+            <List>
+                <DataType>
+                    <List>
+                        <DataType>
+                            <Basic>Integer</Basic>
+                        </DataType>
+                    </List>
+                </DataType>
+            </List>
+        </DataType>
+    </DataTypeDefinition>
+</Feature>

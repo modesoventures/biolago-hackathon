@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Feature SiLA2Version="1.0" FeatureVersion="1.0" MaturityLevel="Draft" Originator="org.silastandard"
+         Category="instruments"
+         xmlns="http://www.sila-standard.org"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://www.sila-standard.org https://gitlab.com/SiLA2/sila_base/raw/master/schema/FeatureDefinition.xsd">
+  <Identifier>CoverController</Identifier>
+  <DisplayName>Cover Controller</DisplayName>
+  <Description>
+    General device controller to open/close the main device physical access to plates and samples.
+  </Description>
+  <Command>
+    <Identifier>OpenCover</Identifier>
+    <DisplayName>Open Cover</DisplayName>
+    <Description>Open the device cover</Description>
+    <Observable>No</Observable>
+    <DefinedExecutionErrors>
+      <Identifier>CoverOperationInterrupted</Identifier>
+    </DefinedExecutionErrors>
+  </Command>
+  <Command>
+    <Identifier>CloseCover</Identifier>
+    <DisplayName>Close Cover</DisplayName>
+    <Description>Close the device cover</Description>
+    <Observable>No</Observable>
+    <DefinedExecutionErrors>
+      <Identifier>CoverOperationInterrupted</Identifier>
+    </DefinedExecutionErrors>
+  </Command>
+  <DefinedExecutionError>
+    <Identifier>CoverOperationInterrupted</Identifier>
+    <DisplayName>Cover Operation Interrupted</DisplayName>
+    <Description>Opening/Closing the device cover was interrupted. Check if any object is besides the cover or for any
+      mechanical issue.
+    </Description>
+  </DefinedExecutionError>
+</Feature>

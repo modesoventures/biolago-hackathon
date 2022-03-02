@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+import "SiLAFramework.proto";
+
+package sila2.org.silastandard.tests.timestampset.v1;
+
+/* Contains a Timestamp with Set constraint */
+service TimestampSet {
+}
+
+/* A test type */
+message DataType_TestType {
+  sila2.org.silastandard.Timestamp TestType = 1;  /* A test type */
+}

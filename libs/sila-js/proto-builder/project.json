@@ -1,0 +1,23 @@
+{
+  "root": "libs/sila-js/proto-builder",
+  "sourceRoot": "libs/sila-js/proto-builder/src",
+  "projectType": "library",
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/sila-js/proto-builder/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/sila-js/proto-builder"],
+      "options": {
+        "jestConfig": "libs/sila-js/proto-builder/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

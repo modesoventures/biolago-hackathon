@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Feature SiLA2Version="1.0" FeatureVersion="1.0" MaturityLevel="Verified" Originator="org.silastandard"
+         Category="core.commands"
+         xmlns="http://www.sila-standard.org"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://www.sila-standard.org https://gitlab.com/SiLA2/sila_base/raw/master/schema/FeatureDefinition.xsd">
+  <Identifier>ParameterConstraintsProvider</Identifier>
+  <DisplayName>Parameter Constraints Provider</DisplayName>
+  <Description>
+    This Feature allows a SiLA Client to receive constraints (min./max value, min./max. length for strings etc.) that
+    given parameters of a given Command have which are not defined in the respective Feature Definition;
+    also depending on other parameter or state.
+
+    It returns a list of all Constraints of a given Command. It is RECOMMENDED that a SiLA Server implements this
+    feature, if it is not possible to provide certain constraints already in the feature design phase.
+  </Description>
+  <Property>
+    <Identifier>ParametersConstraints</Identifier>
+    <DisplayName>Parameters Constraints</DisplayName>
+    <Description>
+      Provides a list of all constraints of Command Parameters of the SiLA Server.
+    </Description>
+    <Observable>Yes</Observable>
+    <DataType>
+      <List>
+        <DataType>
+          <Structure>
+            <Element>
+              <Identifier>CommandParameterIdentifier</Identifier>
+              <DisplayName>Command Parameter Identifier</DisplayName>
+              <Description>The fully qualified identifier of a constrained parameter.</Description>
+              <DataType>
+                <Constrained>
+                  <DataType>
+                    <Basic>String</Basic>
+                  </DataType>
+                  <Constraints>
+                    <FullyQualifiedIdentifier>CommandParameterIdentifier</FullyQualifiedIdentifier>
+                  </Constraints>
+                </Constrained>
+              </DataType>
+            </Element>
+            <Element>
+              <Identifier>Constraints</Identifier>
+              <DisplayName>Constraints</DisplayName>
+              <Description>The constraints to apply on the parameter.</Description>
+              <DataType>
+                <Constrained>
+                  <DataType>
+                    <Basic>String</Basic>
+                  </DataType>
+                  <Constraints>
+                    <Schema>
+                      <Type>Xml</Type>
+                      <Url>https://gitlab.com/SiLA2/sila_base/raw/master/schema/Constraints.xsd</Url>
+                    </Schema>
+                  </Constraints>
+                </Constrained>
+              </DataType>
+            </Element>
+          </Structure>
+        </DataType>
+      </List>
+    </DataType>
+  </Property>
+</Feature>

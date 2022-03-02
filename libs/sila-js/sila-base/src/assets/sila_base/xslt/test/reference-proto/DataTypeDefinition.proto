@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+import "SiLAFramework.proto";
+
+package sila2.org.silastandard.tests.datatypedefinition.v1;
+
+/* Provides DataTypeDefinitions and a command and property referencing them */
+service DataTypeDefinition {
+    /* Command for testing */
+    rpc TestCommand(sila2.org.silastandard.tests.datatypedefinition.v1.TestCommand_Parameters) returns (sila2.org.silastandard.tests.datatypedefinition.v1.TestCommand_Responses) {}
+    /* Property for testing */
+    rpc Get_TestProperty(sila2.org.silastandard.tests.datatypedefinition.v1.Get_TestProperty_Parameters) returns (sila2.org.silastandard.tests.datatypedefinition.v1.Get_TestProperty_Responses) {}
+}
+
+/* First definition */
+message DataType_Definition1 {
+    sila2.org.silastandard.Integer Definition1 = 1;  /* First definition */
+}
+
+/* Second definition */
+message DataType_Definition2 {
+    sila2.org.silastandard.Integer Definition2 = 1;  /* Second definition */
+}
+
+/* Parameters for TestCommand */
+message TestCommand_Parameters {
+}
+
+/* Responses of TestCommand */
+message TestCommand_Responses {
+    sila2.org.silastandard.tests.datatypedefinition.v1.DataType_Definition1 Response1 = 1;  /* First response */
+}
+
+/* Parameters for TestProperty */
+message Get_TestProperty_Parameters {
+}
+
+/* Responses of TestProperty */
+message Get_TestProperty_Responses {
+    sila2.org.silastandard.tests.datatypedefinition.v1.DataType_Definition2 TestProperty = 1;  /* Property for testing */
+}
+

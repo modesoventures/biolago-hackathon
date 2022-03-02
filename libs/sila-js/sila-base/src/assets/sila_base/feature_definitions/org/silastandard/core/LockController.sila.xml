@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Feature SiLA2Version="1.0" FeatureVersion="1.0" MaturityLevel="Verified" Originator="org.silastandard" Category="core"
+         xmlns="http://www.sila-standard.org"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://www.sila-standard.org https://gitlab.com/SiLA2/sila_base/raw/master/schema/FeatureDefinition.xsd">
+  <Identifier>LockController</Identifier>
+  <DisplayName>Lock Controller</DisplayName>
+  <Description>
+    This Feature allows a SiLA Client to lock a SiLA Server for exclusive use, preventing other SiLA Clients
+    from using the SiLA Server while it is locked. To lock a SiLA Server a Lock Identifier has to be set, using the
+    'LockServer' command. This Lock Identifier has to be sent along with every (lock protected)
+    request to the SiLA Server in order to use its functionality.
+
+    To send the lock identifier the SiLA Client Meta Data 'LockIdentifier' has to be used.
+
+    When locking a SiLA Server a timeout can be specified that defines the time after which the SiLA Server will
+    be automatically unlocked if no request with a valid lock identifier has been received meanwhile.
+    After the timeout has expired or after explicit unlock no lock identifier has to be sent any more.
+  </Description>
+  <Command>
+    <Identifier>LockServer</Identifier>
+    <DisplayName>Lock Server</DisplayName>
+    <Description>
+      Locks a SiLA Server for exclusive use by setting a lock identifier that has to be sent along with
+      any following (lock protected) request as long as the SiLA Server is locked.
+      The lock can be reset by issuing the 'Unlock Server' command.
+    </Description>
+    <Observable>No</Observable>
+    <Parameter>
+      <Identifier>LockIdentifier</Identifier>
+      <DisplayName>Lock Identifier</DisplayName>
+      <Description>
+        The lock identifier that has to be sent along with every (lock protected) request to use the server's
+        functionality.
+      </Description>
+      <DataType>
+        <Basic>String</Basic>
+      </DataType>
+    </Parameter>
+    <Parameter>
+      <Identifier>Timeout</Identifier>
+      <DisplayName>Timeout</DisplayName>
+      <Description>
+        The time (in seconds) after a SiLA Server is automatically unlocked when no request with a valid lock identifier
+        has been received meanwhile. A timeout of zero seconds specifies an infinite time (no timeout).
+      </Description>
+      <DataType>
+        <Constrained>
+          <DataType>
+            <Basic>Integer</Basic>
+          </DataType>
+          <Constraints>
+            <Unit>
+              <Label>s</Label>
+              <Factor>1</Factor>
+              <Offset>0</Offset>
+              <UnitComponent>
+                <SIUnit>Second</SIUnit>
+                <Exponent>1</Exponent>
+              </UnitComponent>
+            </Unit>
+          </Constraints>
+        </Constrained>
+      </DataType>
+    </Parameter>
+    <DefinedExecutionErrors>
+      <Identifier>ServerAlreadyLocked</Identifier>
+    </DefinedExecutionErrors>
+  </Command>
+  <Command>
+    <Identifier>UnlockServer</Identifier>
+    <DisplayName>Unlock Server</DisplayName>
+    <Description>
+      Unlocks a locked SiLA Server. No lock identifier has to be sent for any following calls until
+      the server is locked again via the 'Lock Server' command.
+    </Description>
+    <Observable>No</Observable>
+    <Parameter>
+      <Identifier>LockIdentifier</Identifier>
+      <DisplayName>Lock Identifier</DisplayName>
+      <Description>The lock identifier that has been used to lock the SiLA Server.</Description>
+      <DataType>
+        <Basic>String</Basic>
+      </DataType>
+    </Parameter>
+    <DefinedExecutionErrors>
+      <Identifier>ServerNotLocked</Identifier>
+      <Identifier>InvalidLockIdentifier</Identifier>
+    </DefinedExecutionErrors>
+  </Command>
+  <Property>
+    <Identifier>IsLocked</Identifier>
+    <DisplayName>IsLocked</DisplayName>
+    <Description>
+      Returns true if the SiLA Server is currently locked or false else.
+
+      This property MUST NOT be lock protected, so that any SiLA Client can query the current lock state
+      of a SiLA Server.
+    </Description>
+    <Observable>No</Observable>
+    <DataType>
+      <Basic>Boolean</Basic>
+    </DataType>
+  </Property>
+  <Metadata>
+    <Identifier>LockIdentifier</Identifier>
+    <DisplayName>Lock Identifier</DisplayName>
+    <Description>
+      The lock identifier has to be sent with every (lock protected) call in order to use the functionality
+      of a locked SiLA Server.
+    </Description>
+    <DataType>
+      <Basic>String</Basic>
+    </DataType>
+    <DefinedExecutionErrors>
+      <Identifier>InvalidLockIdentifier</Identifier>
+    </DefinedExecutionErrors>
+  </Metadata>
+  <DefinedExecutionError>
+    <Identifier>InvalidLockIdentifier</Identifier>
+    <DisplayName>Invalid Lock Identifier</DisplayName>
+    <Description>The sent lock identifier is not valid.</Description>
+  </DefinedExecutionError>
+  <DefinedExecutionError>
+    <Identifier>ServerAlreadyLocked</Identifier>
+    <DisplayName>Server Already Locked</DisplayName>
+    <Description>The SiLA Server can not be locked because it is already locked.</Description>
+  </DefinedExecutionError>
+  <DefinedExecutionError>
+    <Identifier>ServerNotLocked</Identifier>
+    <DisplayName>Server Not Locked</DisplayName>
+    <Description>The SiLA Server can not be unlocked because it is not locked.</Description>
+  </DefinedExecutionError>
+</Feature>

@@ -1,0 +1,23 @@
+{
+  "root": "libs/sila-js/feature",
+  "sourceRoot": "libs/sila-js/feature/src",
+  "projectType": "library",
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/sila-js/feature/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/sila-js/feature"],
+      "options": {
+        "jestConfig": "libs/sila-js/feature/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

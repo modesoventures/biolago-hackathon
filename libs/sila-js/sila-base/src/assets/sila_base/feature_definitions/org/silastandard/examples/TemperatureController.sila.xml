@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Feature SiLA2Version="1.0" FeatureVersion="1.0" MaturityLevel="Verified" Originator="org.silastandard"
+         Category="examples"
+         xmlns="http://www.sila-standard.org"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://www.sila-standard.org https://gitlab.com/SiLA2/sila_base/raw/master/schema/FeatureDefinition.xsd">
+  <Identifier>TemperatureController</Identifier>
+  <DisplayName>Temperature Controller</DisplayName>
+  <Description>
+    This is a simple example of a generic Feature for controlling and retrieving the temperature.
+    A new target temperature can be set anytime with the 'Control Temperature' Command.
+    The temperature range has been limited to prevent major damages of a device.
+    In case the first target temperature has not been reached, a ControlInterrupted Error should be thrown.
+  </Description>
+  <Command>
+    <Identifier>ControlTemperature</Identifier>
+    <DisplayName>Control Temperature</DisplayName>
+    <Description>
+      Control the temperature gradually to a set target.
+      It is RECOMMENDED to use an oscillation free control system.
+    </Description>
+    <Observable>Yes</Observable>
+    <Parameter>
+      <Identifier>TargetTemperature</Identifier>
+      <DisplayName>Target Temperature</DisplayName>
+      <Description>
+        The target temperature that the server will try to reach.
+        Note that the command might be completed at a temperature that it evaluates to be close enough.
+        If the temperature cannot be reached, a 'Temperature Not Reachable' error will be thrown.
+      </Description>
+      <DataType>
+        <Constrained>
+          <DataType>
+            <Basic>Real</Basic>
+          </DataType>
+          <Constraints>
+            <Unit>
+              <Label>K</Label>
+              <Factor>1</Factor>
+              <Offset>0</Offset>
+              <UnitComponent>
+                <SIUnit>Kelvin</SIUnit>
+                <Exponent>0</Exponent>
+              </UnitComponent>
+            </Unit>
+            <MaximalInclusive>363.0</MaximalInclusive>
+            <MinimalExclusive>277.0</MinimalExclusive>
+          </Constraints>
+        </Constrained>
+      </DataType>
+    </Parameter>
+    <DefinedExecutionErrors>
+      <Identifier>TemperatureNotReachable</Identifier>
+      <Identifier>ControlInterrupted</Identifier>
+    </DefinedExecutionErrors>
+  </Command>
+  <DefinedExecutionError>
+    <Identifier>TemperatureNotReachable</Identifier>
+    <DisplayName>Temperature Not Reachable</DisplayName>
+    <Description>The ambient conditions prohibit the device from reaching the target temperature.</Description>
+  </DefinedExecutionError>
+  <DefinedExecutionError>
+    <Identifier>ControlInterrupted</Identifier>
+    <DisplayName>Control Interrupted</DisplayName>
+    <Description>The control of temperature could not be finished as it has been interrupted by another 'Control Temperature' command.
+    </Description>
+  </DefinedExecutionError>
+  <Property>
+    <Identifier>CurrentTemperature</Identifier>
+    <DisplayName>Current Temperature</DisplayName>
+    <Description>The current temperature as measured by the controller.</Description>
+    <Observable>Yes</Observable>
+    <DataType>
+      <Constrained>
+        <DataType>
+          <Basic>Real</Basic>
+        </DataType>
+        <Constraints>
+          <Unit>
+            <Label>K</Label>
+            <Factor>1</Factor>
+            <Offset>0</Offset>
+            <UnitComponent>
+              <SIUnit>Kelvin</SIUnit>
+              <Exponent>0</Exponent>
+            </UnitComponent>
+          </Unit>
+        </Constraints>
+      </Constrained>
+    </DataType>
+  </Property>
+</Feature>

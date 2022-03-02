@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Feature SiLA2Version="1.0" FeatureVersion="1.0" Originator="org.silastandard"
+         Category="tests"
+         xmlns="http://www.sila-standard.org"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://www.sila-standard.org https://gitlab.com/SiLA2/sila_base/raw/master/schema/FeatureDefinition.xsd">
+    <Identifier>AllowedTypesWithDataTypeDefinition</Identifier>
+    <DisplayName>AllowedTypes With DataTypeDefinition</DisplayName>
+    <Description>Contains a constrained Any with a DataTypeDefinition in the AllowedTypes constraint</Description>
+    <DataTypeDefinition>
+        <Identifier>Int</Identifier>
+        <DisplayName>Int</DisplayName>
+        <Description>An integer</Description>
+        <DataType>
+            <Basic>Integer</Basic>
+        </DataType>
+    </DataTypeDefinition>
+    <DataTypeDefinition>
+        <Identifier>TestType</Identifier>
+        <DisplayName>Test Type</DisplayName>
+        <Description>A test type</Description>
+        <DataType>
+            <Constrained>
+                <DataType>
+                    <Basic>Any</Basic>
+                </DataType>
+                <Constraints>
+                    <AllowedTypes>
+                        <DataType>
+                            <Basic>Boolean</Basic>
+                        </DataType>
+                        <DataType>
+                            <DataTypeIdentifier>Int</DataTypeIdentifier>
+                        </DataType>
+                    </AllowedTypes>
+                </Constraints>
+            </Constrained>
+        </DataType>
+    </DataTypeDefinition>
+</Feature>

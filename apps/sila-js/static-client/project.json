@@ -1,0 +1,52 @@
+{
+  "root": "apps/sila-js/static-client",
+  "sourceRoot": "apps/sila-js/static-client/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/node:build",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/sila-js/static-client",
+        "main": "apps/sila-js/static-client/src/main.ts",
+        "tsConfig": "apps/sila-js/static-client/tsconfig.app.json",
+        "assets": ["apps/sila-js/static-client/src/assets"]
+      },
+      "configurations": {
+        "production": {
+          "optimization": true,
+          "extractLicenses": true,
+          "inspect": false,
+          "fileReplacements": [
+            {
+              "replace": "apps/sila-js/static-client/src/environments/environment.ts",
+              "with": "apps/sila-js/static-client/src/environments/environment.prod.ts"
+            }
+          ]
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/node:execute",
+      "options": {
+        "buildTarget": "sila-js-static-client:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/sila-js/static-client/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/sila-js/static-client"],
+      "options": {
+        "jestConfig": "apps/sila-js/static-client/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

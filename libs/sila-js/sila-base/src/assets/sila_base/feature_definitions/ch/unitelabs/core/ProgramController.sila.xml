@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Feature SiLA2Version="1.0" FeatureVersion="1.0" MaturityLevel="Draft" Originator="ch.unitelabs" Category="core"
+         xmlns="http://www.sila-standard.org"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://www.sila-standard.org https://gitlab.com/SiLA2/sila_base/raw/master/schema/FeatureDefinition.xsd">
+    <Identifier>ProgramController</Identifier>
+    <DisplayName>Program  Controller</DisplayName>
+    <Description>
+        Exposes the ability to start, stop and pause pre-defined programs saved in the
+        instrument. For example: a liquid handling machine, microscope, plate reader.
+    </Description>
+    <!-- Commands -->
+    <Command>
+        <Identifier>Run</Identifier>
+        <DisplayName>Run</DisplayName>
+        <Description>
+            Starts a program with a known name and provides an optional stream for progress updates. There shall be no response. See List Programs command to get the list of existing programs.
+        </Description>
+        <Observable>Yes</Observable>
+        <Parameter>
+            <Identifier>ProgramName</Identifier>
+            <DisplayName>Program Name</DisplayName>
+            <Description>The name of the program to start.</Description>
+            <DataType>
+                <Basic>String</Basic>
+            </DataType>
+        </Parameter>
+        <DefinedExecutionErrors>
+            <Identifier>InvalidState</Identifier>
+        </DefinedExecutionErrors>
+    </Command>
+    <Command>
+        <Identifier>Stop</Identifier>
+        <DisplayName>Stop</DisplayName>
+        <Description>Stops a currently running program, without a possibility to resume.</Description>
+        <Observable>No</Observable>
+        <DefinedExecutionErrors>
+            <Identifier>InvalidState</Identifier>
+        </DefinedExecutionErrors>
+    </Command>
+    <Property>
+        <Identifier>ListPrograms</Identifier>
+        <DisplayName>List Programs</DisplayName>
+        <Description>The list of currently available programs saved in the device.</Description>
+        <Observable>No</Observable>
+        <DataType>
+            <List>
+                <DataType>
+                    <Basic>String</Basic>
+                </DataType>
+            </List>
+        </DataType>
+    </Property>
+    <!-- Command Execution Errors -->
+    <DefinedExecutionError>
+        <Identifier>InvalidState</Identifier>
+        <DisplayName>Invalid State</DisplayName>
+        <Description>
+            The command cannot be issued as the server is not in the correct
+            state.
+        </Description>
+    </DefinedExecutionError>
+</Feature>

@@ -16,7 +16,20 @@
     "esModuleInterop": true,
     "baseUrl": ".",
     "paths": {
-      "@biolago-hackathon/api-interfaces": ["libs/api-interfaces/src/index.ts"]
+      "@biolago-hackathon/api-interfaces": ["libs/api-interfaces/src/index.ts"],
+      "@biolago-hackathon/sila-js/core": ["libs/sila-js/core/src/index.ts"],
+      "@biolago-hackathon/sila-js/fdl-parser": [
+        "libs/sila-js/fdl-parser/src/index.ts"
+      ],
+      "@biolago-hackathon/sila-js/feature": [
+        "libs/sila-js/feature/src/index.ts"
+      ],
+      "@biolago-hackathon/sila-js/proto-builder": [
+        "libs/sila-js/proto-builder/src/index.ts"
+      ],
+      "@biolago-hackathon/sila-js/sila-base": [
+        "libs/sila-js/sila-base/src/index.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]

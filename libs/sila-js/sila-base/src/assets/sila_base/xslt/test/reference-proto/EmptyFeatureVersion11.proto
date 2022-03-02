@@ -1,0 +1,7 @@
+syntax = "proto3";
+
+package sila2.org.silastandard.tests.emptyfeatureversion11.v1;
+
+/* An empty feature with SiLA2Version 1.1 */
+service EmptyFeatureVersion11 {
+}

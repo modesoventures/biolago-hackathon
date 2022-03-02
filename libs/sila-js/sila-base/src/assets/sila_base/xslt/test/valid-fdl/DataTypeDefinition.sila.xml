@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Feature SiLA2Version="1.0" FeatureVersion="1.0" Originator="org.silastandard"
+         Category="tests"
+         xmlns="http://www.sila-standard.org"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://www.sila-standard.org https://gitlab.com/SiLA2/sila_base/raw/master/schema/FeatureDefinition.xsd">
+    <Identifier>DataTypeDefinition</Identifier>
+    <DisplayName>Data Type Definition</DisplayName>
+    <Description>Provides DataTypeDefinitions and a command and property referencing them</Description>
+    <Command>
+        <Identifier>TestCommand</Identifier>
+        <DisplayName>Test Command</DisplayName>
+        <Description>Command for testing</Description>
+        <Observable>No</Observable>
+        <Response>
+            <Identifier>Response1</Identifier>
+            <DisplayName>Response 1</DisplayName>
+            <Description>First response</Description>
+            <DataType>
+                <DataTypeIdentifier>Definition1</DataTypeIdentifier>
+            </DataType>
+        </Response>
+    </Command>
+    <Property>
+        <Identifier>TestProperty</Identifier>
+        <DisplayName>Test Property</DisplayName>
+        <Description>Property for testing</Description>
+        <Observable>No</Observable>
+        <DataType>
+            <DataTypeIdentifier>Definition2</DataTypeIdentifier>
+        </DataType>
+    </Property>
+    <DataTypeDefinition>
+        <Identifier>Definition1</Identifier>
+        <DisplayName>Definition 1</DisplayName>
+        <Description>First definition</Description>
+        <DataType>
+            <Basic>Integer</Basic>
+        </DataType>
+    </DataTypeDefinition>
+    <DataTypeDefinition>
+        <Identifier>Definition2</Identifier>
+        <DisplayName>Definition 2</DisplayName>
+        <Description>Second definition</Description>
+        <DataType>
+            <Basic>Integer</Basic>
+        </DataType>
+    </DataTypeDefinition>
+</Feature>

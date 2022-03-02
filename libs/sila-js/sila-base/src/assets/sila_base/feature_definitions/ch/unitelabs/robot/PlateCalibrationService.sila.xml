@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Feature SiLA2Version="1.0" FeatureVersion="1.0" MaturityLevel="Draft" Originator="ch.unitelabs" Category="robot"
+         xmlns="http://www.sila-standard.org"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://www.sila-standard.org https://gitlab.com/SiLA2/sila_base/raw/master/schema/FeatureDefinition.xsd">
+    <!-- Note: This is very much work in progress and will be rediscussed -->
+    <Identifier>PlateCalibrationService</Identifier>
+    <DisplayName>Plate Calibration Service</DisplayName>
+    <Description>
+        Service to calibrate the parameters of Plate Types relative to a teaching plate
+    </Description>
+    <Command>
+        <Identifier>CreatePlateType</Identifier>
+        <DisplayName>Create Plate Type</DisplayName>
+        <Description>
+            Create a new plate type or change an existing one
+        </Description>
+        <Observable>No</Observable>
+        <Parameter>
+            <Identifier>PlateType</Identifier>
+            <DisplayName>Plate Type</DisplayName>
+            <Description>The plate type to be created</Description>
+            <DataType>
+                <DataTypeIdentifier>PlateDefinition</DataTypeIdentifier>
+            </DataType>
+        </Parameter>
+    </Command>
+    <Command>
+        <Identifier>DeletePlateType</Identifier>
+        <DisplayName>Delete Plate Type</DisplayName>
+        <Description>Delete a plate type</Description>
+        <Observable>No</Observable>
+        <Parameter>
+            <Identifier>PlateTypeName</Identifier>
+            <DisplayName>Plate Type Name</DisplayName>
+            <Description>The name of the plate type to be deleted</Description>
+            <DataType>
+                <Basic>String</Basic>
+            </DataType>
+        </Parameter>
+    </Command>
+    <Property>
+        <Identifier>PlateTypes</Identifier>
+        <DisplayName>Plate Types</DisplayName>
+        <Description>Plate types stored on this robot.</Description>
+        <Observable>No</Observable>
+        <DataType>
+            <List>
+                <DataType>
+                    <DataTypeIdentifier>PlateDefinition</DataTypeIdentifier>
+                </DataType>
+            </List>
+        </DataType>
+    </Property>
+    <DataTypeDefinition>
+        <Identifier>PlateDefinition</Identifier>
+        <DisplayName>Plate Definition</DisplayName>
+        <Description>Plate definition with sufficient information to let the robot know how to grip it.</Description>
+        <DataType>
+            <Structure>
+                <Element>
+                    <Identifier>Name</Identifier>
+                    <DisplayName>Name</DisplayName>
+                    <Description>Name of the Plate Definition</Description>
+                    <DataType>
+                        <Basic>String</Basic>
+                    </DataType>
+                </Element>
+                <Element>
+                    <Identifier>Height</Identifier>
+                    <DisplayName>Height</DisplayName>
+                    <Description>The height of the plate</Description>
+                    <DataType>
+                        <Constrained>
+                            <DataType>
+                                <Basic>Real</Basic>
+                            </DataType>
+                            <Constraints>
+                                <MinimalExclusive>0</MinimalExclusive>
+                                <Unit>
+                                    <Label>mm</Label>
+                                    <Factor>0.001</Factor>
+                                    <Offset>0</Offset>
+                                    <UnitComponent>
+                                        <SIUnit>Meter</SIUnit>
+                                        <Exponent>1</Exponent>
+                                    </UnitComponent>
+                                </Unit>
+                            </Constraints>
+                        </Constrained>
+                    </DataType>
+                </Element>
+                <Element>
+                    <Identifier>GripHeight</Identifier>
+                    <DisplayName>Grip Height</DisplayName>
+                    <Description>The height at which to grip the plate.</Description>
+                    <DataType>
+                        <Constrained>
+                            <DataType>
+                                <Basic>Real</Basic>
+                            </DataType>
+                            <Constraints>
+                                <MinimalExclusive>0</MinimalExclusive>
+                                <Unit>
+                                    <Label>mm</Label>
+                                    <Factor>0.001</Factor>
+                                    <Offset>0</Offset>
+                                    <UnitComponent>
+                                        <SIUnit>Meter</SIUnit>
+                                        <Exponent>1</Exponent>
+                                    </UnitComponent>
+                                </Unit>
+                            </Constraints>
+                        </Constrained>
+                    </DataType>
+                </Element>
+                <Element>
+                    <Identifier>LidHeight</Identifier>
+                    <DisplayName>Lid Height</DisplayName>
+                    <Description>The height of the the plate lid.</Description>
+                    <DataType>
+                        <Constrained>
+                            <DataType>
+                                <Basic>Real</Basic>
+                            </DataType>
+                            <Constraints>
+                                <Unit>
+                                    <Label>mm</Label>
+                                    <Factor>0.001</Factor>
+                                    <Offset>0</Offset>
+                                    <UnitComponent>
+                                        <SIUnit>Meter</SIUnit>
+                                        <Exponent>1</Exponent>
+                                    </UnitComponent>
+                                </Unit>
+                            </Constraints>
+                        </Constrained>
+                    </DataType>
+                </Element>
+            </Structure>
+        </DataType>
+    </DataTypeDefinition>
+</Feature>

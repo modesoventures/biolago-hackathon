@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Feature SiLA2Version="1.0" FeatureVersion="1.0" MaturityLevel="Draft" Originator="ch.unitelabs" Category="core"
+         xmlns="http://www.sila-standard.org"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://www.sila-standard.org https://gitlab.com/SiLA2/sila_base/raw/master/schema/FeatureDefinition.xsd">
+    <Identifier>SingleConnectionController</Identifier>
+    <DisplayName>Single Connection Controller</DisplayName>
+    <Description>
+        Controls and exposes a single connection of the SiLA Server to another component (e.g. an Instrument).
+        Note that if this Feature is exposed, it is assumed that the Server doesn't offer the ability
+        to control any other connection with this Feature.
+    </Description>
+    <!-- Commands -->
+    <Command>
+        <Identifier>Connect</Identifier>
+        <DisplayName>Connect</DisplayName>
+        <Description>Establish the connection to the component.</Description>
+        <Observable>Yes</Observable>
+        <DefinedExecutionErrors>
+            <Identifier>ConnectionFailure</Identifier>
+        </DefinedExecutionErrors>
+    </Command>
+    <Command>
+        <Identifier>Disconnect</Identifier>
+        <DisplayName>Disconnect</DisplayName>
+        <Description>Disconnect from the component.</Description>
+        <Observable>Yes</Observable>
+        <DefinedExecutionErrors>
+            <Identifier>ConnectionFailure</Identifier>
+        </DefinedExecutionErrors>
+    </Command>
+    <Property>
+        <Identifier>Connected</Identifier>
+        <DisplayName>Connected</DisplayName>
+        <Description>Represents the connection state, either connected or not.</Description>
+        <Observable>Yes</Observable>
+        <DataType>
+            <Basic>Boolean</Basic>
+        </DataType>
+    </Property>
+    <!-- Command Execution Errors -->
+    <DefinedExecutionError>
+        <Identifier>ConnectionFailure</Identifier>
+        <DisplayName>Connection Failure</DisplayName>
+        <Description>
+            Unable to perform the required connection Command.
+        </Description>
+    </DefinedExecutionError>
+</Feature>
