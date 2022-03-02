@@ -18,7 +18,19 @@
     "paths": {
       "@biolago-hackathon/api-interfaces": ["libs/api-interfaces/src/index.ts"],
       "@sila-standard/client": ["libs/sila-js/client/src/index.ts"],
-      "@sila-standard/core": ["libs/sila-js/core/src/index.ts"]
+      "@sila-standard/core": ["libs/sila-js/core/src/index.ts"],
+      "@sila-standard/dynamic-client": [
+        "libs/sila-js/dynamic-client/src/index.ts"
+      ],
+      "@sila-standard/fdl-parser": ["libs/sila-js/fdl-parser/src/index.ts"],
+      "@sila-standard/feature": ["libs/sila-js/feature/src/index.ts"],
+      "@sila-standard/proto-builder": [
+        "libs/sila-js/proto-builder/src/index.ts"
+      ],
+      "@sila-standard/sila-base": ["libs/sila-js/sila-base/src/index.ts"],
+      "@sila-standard/static-client": [
+        "libs/sila-js/static-client/src/index.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]

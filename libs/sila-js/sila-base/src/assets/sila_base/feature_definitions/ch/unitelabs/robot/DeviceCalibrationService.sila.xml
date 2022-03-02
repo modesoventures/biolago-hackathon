@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Feature SiLA2Version="1.0" FeatureVersion="1.0" MaturityLevel="Draft" Originator="ch.unitelabs" Category="robot"
+         xmlns="http://www.sila-standard.org"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://www.sila-standard.org https://gitlab.com/SiLA2/sila_base/raw/master/schema/FeatureDefinition.xsd">
+    <Identifier>DeviceCalibrationService</Identifier>
+    <DisplayName>Device Calibration Service</DisplayName>
+    <Description>
+        Functionality to calibrate the parameters of a Device e.g. site offsets with respect to reference pose
+    </Description>
+    
+    <!-- Device Management -->
+    <Command>
+        <Identifier>CreateDevice</Identifier>
+        <DisplayName>Create Device</DisplayName>
+        <Description>Create a device to be stored</Description>
+        <Observable>No</Observable>
+        <Parameter>
+            <Identifier>DeviceProperties</Identifier>
+            <DisplayName>Device Properties</DisplayName>
+            <Description>Device Properties</Description>
+            <DataType>
+                <DataTypeIdentifier>DeviceProperties</DataTypeIdentifier>
+            </DataType>
+        </Parameter>
+        <DefinedExecutionErrors>
+            <Identifier>DeviceAlreadyExists</Identifier>
+        </DefinedExecutionErrors>
+    </Command>
+    <Command>
+        <Identifier>UpdateDevice</Identifier>
+        <DisplayName>Update Device</DisplayName>
+        <Description>Update the device stored</Description>
+        <Observable>No</Observable>
+        <Parameter>
+            <Identifier>DeviceProperties</Identifier>
+            <DisplayName>Device Properties</DisplayName>
+            <Description>Device Properties</Description>
+            <DataType>
+                <DataTypeIdentifier>DeviceProperties</DataTypeIdentifier>
+            </DataType>
+        </Parameter>
+        <DefinedExecutionErrors>
+            <Identifier>DeviceNotFound</Identifier>
+        </DefinedExecutionErrors>
+    </Command>
+    <Command>
+        <Identifier>DeleteDevice</Identifier>
+        <DisplayName>Delete Device</DisplayName>
+        <Description>Delete a stored device</Description>
+        <Observable>No</Observable>
+        <Parameter>
+            <Identifier>DeviceName</Identifier>
+            <DisplayName>Device Name</DisplayName>
+            <Description>Name of device to be deleted (all sites will be deleted)</Description>
+            <DataType>
+                <Basic>String</Basic>
+            </DataType>
+        </Parameter>
+        <DefinedExecutionErrors>
+            <Identifier>DeviceNotFound</Identifier>
+        </DefinedExecutionErrors>
+    </Command>
+    <Property>
+        <Identifier>DeviceProperties</Identifier>
+        <DisplayName>Device Properties</DisplayName>
+        <Description>Stored device properties on the robot</Description>
+        <Observable>No</Observable>
+        <DataType>
+            <List>
+                <DataType>
+                    <DataTypeIdentifier>DeviceProperties</DataTypeIdentifier>
+                </DataType>
+            </List>
+        </DataType>
+    </Property>
+    <DataTypeDefinition>
+        <Identifier>DeviceProperties</Identifier>
+        <DisplayName>Device Properties</DisplayName>
+        <Description>Type to represent the core properties of a device required to be set during calibration</Description>
+        <DataType>
+            <Structure>
+                <Element>
+                    <Identifier>DeviceName</Identifier>
+                    <DisplayName>DeviceName</DisplayName>
+                    <Description>Name of Device=</Description>
+                    <DataType>
+                        <Basic>String</Basic>
+                    </DataType>
+                </Element>
+                <Element>
+                    <Identifier>NumberofSites</Identifier>
+                    <DisplayName>Number of Sites</DisplayName>
+                    <Description>Number sites to be created</Description>
+                    <DataType>
+                        <Constrained>
+                            <DataType>
+                                <Basic>Integer</Basic>
+                            </DataType>
+                            <Constraints>
+                                <MinimalInclusive>1</MinimalInclusive>
+                            </Constraints>
+                        </Constrained>
+                    </DataType>
+                </Element>
+                <Element>
+                    <Identifier>AccessHeight</Identifier>
+                    <DisplayName>Access Height</DisplayName>
+                    <Description>Height difference to access the site</Description>
+                    <DataType>
+                        <Constrained>
+                            <DataType>
+                                <Basic>Real</Basic>
+                            </DataType>
+                            <Constraints>
+                                <Unit>
+                                    <Label>mm</Label>
+                                    <Factor>0.001</Factor>
+                                    <Offset>0</Offset>
+                                    <UnitComponent>
+                                        <SIUnit>Meter</SIUnit>
+                                        <Exponent>1</Exponent>
+                                    </UnitComponent>
+                                </Unit>
+                            </Constraints>
+                        </Constrained>
+                    </DataType>
+                </Element>
+                <Element>
+                    <Identifier>ApproachDistance</Identifier>
+                    <DisplayName>Approach Distance</DisplayName>
+                    <Description>Distance at which to approach the device</Description>
+                    <DataType>
+                        <Constrained>
+                            <DataType>
+                                <Basic>Real</Basic>
+                            </DataType>
+                            <Constraints>
+                                <Unit>
+                                    <Label>mm</Label>
+                                    <Factor>0.001</Factor>
+                                    <Offset>0</Offset>
+                                    <UnitComponent>
+                                        <SIUnit>Meter</SIUnit>
+                                        <Exponent>1</Exponent>
+                                    </UnitComponent>
+                                </Unit>
+                            </Constraints>
+                        </Constrained>
+                    </DataType>
+                </Element>
+            </Structure>
+        </DataType>
+    </DataTypeDefinition>
+    
+    <!-- Site Calibration -->
+    <Command>
+        <Identifier>CalibrateMarkers</Identifier>
+        <DisplayName>Calibrate Markers</DisplayName>
+        <Description>
+            Place the robot in the field of view of the markers and within reach of the reference site.
+            This command temporarily stores the marker pose with respect to the camera frame.
+            MUST be called prior to to CalibrateSite
+        </Description>
+        <Observable>No</Observable>
+        <Parameter>
+            <Identifier>DeviceName</Identifier>
+            <DisplayName>Device Name</DisplayName>
+            <Description>Name of device the site is associated with</Description>
+            <DataType>
+                <Basic>String</Basic>
+            </DataType>
+        </Parameter>
+        <DefinedExecutionErrors>
+            <Identifier>MarkerNotVisible</Identifier>
+        </DefinedExecutionErrors>
+    </Command>
+    <Command>
+        <Identifier>CalibrateSite</Identifier>
+        <DisplayName>Calibrate Site</DisplayName>
+        <Description>
+            Move the robot gripper to the site WITHOUT moving the base of the robot. 
+            This command calibrates the sites with respect to the currently stored Marker pose.
+            Note: Calibrate Marker MUST be called prior to this command
+        </Description>
+        <Observable>No</Observable>
+        <Parameter>
+            <Identifier>Site</Identifier>
+            <DisplayName>Site</DisplayName>
+            <Description>The site of interest</Description>
+            <DataType>
+                <DataTypeIdentifier>Site</DataTypeIdentifier>
+            </DataType>
+        </Parameter>
+        <DefinedExecutionErrors>
+            <Identifier>UnhealthyState</Identifier>
+        </DefinedExecutionErrors>
+    </Command>
+    <Command>
+        <Identifier>CalibrateDelidSite</Identifier>
+        <DisplayName>Calibrate Delid Site</DisplayName>
+        <Description>
+            Move the robot gripper to the de-lid site WITHOUT moving the base of the robot.
+            This command calibrates the sites with respect to the currently stored Marker pose.
+            Note: Calibrate Marker MUST be called prior to this command
+        </Description>
+        <Observable>No</Observable>
+        <Parameter>
+            <Identifier>Site</Identifier>
+            <DisplayName>Site</DisplayName>
+            <Description>The site associated to the de-lid site to be calibrated</Description>
+            <DataType>
+                <DataTypeIdentifier>Site</DataTypeIdentifier>
+            </DataType>
+        </Parameter>
+        <DefinedExecutionErrors>
+            <Identifier>UnhealthyState</Identifier>
+        </DefinedExecutionErrors>
+    </Command>
+    <DataTypeDefinition>
+        <Identifier>Site</Identifier>
+        <DisplayName>Site</DisplayName>
+        <Description>Description of a given site of a device</Description>
+        <DataType>
+            <Structure>
+                <Element>
+                    <Identifier>Device</Identifier>
+                    <DisplayName>Device</DisplayName>
+                    <Description>Device the site is associated with.</Description>
+                    <DataType>
+                        <Basic>String</Basic>
+                    </DataType>
+                </Element>
+                <Element>
+                    <Identifier>SiteIndex</Identifier>
+                    <DisplayName>Site Index</DisplayName>
+                    <Description>Index of the site to access</Description>
+                    <DataType>
+                        <Constrained>
+                            <DataType>
+                                <Basic>Integer</Basic>
+                            </DataType>
+                            <Constraints>
+                                <MinimalInclusive>0</MinimalInclusive>
+                            </Constraints>
+                        </Constrained>
+                    </DataType>
+                </Element>
+            </Structure>
+        </DataType>
+    </DataTypeDefinition>
+    <DefinedExecutionError>
+        <Identifier>UnhealthyState</Identifier>
+        <DisplayName>Unhealthy State</DisplayName>
+        <Description>
+            The robot is in an unhealthy state such that the robot can not be calibrated
+        </Description>
+    </DefinedExecutionError>
+    <DefinedExecutionError>
+        <Identifier>MarkerNotVisible</Identifier>
+        <DisplayName>Marker Not Visible</DisplayName>
+        <Description>Marker is not visible in the field of view</Description>
+    </DefinedExecutionError>
+    <DefinedExecutionError>
+        <Identifier>DeviceAlreadyExists</Identifier>
+        <DisplayName>Device Already Exists</DisplayName>
+        <Description>The device attempted to create already exists</Description>
+    </DefinedExecutionError>
+    <DefinedExecutionError>
+        <Identifier>DeviceNotFound</Identifier>
+        <DisplayName>Device Not Found</DisplayName>
+        <Description>The device attempted to acess was not found</Description>
+    </DefinedExecutionError>
+</Feature>

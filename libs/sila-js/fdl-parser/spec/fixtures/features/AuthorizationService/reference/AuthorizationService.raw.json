@@ -1,0 +1,160 @@
+{
+  "declaration": {
+    "attributes": {
+      "version": "1.0",
+      "encoding": "utf-8"
+    }
+  },
+  "elements": [
+    {
+      "type": "element",
+      "name": "Feature",
+      "attributes": {
+        "SiLA2Version": "1.0",
+        "FeatureVersion": "1.0",
+        "MaturityLevel": "Draft",
+        "Originator": "org.silastandard",
+        "Category": "core",
+        "xmlns": "http://www.sila-standard.org",
+        "xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
+        "xsi:schemaLocation": "http://www.sila-standard.org https://gitlab.com/SiLA2/sila_base/raw/master/schema/FeatureDefinition.xsd"
+      },
+      "elements": [
+        {
+          "type": "element",
+          "name": "Identifier",
+          "elements": [
+            {
+              "type": "text",
+              "text": "AuthorizationService"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "name": "DisplayName",
+          "elements": [
+            {
+              "type": "text",
+              "text": "Authorization Service"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "name": "Description",
+          "elements": [
+            {
+              "type": "text",
+              "text": "\n    This Feature provides access control for the implementing server.\n\n    It specifies the SiLA Client Metadata for the access token, that has been provided by the\n    AuthenticationService core Feature.\n  "
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "name": "Metadata",
+          "elements": [
+            {
+              "type": "element",
+              "name": "Identifier",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "AccessToken"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "DisplayName",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "AccessToken"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "Description",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "Token to be sent with every call in order to get access to the SiLA Server functionality."
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "DataType",
+              "elements": [
+                {
+                  "type": "element",
+                  "name": "Basic",
+                  "elements": [
+                    {
+                      "type": "text",
+                      "text": "String"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "DefinedExecutionErrors",
+              "elements": [
+                {
+                  "type": "element",
+                  "name": "Identifier",
+                  "elements": [
+                    {
+                      "type": "text",
+                      "text": "InvalidAccessToken"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "name": "DefinedExecutionError",
+          "elements": [
+            {
+              "type": "element",
+              "name": "Identifier",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "InvalidAccessToken"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "DisplayName",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "Invalid Access Token"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "Description",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "The sent access token is not valid."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

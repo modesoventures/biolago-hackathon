@@ -1,0 +1,34 @@
+{
+  "root": "libs/sila-js/dynamic-client",
+  "sourceRoot": "libs/sila-js/dynamic-client/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/node:package",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/sila-js/dynamic-client",
+        "tsConfig": "libs/sila-js/dynamic-client/tsconfig.lib.json",
+        "packageJson": "libs/sila-js/dynamic-client/package.json",
+        "main": "libs/sila-js/dynamic-client/src/index.ts",
+        "assets": ["libs/sila-js/dynamic-client/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/sila-js/dynamic-client/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/sila-js/dynamic-client"],
+      "options": {
+        "jestConfig": "libs/sila-js/dynamic-client/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

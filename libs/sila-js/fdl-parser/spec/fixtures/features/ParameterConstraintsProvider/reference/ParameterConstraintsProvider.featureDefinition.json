@@ -1,0 +1,66 @@
+{
+  "sila2Version": "1.0",
+  "featureVersion": "1.0",
+  "originator": "org.silastandard",
+  "fullyQualifiedFeatureIdentifier": "org.silastandard/core.commands/ParameterConstraintsProvider/v1",
+  "packageNamespace": "sila2.org.silastandard.core.commands.parameterconstraintsprovider.v1",
+  "locale": "en-us",
+  "maturityLevel": "Verified",
+  "category": "core.commands",
+  "title": "ParameterConstraintsProvider",
+  "description": "\n    This Feature allows a SiLA Client to receive constraints (min./max value, min./max. length for strings etc.) that\n    given parameters of a given Command have which are not defined in the respective Feature Definition;\n    also depending on other parameter or state.\n\n    It returns a list of all Constraints of a given Command. It is RECOMMENDED that a SiLA Server implements this\n    feature, if it is not possible to provide certain constraints already in the feature design phase.\n  ",
+  "displayName": "Parameter Constraints Provider",
+  "commands": [],
+  "properties": [
+    {
+      "title": "ParametersConstraints",
+      "description": "\n      Provides a list of all constraints of Command Parameters of the SiLA Server.\n    ",
+      "displayName": "Parameters Constraints",
+      "observable": true,
+      "propertySchema": {
+        "type": "object",
+        "required": [
+          "ParametersConstraints"
+        ],
+        "properties": {
+          "ParametersConstraints": {
+            "title": "ParametersConstraints",
+            "description": "\n      Provides a list of all constraints of Command Parameters of the SiLA Server.\n    ",
+            "displayName": "Parameters Constraints",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "CommandParameterIdentifier",
+                "Constraints"
+              ],
+              "properties": {
+                "CommandParameterIdentifier": {
+                  "type": "string",
+                  "silaConstraintFullyqualifiedidentifier": "CommandParameterIdentifier",
+                  "title": "CommandParameterIdentifier",
+                  "description": "The fully qualified identifier of a constrained parameter.",
+                  "displayName": "Command Parameter Identifier"
+                },
+                "Constraints": {
+                  "type": "string",
+                  "silaConstraintSchema": {
+                    "type": "Xml",
+                    "url": "https://gitlab.com/SiLA2/sila_base/raw/master/schema/Constraints.xsd"
+                  },
+                  "title": "Constraints",
+                  "description": "The constraints to apply on the parameter.",
+                  "displayName": "Constraints"
+                }
+              }
+            }
+          }
+        }
+      },
+      "definedExecutionErrorList": []
+    }
+  ],
+  "metadata": [],
+  "dataTypeDefinitions": [],
+  "definedExecutionErrors": []
+}

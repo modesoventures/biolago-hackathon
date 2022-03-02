@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+import "SiLAFramework.proto";
+
+package sila2.org.silastandard.tests.structureoflistofstructure.v1;
+
+/* Provides an unobservable command with a structure of list of structure as responses */
+service StructureOfListOfStructure {
+    /* Command for testing */
+    rpc TestCommand(sila2.org.silastandard.tests.structureoflistofstructure.v1.TestCommand_Parameters) returns (sila2.org.silastandard.tests.structureoflistofstructure.v1.TestCommand_Responses) {}
+}
+
+/* Parameters for TestCommand */
+message TestCommand_Parameters {
+}
+
+/* Responses of TestCommand */
+message TestCommand_Responses {
+    message Response1_Struct {
+        message Element1_Struct {
+            sila2.org.silastandard.Boolean InnerElement1 = 1;  /* The first inner element */
+        }
+        repeated sila2.org.silastandard.tests.structureoflistofstructure.v1.TestCommand_Responses.Response1_Struct.Element1_Struct Element1 = 1;  /* First element */
+    }
+    sila2.org.silastandard.tests.structureoflistofstructure.v1.TestCommand_Responses.Response1_Struct Response1 = 1;  /* First response */
+}
+

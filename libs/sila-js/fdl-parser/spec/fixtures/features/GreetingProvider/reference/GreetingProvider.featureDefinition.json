@@ -1,0 +1,81 @@
+{
+  "sila2Version": "1.0",
+  "featureVersion": "1.0",
+  "originator": "org.silastandard",
+  "fullyQualifiedFeatureIdentifier": "org.silastandard/examples/GreetingProvider/v1",
+  "packageNamespace": "sila2.org.silastandard.examples.greetingprovider.v1",
+  "locale": "en-us",
+  "maturityLevel": "Draft",
+  "category": "examples",
+  "title": "GreetingProvider",
+  "description": "Minimum Feature Definition as example. Provides a Greeting",
+  "displayName": "Greeting Provider",
+  "commands": [
+    {
+      "title": "SayHello",
+      "description": "Does what it says",
+      "displayName": "Say Hello",
+      "observable": false,
+      "parametersSchema": {
+        "type": "object",
+        "required": [
+          "Name"
+        ],
+        "properties": {
+          "Name": {
+            "title": "Name",
+            "description": "Your Name",
+            "displayName": "Name",
+            "type": "string"
+          }
+        }
+      },
+      "responsesSchema": {
+        "type": "object",
+        "required": [
+          "Greeting"
+        ],
+        "properties": {
+          "Greeting": {
+            "title": "Greeting",
+            "description": "The greeting coming back at you",
+            "displayName": "Greeting",
+            "type": "string"
+          }
+        }
+      },
+      "intermediateResponsesSchema": {
+        "type": "object",
+        "required": [],
+        "properties": {}
+      },
+      "definedExecutionErrorList": []
+    }
+  ],
+  "properties": [
+    {
+      "title": "StartYear",
+      "description": "The year the server has been started",
+      "displayName": "Start Year",
+      "observable": false,
+      "propertySchema": {
+        "type": "object",
+        "required": [
+          "StartYear"
+        ],
+        "properties": {
+          "StartYear": {
+            "title": "StartYear",
+            "description": "The year the server has been started",
+            "displayName": "Start Year",
+            "type": "integer"
+          }
+        }
+      },
+      "definedExecutionErrorList": []
+    }
+  ],
+  "metadata": [],
+  "dataTypeDefinitions": [],
+  "definedExecutionErrors": []
+}

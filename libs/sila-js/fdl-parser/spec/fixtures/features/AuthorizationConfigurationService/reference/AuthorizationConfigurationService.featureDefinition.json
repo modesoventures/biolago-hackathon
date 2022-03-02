@@ -1,0 +1,78 @@
+{
+          "sila2Version": "1.0",
+          "featureVersion": "1.0",
+          "originator": "org.silastandard",
+          "fullyQualifiedFeatureIdentifier": "org.silastandard/core/AuthorizationConfigurationService/v1",
+          "packageNamespace": "sila2.org.silastandard.core.authorizationconfigurationservice.v1",
+          "locale": "en-us",
+          "maturityLevel": "Draft",
+          "category": "core",
+          "title": "AuthorizationConfigurationService",
+          "description": "This Feature exposes the server configuration which authorization provider to use.",
+          "displayName": "Authorization Configuration",
+          "commands": [
+                    {
+                              "title": "SetAuthorizationProvider",
+                              "description": "Instructs the server to use the given authorization provider starting from the next request.",
+                              "displayName": "Set Authorization Provider",
+                              "observable": false,
+                              "parametersSchema": {
+                                        "type": "object",
+                                        "required": [
+                                                  "AuthorizationProvider"
+                                        ],
+                                        "properties": {
+                                                  "AuthorizationProvider": {
+                                                            "title": "AuthorizationProvider",
+                                                            "description": "The UUID of the SiLA server that this server uses to verify access tokens.",
+                                                            "displayName": "Authorization Provider",
+                                                            "type": "string",
+                                                            "minLength": "36",
+                                                            "maxLength": "36",
+                                                            "pattern": "[0-9a-f]{8}\\-[0-9a-f]{4}\\-[0-9a-f]{4}\\-[0-9a-f]{4}\\-[0-9a-f]{12}"
+                                                  }
+                                        }
+                              },
+                              "responsesSchema": {
+                                        "type": "object",
+                                        "required": [],
+                                        "properties": {}
+                              },
+                              "intermediateResponsesSchema": {
+                                        "type": "object",
+                                        "required": [],
+                                        "properties": {}
+                              },
+                              "definedExecutionErrorList": []
+                    }
+          ],
+          "properties": [
+                    {
+                              "title": "AuthorizationProvider",
+                              "description": "The UUID of the SiLA server that this server uses to verify access tokens.",
+                              "displayName": "Authorization Provider",
+                              "observable": false,
+                              "propertySchema": {
+                                        "type": "object",
+                                        "required": [
+                                                  "AuthorizationProvider"
+                                        ],
+                                        "properties": {
+                                                  "AuthorizationProvider": {
+                                                            "title": "AuthorizationProvider",
+                                                            "description": "The UUID of the SiLA server that this server uses to verify access tokens.",
+                                                            "displayName": "Authorization Provider",
+                                                            "type": "string",
+                                                            "minLength": "36",
+                                                            "maxLength": "36",
+                                                            "pattern": "[0-9a-f]{8}\\-[0-9a-f]{4}\\-[0-9a-f]{4}\\-[0-9a-f]{4}\\-[0-9a-f]{12}"
+                                                  }
+                                        }
+                              },
+                              "definedExecutionErrorList": []
+                    }
+          ],
+          "metadata": [],
+          "dataTypeDefinitions": [],
+          "definedExecutionErrors": []
+}

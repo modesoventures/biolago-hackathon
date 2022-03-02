@@ -1,0 +1,99 @@
+{
+  "sila2Version": "1.0",
+  "featureVersion": "1.0",
+  "originator": "org.silastandard",
+  "fullyQualifiedFeatureIdentifier": "org.silastandard/core/AuthorizationProviderService/v1",
+  "packageNamespace": "sila2.org.silastandard.core.authorizationproviderservice.v1",
+  "locale": "en-us",
+  "maturityLevel": "Draft",
+  "category": "core",
+  "title": "AuthorizationProviderService",
+  "description": "This Feature provides SiLA Servers with the ability to check a given access token.",
+  "displayName": "Authorization Provider Service",
+  "commands": [
+    {
+      "title": "Verify",
+      "description": "Verifies that a given token is valid for the requested server.",
+      "displayName": "Verify",
+      "observable": false,
+      "parametersSchema": {
+        "type": "object",
+        "required": [
+          "AccessToken",
+          "RequestedServer",
+          "RequestedFeature"
+        ],
+        "properties": {
+          "AccessToken": {
+            "title": "AccessToken",
+            "description": "The token to be used along with accessing a Command or Property on a SiLA Server.",
+            "displayName": "Access Token",
+            "type": "string"
+          },
+          "RequestedServer": {
+            "title": "RequestedServer",
+            "description": "The server for which an authorization is requested.",
+            "displayName": "Requested Server",
+            "type": "string",
+            "minLength": "36",
+            "maxLength": "36",
+            "pattern": "[0-9a-f]{8}\\-[0-9a-f]{4}\\-[0-9a-f]{4}\\-[0-9a-f]{4}\\-[0-9a-f]{12}"
+          },
+          "RequestedFeature": {
+            "title": "RequestedFeature",
+            "description": "The feature that is requested to access.",
+            "displayName": "Requested Feature",
+            "type": "string",
+            "silaConstraintFullyqualifiedidentifier": "FeatureIdentifier"
+          }
+        }
+      },
+      "responsesSchema": {
+        "type": "object",
+        "required": [
+          "TokenLifetime"
+        ],
+        "properties": {
+          "TokenLifetime": {
+            "title": "TokenLifetime",
+            "description": "The lifetime of the provided access token as the maximum validity period after the last SiLA Server request.",
+            "displayName": "Token Lifetime",
+            "type": "integer",
+            "silaConstraintUnit": {
+              "label": "s",
+              "factor": "1",
+              "offset": "0",
+              "unitComponent": {
+                "sIUnit": "Second",
+                "exponent": "1"
+              }
+            }
+          }
+        }
+      },
+      "intermediateResponsesSchema": {
+        "type": "object",
+        "required": [],
+        "properties": {}
+      },
+      "definedExecutionErrorList": [
+        "AuthorizationFailed"
+      ]
+    }
+  ],
+  "properties": [],
+  "metadata": [],
+  "dataTypeDefinitions": [],
+  "definedExecutionErrors": [
+    {
+      "title": "AuthorizationFailed",
+      "description": "The provided access token is not valid for the given server/feature.",
+      "displayName": "Authorization Failed"
+    },
+    {
+      "title": "InvalidAccessToken",
+      "description": "The sent access token is not valid.",
+      "displayName": "Invalid Access Token"
+    }
+  ]
+}

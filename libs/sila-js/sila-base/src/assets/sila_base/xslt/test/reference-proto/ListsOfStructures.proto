@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+import "SiLAFramework.proto";
+
+package sila2.org.silastandard.tests.listsofstructures.v1;
+
+/* Provides an unobservable command with two lists of structures as responses */
+service ListsOfStructures {
+    /* Command for testing */
+    rpc TestCommand(sila2.org.silastandard.tests.listsofstructures.v1.TestCommand_Parameters) returns (sila2.org.silastandard.tests.listsofstructures.v1.TestCommand_Responses) {}
+}
+
+/* Parameters for TestCommand */
+message TestCommand_Parameters {
+}
+
+/* Responses of TestCommand */
+message TestCommand_Responses {
+    message Response1_Struct {
+        message Element1_Struct {
+            sila2.org.silastandard.Integer SubstructureElement1 = 1;  /* First element in substructure */
+            sila2.org.silastandard.Boolean SubstructureElement2 = 2;  /* Second element in substructure */
+        }
+        sila2.org.silastandard.tests.listsofstructures.v1.TestCommand_Responses.Response1_Struct.Element1_Struct Element1 = 1;  /* First element */
+        sila2.org.silastandard.String Element2 = 2;  /* Seconds element */
+    }
+    message Response2_Struct {
+        message Element1_Struct {
+            sila2.org.silastandard.String SubstructureElement1 = 1;  /* First element in substructure */
+            sila2.org.silastandard.Real SubstructureElement2 = 2;  /* Second element in substructure */
+        }
+        sila2.org.silastandard.tests.listsofstructures.v1.TestCommand_Responses.Response2_Struct.Element1_Struct Element1 = 1;  /* First element */
+        sila2.org.silastandard.Boolean Element2 = 2;  /* Seconds element */
+    }
+    repeated sila2.org.silastandard.tests.listsofstructures.v1.TestCommand_Responses.Response1_Struct Response1 = 1;  /* First response */
+    repeated sila2.org.silastandard.tests.listsofstructures.v1.TestCommand_Responses.Response2_Struct Response2 = 2;  /* Second response */
+}
+

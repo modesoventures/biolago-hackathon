@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Feature SiLA2Version="1.0" FeatureVersion="1.0" MaturityLevel="Draft" Originator="org.silastandard" Category="core"
+         xmlns="http://www.sila-standard.org"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://www.sila-standard.org https://gitlab.com/SiLA2/sila_base/raw/master/schema/FeatureDefinition.xsd">
+    <Identifier>AuthorizationProviderService</Identifier>
+    <DisplayName>Authorization Provider Service</DisplayName>
+    <Description>This Feature provides SiLA Servers with the ability to check a given access token.</Description>
+    <Command>
+        <Identifier>Verify</Identifier>
+        <DisplayName>Verify</DisplayName>
+        <Description>Verifies that a given token is valid for the requested server.</Description>
+        <Observable>No</Observable>
+        <Parameter>
+            <Identifier>AccessToken</Identifier>
+            <DisplayName>Access Token</DisplayName>
+            <Description>The token to be used along with accessing a Command or Property on a SiLA Server.</Description>
+            <DataType>
+                <Basic>String</Basic>
+            </DataType>
+        </Parameter>
+      <Parameter>
+        <Identifier>RequestedServer</Identifier>
+        <DisplayName>Requested Server</DisplayName>
+        <Description>The server for which an authorization is requested.</Description>
+        <DataType>
+          <Constrained>
+            <DataType>
+              <Basic>String</Basic>
+            </DataType>
+            <Constraints>
+              <Length>36</Length>
+              <Pattern>[0-9a-f]{8}\-[0-9a-f]{4}\-[0-9a-f]{4}\-[0-9a-f]{4}\-[0-9a-f]{12}</Pattern>
+            </Constraints>
+          </Constrained>
+        </DataType>
+      </Parameter>
+      <Parameter>
+        <Identifier>RequestedFeature</Identifier>
+        <DisplayName>Requested Feature</DisplayName>
+        <Description>The feature that is requested to access.</Description>
+        <DataType>
+          <Constrained>
+            <DataType>
+              <Basic>String</Basic>
+            </DataType>
+            <Constraints>
+              <FullyQualifiedIdentifier>FeatureIdentifier</FullyQualifiedIdentifier>
+            </Constraints>
+          </Constrained>
+        </DataType>
+      </Parameter>
+        <Response>
+            <Identifier>TokenLifetime</Identifier>
+            <DisplayName>Token Lifetime</DisplayName>
+            <Description>The lifetime of the provided access token as the maximum validity period after the last SiLA Server request.</Description>
+            <DataType>
+                <Constrained>
+                    <DataType>
+                        <Basic>Integer</Basic>
+                    </DataType>
+                    <Constraints>
+                        <Unit>
+                            <Label>s</Label>
+                            <Factor>1</Factor>
+                            <Offset>0</Offset>
+                            <UnitComponent>
+                                <SIUnit>Second</SIUnit>
+                                <Exponent>1</Exponent>
+                            </UnitComponent>
+                        </Unit>
+                    </Constraints>
+                </Constrained>
+            </DataType>
+        </Response>
+        <DefinedExecutionErrors>
+            <Identifier>AuthorizationFailed</Identifier>
+            <Identifier>InvalidAccessToken</Identifier>
+        </DefinedExecutionErrors>
+    </Command>
+    <DefinedExecutionError>
+        <Identifier>AuthorizationFailed</Identifier>
+        <DisplayName>Authorization Failed</DisplayName>
+        <Description>The provided access token is not valid for the given server/feature.</Description>
+    </DefinedExecutionError>
+    <DefinedExecutionError>
+        <Identifier>InvalidAccessToken</Identifier>
+        <DisplayName>Invalid Access Token</DisplayName>
+        <Description>The sent access token is not valid.</Description>
+    </DefinedExecutionError>
+</Feature>

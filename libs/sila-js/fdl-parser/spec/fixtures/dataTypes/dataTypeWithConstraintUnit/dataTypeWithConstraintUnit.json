@@ -1,0 +1,96 @@
+{
+  "type": "element",
+  "name": "DataType",
+  "elements": [
+    {
+      "type": "element",
+      "name": "Constrained",
+      "elements": [
+        {
+          "type": "element",
+          "name": "DataType",
+          "elements": [
+            {
+              "type": "element",
+              "name": "Basic",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "Integer"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "name": "Constraints",
+          "elements": [
+            {
+              "type": "element",
+              "name": "Unit",
+              "elements": [
+                {
+                  "type": "element",
+                  "name": "Label",
+                  "elements": [
+                    {
+                      "type": "text",
+                      "text": "s"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "name": "Factor",
+                  "elements": [
+                    {
+                      "type": "text",
+                      "text": "1"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "name": "Offset",
+                  "elements": [
+                    {
+                      "type": "text",
+                      "text": "0"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "name": "UnitComponent",
+                  "elements": [
+                    {
+                      "type": "element",
+                      "name": "SIUnit",
+                      "elements": [
+                        {
+                          "type": "text",
+                          "text": "Second"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "name": "Exponent",
+                      "elements": [
+                        {
+                          "type": "text",
+                          "text": "1"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

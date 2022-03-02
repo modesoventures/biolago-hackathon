@@ -1,0 +1,664 @@
+{
+  "declaration": {
+    "attributes": {
+      "version": "1.0",
+      "encoding": "utf-8"
+    }
+  },
+  "elements": [
+    {
+      "type": "element",
+      "name": "Feature",
+      "attributes": {
+        "SiLA2Version": "1.0",
+        "FeatureVersion": "1.0",
+        "MaturityLevel": "Verified",
+        "Originator": "org.silastandard",
+        "Category": "core",
+        "xmlns": "http://www.sila-standard.org",
+        "xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
+        "xsi:schemaLocation": "http://www.sila-standard.org https://gitlab.com/SiLA2/sila_base/raw/master/schema/FeatureDefinition.xsd"
+      },
+      "elements": [
+        {
+          "type": "element",
+          "name": "Identifier",
+          "elements": [
+            {
+              "type": "text",
+              "text": "LockController"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "name": "DisplayName",
+          "elements": [
+            {
+              "type": "text",
+              "text": "Lock Controller"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "name": "Description",
+          "elements": [
+            {
+              "type": "text",
+              "text": "\n    This Feature allows a SiLA Client to lock a SiLA Server for exclusive use, preventing other SiLA Clients\n    from using the SiLA Server while it is locked. To lock a SiLA Server a Lock Identifier has to be set, using the\n    'LockServer' command. This Lock Identifier has to be sent along with every (lock protected)\n    request to the SiLA Server in order to use its functionality.\n\n    To send the lock identifier the SiLA Client Meta Data 'LockIdentifier' has to be used.\n\n    When locking a SiLA Server a timeout can be specified that defines the time after which the SiLA Server will\n    be automatically unlocked if no request with a valid lock identifier has been received meanwhile.\n    After the timeout has expired or after explicit unlock no lock identifier has to be sent any more.\n  "
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "name": "Command",
+          "elements": [
+            {
+              "type": "element",
+              "name": "Identifier",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "LockServer"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "DisplayName",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "Lock Server"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "Description",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "\n      Locks a SiLA Server for exclusive use by setting a lock identifier that has to be sent along with\n      any following (lock protected) request as long as the SiLA Server is locked.\n      The lock can be reset by issuing the 'Unlock Server' command.\n    "
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "Observable",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "No"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "Parameter",
+              "elements": [
+                {
+                  "type": "element",
+                  "name": "Identifier",
+                  "elements": [
+                    {
+                      "type": "text",
+                      "text": "LockIdentifier"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "name": "DisplayName",
+                  "elements": [
+                    {
+                      "type": "text",
+                      "text": "Lock Identifier"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "name": "Description",
+                  "elements": [
+                    {
+                      "type": "text",
+                      "text": "\n        The lock identifier that has to be sent along with every (lock protected) request to use the server's\n        functionality.\n      "
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "name": "DataType",
+                  "elements": [
+                    {
+                      "type": "element",
+                      "name": "Basic",
+                      "elements": [
+                        {
+                          "type": "text",
+                          "text": "String"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "Parameter",
+              "elements": [
+                {
+                  "type": "element",
+                  "name": "Identifier",
+                  "elements": [
+                    {
+                      "type": "text",
+                      "text": "Timeout"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "name": "DisplayName",
+                  "elements": [
+                    {
+                      "type": "text",
+                      "text": "Timeout"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "name": "Description",
+                  "elements": [
+                    {
+                      "type": "text",
+                      "text": "\n        The time (in seconds) after a SiLA Server is automatically unlocked when no request with a valid lock identifier\n        has been received meanwhile. A timeout of zero seconds specifies an infinite time (no timeout).\n      "
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "name": "DataType",
+                  "elements": [
+                    {
+                      "type": "element",
+                      "name": "Constrained",
+                      "elements": [
+                        {
+                          "type": "element",
+                          "name": "DataType",
+                          "elements": [
+                            {
+                              "type": "element",
+                              "name": "Basic",
+                              "elements": [
+                                {
+                                  "type": "text",
+                                  "text": "Integer"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "name": "Constraints",
+                          "elements": [
+                            {
+                              "type": "element",
+                              "name": "Unit",
+                              "elements": [
+                                {
+                                  "type": "element",
+                                  "name": "Label",
+                                  "elements": [
+                                    {
+                                      "type": "text",
+                                      "text": "s"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "element",
+                                  "name": "Factor",
+                                  "elements": [
+                                    {
+                                      "type": "text",
+                                      "text": "1"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "element",
+                                  "name": "Offset",
+                                  "elements": [
+                                    {
+                                      "type": "text",
+                                      "text": "0"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "element",
+                                  "name": "UnitComponent",
+                                  "elements": [
+                                    {
+                                      "type": "element",
+                                      "name": "SIUnit",
+                                      "elements": [
+                                        {
+                                          "type": "text",
+                                          "text": "Second"
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "type": "element",
+                                      "name": "Exponent",
+                                      "elements": [
+                                        {
+                                          "type": "text",
+                                          "text": "1"
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "DefinedExecutionErrors",
+              "elements": [
+                {
+                  "type": "element",
+                  "name": "Identifier",
+                  "elements": [
+                    {
+                      "type": "text",
+                      "text": "ServerAlreadyLocked"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "name": "Command",
+          "elements": [
+            {
+              "type": "element",
+              "name": "Identifier",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "UnlockServer"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "DisplayName",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "Unlock Server"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "Description",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "\n      Unlocks a locked SiLA Server. No lock identifier has to be sent for any following calls until\n      the server is locked again via the 'Lock Server' command.\n    "
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "Observable",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "No"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "Parameter",
+              "elements": [
+                {
+                  "type": "element",
+                  "name": "Identifier",
+                  "elements": [
+                    {
+                      "type": "text",
+                      "text": "LockIdentifier"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "name": "DisplayName",
+                  "elements": [
+                    {
+                      "type": "text",
+                      "text": "Lock Identifier"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "name": "Description",
+                  "elements": [
+                    {
+                      "type": "text",
+                      "text": "The lock identifier that has been used to lock the SiLA Server."
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "name": "DataType",
+                  "elements": [
+                    {
+                      "type": "element",
+                      "name": "Basic",
+                      "elements": [
+                        {
+                          "type": "text",
+                          "text": "String"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "DefinedExecutionErrors",
+              "elements": [
+                {
+                  "type": "element",
+                  "name": "Identifier",
+                  "elements": [
+                    {
+                      "type": "text",
+                      "text": "ServerNotLocked"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "name": "Identifier",
+                  "elements": [
+                    {
+                      "type": "text",
+                      "text": "InvalidLockIdentifier"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "name": "Property",
+          "elements": [
+            {
+              "type": "element",
+              "name": "Identifier",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "IsLocked"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "DisplayName",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "IsLocked"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "Description",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "\n      Returns true if the SiLA Server is currently locked or false else.\n\n      This property MUST NOT be lock protected, so that any SiLA Client can query the current lock state\n      of a SiLA Server.\n    "
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "Observable",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "No"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "DataType",
+              "elements": [
+                {
+                  "type": "element",
+                  "name": "Basic",
+                  "elements": [
+                    {
+                      "type": "text",
+                      "text": "Boolean"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "name": "Metadata",
+          "elements": [
+            {
+              "type": "element",
+              "name": "Identifier",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "LockIdentifier"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "DisplayName",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "Lock Identifier"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "Description",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "\n      The lock identifier has to be sent with every (lock protected) call in order to use the functionality\n      of a locked SiLA Server.\n    "
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "DataType",
+              "elements": [
+                {
+                  "type": "element",
+                  "name": "Basic",
+                  "elements": [
+                    {
+                      "type": "text",
+                      "text": "String"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "DefinedExecutionErrors",
+              "elements": [
+                {
+                  "type": "element",
+                  "name": "Identifier",
+                  "elements": [
+                    {
+                      "type": "text",
+                      "text": "InvalidLockIdentifier"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "name": "DefinedExecutionError",
+          "elements": [
+            {
+              "type": "element",
+              "name": "Identifier",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "InvalidLockIdentifier"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "DisplayName",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "Invalid Lock Identifier"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "Description",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "The sent lock identifier is not valid."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "name": "DefinedExecutionError",
+          "elements": [
+            {
+              "type": "element",
+              "name": "Identifier",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "ServerAlreadyLocked"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "DisplayName",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "Server Already Locked"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "Description",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "The SiLA Server can not be locked because it is already locked."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "name": "DefinedExecutionError",
+          "elements": [
+            {
+              "type": "element",
+              "name": "Identifier",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "ServerNotLocked"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "DisplayName",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "Server Not Locked"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "Description",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "The SiLA Server can not be unlocked because it is not locked."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

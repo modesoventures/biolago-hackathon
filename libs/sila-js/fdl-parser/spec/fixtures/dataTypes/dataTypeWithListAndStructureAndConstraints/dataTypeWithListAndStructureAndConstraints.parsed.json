@@ -1,0 +1,29 @@
+{
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": [
+      "CommandParameterIdentifier",
+      "Constraints"
+    ],
+    "properties":{
+      "CommandParameterIdentifier": {
+        "type": "string",
+        "silaConstraintFullyqualifiedidentifier": "CommandParameterIdentifier",
+        "title": "CommandParameterIdentifier",
+        "description": "The fully qualified identifier of a constrained parameter.",
+        "displayName": "Command Parameter Identifier"
+      },
+      "Constraints": {
+        "type": "string",
+        "silaConstraintSchema": {
+          "type": "Xml",
+          "url": "https://gitlab.com/SiLA2/sila_base/raw/master/schema/Constraints.xsd"
+        },
+        "title": "Constraints",
+        "description": "The constraints to apply on the parameter.",
+        "displayName": "Constraints"
+      }
+    }
+  }
+}

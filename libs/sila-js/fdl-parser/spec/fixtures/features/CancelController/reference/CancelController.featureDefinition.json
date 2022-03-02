@@ -1,0 +1,112 @@
+{
+  "sila2Version": "1.0",
+  "featureVersion": "1.0",
+  "originator": "org.silastandard",
+  "fullyQualifiedFeatureIdentifier": "org.silastandard/core.commands/CancelController/v1",
+  "packageNamespace": "sila2.org.silastandard.core.commands.cancelcontroller.v1",
+  "locale": "en-us",
+  "maturityLevel": "Verified",
+  "category": "core.commands",
+  "title": "CancelController",
+  "description": "\n    This feature offers commands to cancel/terminate Commands. Cancellation is the act of stopping the running Command execution(s),\n    irrevocably. The SiLA Server SHOULD be able to be in a state where any further\n    commands can be issued after a cancellation.\n  ",
+  "displayName": "Cancel Controller",
+  "commands": [
+    {
+      "title": "CancelCommand",
+      "description": "\n      Cancel a specified currently running Observable Command or cancel all currently running Commands (Observable and\n      Unobservable).\n      For any canceled Observable Command the SiLA Server MUST update the Command Execution Status to \"Command Finished\n      with Error\".\n      The SiLA Server MUST throw a descriptive error message indicating cancellation as the reason for the Command\n      execution not being able to finish successfully for any canceled Command.\n    ",
+      "displayName": "Cancel Command",
+      "observable": false,
+      "parametersSchema": {
+        "type": "object",
+        "required": [
+          "CommandExecutionUUID"
+        ],
+        "properties": {
+          "CommandExecutionUUID": {
+            "title": "CommandExecutionUUID",
+            "description": "The Command Execution UUID according to the SiLA Standard.",
+            "displayName": "Command Execution UUID",
+            "type": "string",
+            "linkedDataType": "UUID",
+            "minLength": "36",
+            "maxLength": "36",
+            "pattern": "[0-9a-f]{8}\\-[0-9a-f]{4}\\-[0-9a-f]{4}\\-[0-9a-f]{4}\\-[0-9a-f]{12}"
+          }
+        }
+      },
+      "responsesSchema": {
+        "type": "object",
+        "required": [],
+        "properties": {}
+      },
+      "intermediateResponsesSchema": {
+        "type": "object",
+        "required": [],
+        "properties": {}
+      },
+      "definedExecutionErrorList": [
+        "InvalidCommandExecutionUUID"
+      ]
+    },
+    {
+      "title": "CancelAll",
+      "description": "\n      Cancels all currently running Observable and Unobservable Commands running on this SiLA Server.\n      The SiLA Server MUST throw an Execution Error indicating 'cancellation' as the reason for the\n      Command not being able to finish successfully.\n    ",
+      "displayName": "Cancel All",
+      "observable": false,
+      "parametersSchema": {
+        "type": "object",
+        "required": [],
+        "properties": {}
+      },
+      "responsesSchema": {
+        "type": "object",
+        "required": [],
+        "properties": {}
+      },
+      "intermediateResponsesSchema": {
+        "type": "object",
+        "required": [],
+        "properties": {}
+      },
+      "definedExecutionErrorList": []
+    }
+  ],
+  "properties": [],
+  "metadata": [],
+  "dataTypeDefinitions": [
+    {
+      "title": "UUID",
+      "description": "A Universally Unique Identifier (UUID) referring to observable command executions.",
+      "displayName": "UUID",
+      "dataTypeDefinitionSchema": {
+        "type": "object",
+        "required": [
+          "UUID"
+        ],
+        "properties": {
+          "UUID": {
+            "title": "UUID",
+            "description": "A Universally Unique Identifier (UUID) referring to observable command executions.",
+            "displayName": "UUID",
+            "type": "string",
+            "minLength": "36",
+            "maxLength": "36",
+            "pattern": "[0-9a-f]{8}\\-[0-9a-f]{4}\\-[0-9a-f]{4}\\-[0-9a-f]{4}\\-[0-9a-f]{12}"
+          }
+        }
+      }
+    }
+  ],
+  "definedExecutionErrors": [
+    {
+      "title": "InvalidCommandExecutionUUID",
+      "description": "\n      The given Command Execution UUID does not specify a command that is currently being executed.\n    ",
+      "displayName": "Invalid Command Execution UUID"
+    },
+    {
+      "title": "OperationNotSupported",
+      "description": "\n      Canceling is not supported for the SiLA 2 Command with the\n      specified CommandExecutionUUID.\n    ",
+      "displayName": "Operation Not Supported"
+    }
+  ]
+}

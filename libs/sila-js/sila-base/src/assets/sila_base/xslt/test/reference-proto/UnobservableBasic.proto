@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+import "SiLAFramework.proto";
+
+package sila2.org.silastandard.tests.unobservablebasic.v1;
+
+/* Provides an unobservable command with basic return data types and basic parameters and an unobservable property with basic response type */
+service UnobservableBasic {
+    /* Command for testing */
+    rpc TestCommand(sila2.org.silastandard.tests.unobservablebasic.v1.TestCommand_Parameters) returns (sila2.org.silastandard.tests.unobservablebasic.v1.TestCommand_Responses) {}
+    /* Property for testing */
+    rpc Get_TestProperty(sila2.org.silastandard.tests.unobservablebasic.v1.Get_TestProperty_Parameters) returns (sila2.org.silastandard.tests.unobservablebasic.v1.Get_TestProperty_Responses) {}
+}
+
+/* Parameters for TestCommand */
+message TestCommand_Parameters {
+    sila2.org.silastandard.Integer Param1 = 1;  /* First parameter */
+    sila2.org.silastandard.String Param2 = 2;  /* Second parameter */
+}
+
+/* Responses of TestCommand */
+message TestCommand_Responses {
+    sila2.org.silastandard.String Response1 = 1;  /* First response */
+    sila2.org.silastandard.Boolean Response2 = 2;  /* Seconds response */
+}
+
+/* Parameters for TestProperty */
+message Get_TestProperty_Parameters {
+}
+
+/* Responses of TestProperty */
+message Get_TestProperty_Responses {
+    sila2.org.silastandard.Integer TestProperty = 1;  /* Property for testing */
+}
+

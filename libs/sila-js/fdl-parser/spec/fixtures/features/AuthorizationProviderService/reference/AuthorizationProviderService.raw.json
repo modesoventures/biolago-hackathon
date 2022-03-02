@@ -1,0 +1,554 @@
+{
+  "declaration": {
+    "attributes": {
+      "version": "1.0",
+      "encoding": "utf-8"
+    }
+  },
+  "elements": [
+    {
+      "type": "element",
+      "name": "Feature",
+      "attributes": {
+        "SiLA2Version": "1.0",
+        "FeatureVersion": "1.0",
+        "MaturityLevel": "Draft",
+        "Originator": "org.silastandard",
+        "Category": "core",
+        "xmlns": "http://www.sila-standard.org",
+        "xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
+        "xsi:schemaLocation": "http://www.sila-standard.org https://gitlab.com/SiLA2/sila_base/raw/master/schema/FeatureDefinition.xsd"
+      },
+      "elements": [
+        {
+          "type": "element",
+          "name": "Identifier",
+          "elements": [
+            {
+              "type": "text",
+              "text": "AuthorizationProviderService"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "name": "DisplayName",
+          "elements": [
+            {
+              "type": "text",
+              "text": "Authorization Provider Service"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "name": "Description",
+          "elements": [
+            {
+              "type": "text",
+              "text": "This Feature provides SiLA Servers with the ability to check a given access token."
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "name": "Command",
+          "elements": [
+            {
+              "type": "element",
+              "name": "Identifier",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "Verify"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "DisplayName",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "Verify"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "Description",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "Verifies that a given token is valid for the requested server."
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "Observable",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "No"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "Parameter",
+              "elements": [
+                {
+                  "type": "element",
+                  "name": "Identifier",
+                  "elements": [
+                    {
+                      "type": "text",
+                      "text": "AccessToken"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "name": "DisplayName",
+                  "elements": [
+                    {
+                      "type": "text",
+                      "text": "Access Token"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "name": "Description",
+                  "elements": [
+                    {
+                      "type": "text",
+                      "text": "The token to be used along with accessing a Command or Property on a SiLA Server."
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "name": "DataType",
+                  "elements": [
+                    {
+                      "type": "element",
+                      "name": "Basic",
+                      "elements": [
+                        {
+                          "type": "text",
+                          "text": "String"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "Parameter",
+              "elements": [
+                {
+                  "type": "element",
+                  "name": "Identifier",
+                  "elements": [
+                    {
+                      "type": "text",
+                      "text": "RequestedServer"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "name": "DisplayName",
+                  "elements": [
+                    {
+                      "type": "text",
+                      "text": "Requested Server"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "name": "Description",
+                  "elements": [
+                    {
+                      "type": "text",
+                      "text": "The server for which an authorization is requested."
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "name": "DataType",
+                  "elements": [
+                    {
+                      "type": "element",
+                      "name": "Constrained",
+                      "elements": [
+                        {
+                          "type": "element",
+                          "name": "DataType",
+                          "elements": [
+                            {
+                              "type": "element",
+                              "name": "Basic",
+                              "elements": [
+                                {
+                                  "type": "text",
+                                  "text": "String"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "name": "Constraints",
+                          "elements": [
+                            {
+                              "type": "element",
+                              "name": "Length",
+                              "elements": [
+                                {
+                                  "type": "text",
+                                  "text": "36"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "element",
+                              "name": "Pattern",
+                              "elements": [
+                                {
+                                  "type": "text",
+                                  "text": "[0-9a-f]{8}\\-[0-9a-f]{4}\\-[0-9a-f]{4}\\-[0-9a-f]{4}\\-[0-9a-f]{12}"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "Parameter",
+              "elements": [
+                {
+                  "type": "element",
+                  "name": "Identifier",
+                  "elements": [
+                    {
+                      "type": "text",
+                      "text": "RequestedFeature"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "name": "DisplayName",
+                  "elements": [
+                    {
+                      "type": "text",
+                      "text": "Requested Feature"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "name": "Description",
+                  "elements": [
+                    {
+                      "type": "text",
+                      "text": "The feature that is requested to access."
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "name": "DataType",
+                  "elements": [
+                    {
+                      "type": "element",
+                      "name": "Constrained",
+                      "elements": [
+                        {
+                          "type": "element",
+                          "name": "DataType",
+                          "elements": [
+                            {
+                              "type": "element",
+                              "name": "Basic",
+                              "elements": [
+                                {
+                                  "type": "text",
+                                  "text": "String"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "name": "Constraints",
+                          "elements": [
+                            {
+                              "type": "element",
+                              "name": "FullyQualifiedIdentifier",
+                              "elements": [
+                                {
+                                  "type": "text",
+                                  "text": "FeatureIdentifier"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "Response",
+              "elements": [
+                {
+                  "type": "element",
+                  "name": "Identifier",
+                  "elements": [
+                    {
+                      "type": "text",
+                      "text": "TokenLifetime"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "name": "DisplayName",
+                  "elements": [
+                    {
+                      "type": "text",
+                      "text": "Token Lifetime"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "name": "Description",
+                  "elements": [
+                    {
+                      "type": "text",
+                      "text": "The lifetime of the provided access token as the maximum validity period after the last SiLA Server request."
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "name": "DataType",
+                  "elements": [
+                    {
+                      "type": "element",
+                      "name": "Constrained",
+                      "elements": [
+                        {
+                          "type": "element",
+                          "name": "DataType",
+                          "elements": [
+                            {
+                              "type": "element",
+                              "name": "Basic",
+                              "elements": [
+                                {
+                                  "type": "text",
+                                  "text": "Integer"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "name": "Constraints",
+                          "elements": [
+                            {
+                              "type": "element",
+                              "name": "Unit",
+                              "elements": [
+                                {
+                                  "type": "element",
+                                  "name": "Label",
+                                  "elements": [
+                                    {
+                                      "type": "text",
+                                      "text": "s"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "element",
+                                  "name": "Factor",
+                                  "elements": [
+                                    {
+                                      "type": "text",
+                                      "text": "1"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "element",
+                                  "name": "Offset",
+                                  "elements": [
+                                    {
+                                      "type": "text",
+                                      "text": "0"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "element",
+                                  "name": "UnitComponent",
+                                  "elements": [
+                                    {
+                                      "type": "element",
+                                      "name": "SIUnit",
+                                      "elements": [
+                                        {
+                                          "type": "text",
+                                          "text": "Second"
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "type": "element",
+                                      "name": "Exponent",
+                                      "elements": [
+                                        {
+                                          "type": "text",
+                                          "text": "1"
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "DefinedExecutionErrors",
+              "elements": [
+                {
+                  "type": "element",
+                  "name": "Identifier",
+                  "elements": [
+                    {
+                      "type": "text",
+                      "text": "AuthorizationFailed"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "name": "Identifier",
+                  "elements": [
+                    {
+                      "type": "text",
+                      "text": "InvalidAccessToken"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "name": "DefinedExecutionError",
+          "elements": [
+            {
+              "type": "element",
+              "name": "Identifier",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "AuthorizationFailed"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "DisplayName",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "Authorization Failed"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "Description",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "The provided access token is not valid for the given server/feature."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "name": "DefinedExecutionError",
+          "elements": [
+            {
+              "type": "element",
+              "name": "Identifier",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "InvalidAccessToken"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "DisplayName",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "Invalid Access Token"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "Description",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "The sent access token is not valid."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

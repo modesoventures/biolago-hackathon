@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Feature SiLA2Version="1.0" FeatureVersion="1.0" Originator="org.silastandard"
+         Category="tests"
+         xmlns="http://www.sila-standard.org"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://www.sila-standard.org https://gitlab.com/SiLA2/sila_base/raw/master/schema/FeatureDefinition.xsd">
+    <Identifier>StructureOfListOfStructure</Identifier>
+    <DisplayName>Structure Of List Of Structures</DisplayName>
+    <Description>Provides an unobservable command with a structure of list of structure as responses</Description>
+    <Command>
+        <Identifier>TestCommand</Identifier>
+        <DisplayName>Test Command</DisplayName>
+        <Description>Command for testing</Description>
+        <Observable>No</Observable>
+        <Response>
+            <Identifier>Response1</Identifier>
+            <DisplayName>Response 1</DisplayName>
+            <Description>First response</Description>
+            <DataType>
+                <Structure>
+                    <Element>
+                        <Identifier>Element1</Identifier>
+                        <DisplayName>Element 1</DisplayName>
+                        <Description>First element</Description>
+                        <DataType>
+                            <List>
+                                <DataType>
+                                    <Structure>
+                                        <Element>
+                                            <Identifier>InnerElement1</Identifier>
+                                            <DisplayName>Inner Element 1</DisplayName>
+                                            <Description>The first inner element</Description>
+                                            <DataType>
+                                                <Basic>Boolean</Basic>
+                                            </DataType>
+                                        </Element>
+                                    </Structure>
+                                </DataType>
+                            </List>
+                        </DataType>
+                    </Element>
+                </Structure>
+            </DataType>
+        </Response>
+    </Command>
+</Feature>

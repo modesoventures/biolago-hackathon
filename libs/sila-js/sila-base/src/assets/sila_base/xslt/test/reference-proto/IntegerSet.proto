@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+import "SiLAFramework.proto";
+
+package sila2.org.silastandard.tests.integerset.v1;
+
+/* Contains a Integer with Set constraint */
+service IntegerSet {
+}
+
+/* A test type */
+message DataType_TestType {
+  sila2.org.silastandard.Integer TestType = 1;  /* A test type */
+}

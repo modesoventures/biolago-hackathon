@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Feature SiLA2Version="1.0" FeatureVersion="1.0" Originator="biovt.mw.tum.de" Category="examples"
+         xmlns="http://www.sila-standard.org"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://www.sila-standard.org https://gitlab.com/SiLA2/sila_features/raw/master/schema/FeatureDefinition.xsd">
+    <Identifier>ObservablePropertyProvider</Identifier>
+    <DisplayName>Observable Property Provider</DisplayName>
+    <Description>Feature definition that defines an observable property</Description>
+    <Command>
+        <Identifier>SetProperty</Identifier>
+        <DisplayName>Set property</DisplayName>
+        <Description>
+            Allows to set the value of the property to change its value.
+            This can be used to test if changes in the value are accepted by the property when running asynchronously.
+
+            TODO: Implement this feature in the simulation or real mode.
+        </Description>
+        <Observable>No</Observable>
+        <Parameter>
+            <Identifier>Value</Identifier>
+            <DisplayName>Value</DisplayName>
+            <Description>New parameter value</Description>
+            <DataType>
+                <Basic>Integer</Basic>
+            </DataType>
+        </Parameter>
+    </Command>
+    <Property>
+        <Identifier>Value</Identifier>
+        <DisplayName>Value</DisplayName>
+        <Description>
+            This property returns random integer numbers at the startup of the server while being observed.
+            Once a value is set via the :meth:`SetProperty` this value will be returned.
+
+            TODO: Implement this feature in the simulation or real mode.
+        </Description>
+        <Observable>Yes</Observable>
+        <DataType>
+            <Basic>Integer</Basic>
+        </DataType>
+    </Property>
+</Feature>

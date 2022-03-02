@@ -1,0 +1,34 @@
+{
+  "root": "libs/sila-js/fdl-parser",
+  "sourceRoot": "libs/sila-js/fdl-parser/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/node:package",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/sila-js/fdl-parser",
+        "tsConfig": "libs/sila-js/fdl-parser/tsconfig.lib.json",
+        "packageJson": "libs/sila-js/fdl-parser/package.json",
+        "main": "libs/sila-js/fdl-parser/src/index.ts",
+        "assets": ["libs/sila-js/fdl-parser/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/sila-js/fdl-parser/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/sila-js/fdl-parser"],
+      "options": {
+        "jestConfig": "libs/sila-js/fdl-parser/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

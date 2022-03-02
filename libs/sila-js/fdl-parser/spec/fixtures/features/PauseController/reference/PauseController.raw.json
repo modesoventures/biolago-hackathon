@@ -1,0 +1,584 @@
+{
+  "declaration": {
+    "attributes": {
+      "version": "1.0",
+      "encoding": "utf-8"
+    }
+  },
+  "elements": [
+    {
+      "type": "element",
+      "name": "Feature",
+      "attributes": {
+        "SiLA2Version": "1.0",
+        "FeatureVersion": "1.0",
+        "MaturityLevel": "Verified",
+        "Originator": "org.silastandard",
+        "Category": "core.commands",
+        "xmlns": "http://www.sila-standard.org",
+        "xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
+        "xsi:schemaLocation": "http://www.sila-standard.org https://gitlab.com/SiLA2/sila_base/raw/master/schema/FeatureDefinition.xsd"
+      },
+      "elements": [
+        {
+          "type": "element",
+          "name": "Identifier",
+          "elements": [
+            {
+              "type": "text",
+              "text": "PauseController"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "name": "DisplayName",
+          "elements": [
+            {
+              "type": "text",
+              "text": "Pause Controller"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "name": "Description",
+          "elements": [
+            {
+              "type": "text",
+              "text": "\n    Allows to pause or resume a currently running Observable Command. Pausing is the act of stopping the\n    progress of the desired intent of a Command with the option of continuing the execution when resuming.\n\n    A SiLA Client SHOULD be able to pause or resume the Observable Commands at any time. Not every Observable Command\n    might support this Feature. If not, an \"OperationNotSupported\" Execution Error MUST be thrown.\n  "
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "name": "Command",
+          "elements": [
+            {
+              "type": "element",
+              "name": "Identifier",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "Pause"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "DisplayName",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "Pause"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "Description",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "\n      Pause the Command execution. The Command can then be resumed again. The Command Execution Status of the\n      Observable Command MUST not be affected.\n    "
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "Observable",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "No"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "Parameter",
+              "elements": [
+                {
+                  "type": "element",
+                  "name": "Identifier",
+                  "elements": [
+                    {
+                      "type": "text",
+                      "text": "CommandExecutionUUID"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "name": "DisplayName",
+                  "elements": [
+                    {
+                      "type": "text",
+                      "text": "Command Execution UUID"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "name": "Description",
+                  "elements": [
+                    {
+                      "type": "text",
+                      "text": "The Command Execution UUID according to the SiLA Standard."
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "name": "DataType",
+                  "elements": [
+                    {
+                      "type": "element",
+                      "name": "DataTypeIdentifier",
+                      "elements": [
+                        {
+                          "type": "text",
+                          "text": "UUID"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "DefinedExecutionErrors",
+              "elements": [
+                {
+                  "type": "element",
+                  "name": "Identifier",
+                  "elements": [
+                    {
+                      "type": "text",
+                      "text": "InvalidCommandExecutionUUID"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "name": "Identifier",
+                  "elements": [
+                    {
+                      "type": "text",
+                      "text": "InvalidCommandState"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "name": "Identifier",
+                  "elements": [
+                    {
+                      "type": "text",
+                      "text": "OperationNotSupported"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "name": "Command",
+          "elements": [
+            {
+              "type": "element",
+              "name": "Identifier",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "Resume"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "DisplayName",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "Resume"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "Description",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "Resume the Command after it has been paused."
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "Observable",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "No"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "Parameter",
+              "elements": [
+                {
+                  "type": "element",
+                  "name": "Identifier",
+                  "elements": [
+                    {
+                      "type": "text",
+                      "text": "CommandExecutionUUID"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "name": "DisplayName",
+                  "elements": [
+                    {
+                      "type": "text",
+                      "text": "Command Execution UUID"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "name": "Description",
+                  "elements": [
+                    {
+                      "type": "text",
+                      "text": "The Command Execution UUID according to the SiLA Standard."
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "name": "DataType",
+                  "elements": [
+                    {
+                      "type": "element",
+                      "name": "DataTypeIdentifier",
+                      "elements": [
+                        {
+                          "type": "text",
+                          "text": "UUID"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "DefinedExecutionErrors",
+              "elements": [
+                {
+                  "type": "element",
+                  "name": "Identifier",
+                  "elements": [
+                    {
+                      "type": "text",
+                      "text": "InvalidCommandExecutionUUID"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "name": "Identifier",
+                  "elements": [
+                    {
+                      "type": "text",
+                      "text": "InvalidCommandState"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "name": "Identifier",
+                  "elements": [
+                    {
+                      "type": "text",
+                      "text": "OperationNotSupported"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "name": "DefinedExecutionError",
+          "elements": [
+            {
+              "type": "element",
+              "name": "Identifier",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "InvalidCommandExecutionUUID"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "DisplayName",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "Invalid Command Execution UUID"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "Description",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "\n      The given Command Execution UUID does not specify a command that is currently being executed.\n    "
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "name": "Property",
+          "elements": [
+            {
+              "type": "element",
+              "name": "Identifier",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "Paused"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "DisplayName",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "Is SiLA 2 Server Paused ?"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "Description",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "Providing Information about the paused state of the SiLA 2 Server."
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "Observable",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "No"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "DataType",
+              "elements": [
+                {
+                  "type": "element",
+                  "name": "Basic",
+                  "elements": [
+                    {
+                      "type": "text",
+                      "text": "Boolean"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "name": "DefinedExecutionError",
+          "elements": [
+            {
+              "type": "element",
+              "name": "Identifier",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "InvalidCommandState"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "DisplayName",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "Invalid Command State"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "Description",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "\n      The specified command is not in a valid state to perform the operation (Pause or Resume).\n    "
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "name": "DefinedExecutionError",
+          "elements": [
+            {
+              "type": "element",
+              "name": "Identifier",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "OperationNotSupported"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "DisplayName",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "Operation Not Supported"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "Description",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "\n      The operation (Pause or Resume) is not supported for the SiLA 2 command which the\n      specified Command Execution UUID belongs to.\n    "
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "name": "DataTypeDefinition",
+          "elements": [
+            {
+              "type": "element",
+              "name": "Identifier",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "UUID"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "DisplayName",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "UUID"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "Description",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "A Universally Unique Identifier (UUID) referring to observable command executions."
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "DataType",
+              "elements": [
+                {
+                  "type": "element",
+                  "name": "Constrained",
+                  "elements": [
+                    {
+                      "type": "element",
+                      "name": "DataType",
+                      "elements": [
+                        {
+                          "type": "element",
+                          "name": "Basic",
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "String"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "name": "Constraints",
+                      "elements": [
+                        {
+                          "type": "element",
+                          "name": "Length",
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "36"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "name": "Pattern",
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "[0-9a-f]{8}\\-[0-9a-f]{4}\\-[0-9a-f]{4}\\-[0-9a-f]{4}\\-[0-9a-f]{12}"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

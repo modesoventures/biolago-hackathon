@@ -1,0 +1,128 @@
+{
+  "sila2Version": "1.0",
+  "featureVersion": "1.0",
+  "originator": "org.silastandard",
+  "fullyQualifiedFeatureIdentifier": "org.silastandard/core/AuthenticationService/v1",
+  "packageNamespace": "sila2.org.silastandard.core.authenticationservice.v1",
+  "locale": "en-us",
+  "maturityLevel": "Draft",
+  "category": "core",
+  "title": "AuthenticationService",
+  "description": "\n    This Feature provides SiLA Clients with access tokens based on a user identification and password.\n    1. the user needs to login with the Login command into the server with a user identification (=user name) and a password\n    2. after verification, an Access Token with the Token Lifetime information will be generated and provided by the server.\n    3. the user can log-out from the server with the Logout command - a valid Access Token is required to run this command.\n  ",
+  "displayName": "Authentication Service",
+  "commands": [
+    {
+      "title": "Login",
+      "description": "Provides an access token based on user information.",
+      "displayName": "Login",
+      "observable": false,
+      "parametersSchema": {
+        "type": "object",
+        "required": [
+          "UserIdentification",
+          "Password"
+        ],
+        "properties": {
+          "UserIdentification": {
+            "title": "UserIdentification",
+            "description": "The user identification string (e.g. a user name)",
+            "displayName": "User Identification",
+            "type": "string"
+          },
+          "Password": {
+            "title": "Password",
+            "description": "The (encrypted) password",
+            "displayName": "Password",
+            "type": "string"
+          }
+        }
+      },
+      "responsesSchema": {
+        "type": "object",
+        "required": [
+          "AccessToken",
+          "TokenLifetime"
+        ],
+        "properties": {
+          "AccessToken": {
+            "title": "AccessToken",
+            "description": "The token to be used along with accessing a Command or Property on a SiLA Server.",
+            "displayName": "Access Token",
+            "type": "string"
+          },
+          "TokenLifetime": {
+            "title": "TokenLifetime",
+            "description": "\n        The lifetime (in seconds) of the provided access token as the maximum validity period after the last SiLA Server\n        request.\n      ",
+            "displayName": "Token Lifetime",
+            "type": "integer",
+            "silaConstraintUnit": {
+              "label": "s",
+              "factor": "1",
+              "offset": "0",
+              "unitComponent": {
+                "sIUnit": "Second",
+                "exponent": "1"
+              }
+            }
+          }
+        }
+      },
+      "intermediateResponsesSchema": {
+        "type": "object",
+        "required": [],
+        "properties": {}
+      },
+      "definedExecutionErrorList": [
+        "AuthenticationFailed"
+      ]
+    },
+    {
+      "title": "Logout",
+      "description": "Invalidates the given access token immediately.",
+      "displayName": "Logout",
+      "observable": false,
+      "parametersSchema": {
+        "type": "object",
+        "required": [
+          "AccessToken"
+        ],
+        "properties": {
+          "AccessToken": {
+            "title": "AccessToken",
+            "description": "The access token to be invalidated.",
+            "displayName": "Access Token",
+            "type": "string"
+          }
+        }
+      },
+      "responsesSchema": {
+        "type": "object",
+        "required": [],
+        "properties": {}
+      },
+      "intermediateResponsesSchema": {
+        "type": "object",
+        "required": [],
+        "properties": {}
+      },
+      "definedExecutionErrorList": [
+        "InvalidAccessToken"
+      ]
+    }
+  ],
+  "properties": [],
+  "metadata": [],
+  "dataTypeDefinitions": [],
+  "definedExecutionErrors": [
+    {
+      "title": "AuthenticationFailed",
+      "description": "The provided credentials are not valid.",
+      "displayName": "Authentication Failed"
+    },
+    {
+      "title": "InvalidAccessToken",
+      "description": "The sent access token is not valid.",
+      "displayName": "Invalid Access Token"
+    }
+  ]
+}

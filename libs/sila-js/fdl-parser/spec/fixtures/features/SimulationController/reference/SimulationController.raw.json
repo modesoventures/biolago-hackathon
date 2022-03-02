@@ -1,0 +1,314 @@
+{
+  "declaration": {
+    "attributes": {
+      "version": "1.0",
+      "encoding": "utf-8"
+    }
+  },
+  "elements": [
+    {
+      "type": "element",
+      "name": "Feature",
+      "attributes": {
+        "SiLA2Version": "1.0",
+        "FeatureVersion": "1.0",
+        "MaturityLevel": "Verified",
+        "Originator": "org.silastandard",
+        "Category": "core",
+        "xmlns": "http://www.sila-standard.org",
+        "xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
+        "xsi:schemaLocation": "http://www.sila-standard.org https://gitlab.com/SiLA2/sila_base/raw/master/schema/FeatureDefinition.xsd"
+      },
+      "elements": [
+        {
+          "type": "element",
+          "name": "Identifier",
+          "elements": [
+            {
+              "type": "text",
+              "text": "SimulationController"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "name": "DisplayName",
+          "elements": [
+            {
+              "type": "text",
+              "text": "Simulation Controller"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "name": "Description",
+          "elements": [
+            {
+              "type": "text",
+              "text": "\n    This Feature provides control over the simulation behaviour of a SiLA Server.\n\n    A SiLA Server can run in two modes:\n    (a) Real Mode - with real activities, e.g. addressing or controlling real hardware, e.g. through serial/CANBus commands,\n        writing to real databases, moving real objects etc.\n    (b) Simulation Mode - where every command is only simulated and responses are just example returns.\n\n    Note that certain commands and properties might not be affected by this feature if they\n    do not interact with the real world.\n  "
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "name": "Command",
+          "elements": [
+            {
+              "type": "element",
+              "name": "Identifier",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "StartSimulationMode"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "DisplayName",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "Start Simulation Mode"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "Description",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "\n      Sets the SiLA Server to run in Simulation Mode, i.e. all following commands are executed in simulation mode.\n\n      The Simulation Mode can only be entered, if all hardware operations have been safely terminated\n      or are in a controlled, safe state.\n\n      The simulation mode can be stopped by issuing the 'Start Real Mode' command.\n    "
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "Observable",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "No"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "DefinedExecutionErrors",
+              "elements": [
+                {
+                  "type": "element",
+                  "name": "Identifier",
+                  "elements": [
+                    {
+                      "type": "text",
+                      "text": "StartSimulationModeFailed"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "name": "Command",
+          "elements": [
+            {
+              "type": "element",
+              "name": "Identifier",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "StartRealMode"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "DisplayName",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "Start Real Mode"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "Description",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "\n      Sets the SiLA Server to run in real mode, i.e. all following commands are executed with real-world\n      interactions, like serial port/CAN communication, motor actions etc.\n\n      If the server is in Simulation Mode it can be interrupted at any time. A re-initialization of\n      the hardware might be required. The Real Mode can be stopped by issuing the 'Start Simulation Mode' command.\n    "
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "Observable",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "No"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "DefinedExecutionErrors",
+              "elements": [
+                {
+                  "type": "element",
+                  "name": "Identifier",
+                  "elements": [
+                    {
+                      "type": "text",
+                      "text": "StartRealModeFailed"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "name": "Property",
+          "elements": [
+            {
+              "type": "element",
+              "name": "Identifier",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "SimulationMode"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "DisplayName",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "SimulationMode"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "Description",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "Indication whether SiLA Server is in Simulation Mode or not."
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "Observable",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "No"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "DataType",
+              "elements": [
+                {
+                  "type": "element",
+                  "name": "Basic",
+                  "elements": [
+                    {
+                      "type": "text",
+                      "text": "Boolean"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "name": "DefinedExecutionError",
+          "elements": [
+            {
+              "type": "element",
+              "name": "Identifier",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "StartSimulationModeFailed"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "DisplayName",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "The start of Simulation Mode failed."
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "Description",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "\n      The server cannot change to Simulation Mode.\n      This error can, e.g., be thrown, if a real-world process needs to be ended before switching to simulation\n      mode.\n    "
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "name": "DefinedExecutionError",
+          "elements": [
+            {
+              "type": "element",
+              "name": "Identifier",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "StartRealModeFailed"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "DisplayName",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "The start of Real Mode failed."
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "Description",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "\n      The server cannot change to Real Mode.\n      This error can, e.g., be thrown, if a device is not ready to change into Real Mode.\n    "
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

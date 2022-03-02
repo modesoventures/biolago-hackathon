@@ -1,0 +1,47 @@
+{
+  "sila2Version": "1.0",
+  "featureVersion": "1.0",
+  "originator": "org.silastandard",
+  "fullyQualifiedFeatureIdentifier": "org.silastandard/core/AuthorizationService/v1",
+  "packageNamespace": "sila2.org.silastandard.core.authorizationservice.v1",
+  "locale": "en-us",
+  "maturityLevel": "Draft",
+  "category": "core",
+  "title": "AuthorizationService",
+  "description": "\n    This Feature provides access control for the implementing server.\n\n    It specifies the SiLA Client Metadata for the access token, that has been provided by the\n    AuthenticationService core Feature.\n  ",
+  "displayName": "Authorization Service",
+  "commands": [],
+  "properties": [],
+  "metadata": [
+    {
+      "title": "AccessToken",
+      "description": "Token to be sent with every call in order to get access to the SiLA Server functionality.",
+      "displayName": "AccessToken",
+      "metadataSchema": {
+        "type": "object",
+        "required": [
+          "AccessToken"
+        ],
+        "properties": {
+          "AccessToken": {
+            "title": "AccessToken",
+            "description": "Token to be sent with every call in order to get access to the SiLA Server functionality.",
+            "displayName": "AccessToken",
+            "type": "string"
+          }
+        }
+      },
+      "definedExecutionErrorList": [
+        "InvalidAccessToken"
+      ]
+    }
+  ],
+  "dataTypeDefinitions": [],
+  "definedExecutionErrors": [
+    {
+      "title": "InvalidAccessToken",
+      "description": "The sent access token is not valid.",
+      "displayName": "Invalid Access Token"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+import "SiLAFramework.proto";
+
+package sila2.org.silastandard.tests.list.v1;
+
+/* Provides an unobservable command with list response data type and an unobservable property with list response type */
+service List {
+    /* Command for testing */
+    rpc TestCommand(sila2.org.silastandard.tests.list.v1.TestCommand_Parameters) returns (sila2.org.silastandard.tests.list.v1.TestCommand_Responses) {}
+    /* Property for testing */
+    rpc Get_TestProperty(sila2.org.silastandard.tests.list.v1.Get_TestProperty_Parameters) returns (sila2.org.silastandard.tests.list.v1.Get_TestProperty_Responses) {}
+}
+
+/* Parameters for TestCommand */
+message TestCommand_Parameters {
+}
+
+/* Responses of TestCommand */
+message TestCommand_Responses {
+    repeated sila2.org.silastandard.Boolean Response1 = 1;  /* First response */
+}
+
+/* Parameters for TestProperty */
+message Get_TestProperty_Parameters {
+}
+
+/* Responses of TestProperty */
+message Get_TestProperty_Responses {
+    repeated sila2.org.silastandard.String TestProperty = 1;  /* Property for testing */
+}
+

@@ -1,0 +1,34 @@
+{
+  "root": "libs/sila-js/proto-builder",
+  "sourceRoot": "libs/sila-js/proto-builder/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/node:package",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/sila-js/proto-builder",
+        "tsConfig": "libs/sila-js/proto-builder/tsconfig.lib.json",
+        "packageJson": "libs/sila-js/proto-builder/package.json",
+        "main": "libs/sila-js/proto-builder/src/index.ts",
+        "assets": ["libs/sila-js/proto-builder/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/sila-js/proto-builder/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/sila-js/proto-builder"],
+      "options": {
+        "jestConfig": "libs/sila-js/proto-builder/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

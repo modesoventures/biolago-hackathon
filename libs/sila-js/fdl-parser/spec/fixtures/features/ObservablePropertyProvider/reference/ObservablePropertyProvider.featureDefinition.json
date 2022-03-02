@@ -1,0 +1,72 @@
+{
+  "sila2Version": "1.0",
+  "featureVersion": "1.0",
+  "originator": "biovt.mw.tum.de",
+  "fullyQualifiedFeatureIdentifier": "biovt.mw.tum.de/examples/ObservablePropertyProvider/v1",
+  "packageNamespace": "sila2.biovt.mw.tum.de.examples.observablepropertyprovider.v1",
+  "locale": "en-us",
+  "maturityLevel": "Draft",
+  "category": "examples",
+  "title": "ObservablePropertyProvider",
+  "description": "Feature definition that defines an observable property",
+  "displayName": "Observable Property Provider",
+  "commands": [
+    {
+      "title": "SetProperty",
+      "description": "\n            Allows to set the value of the property to change its value.\n            This can be used to test if changes in the value are accepted by the property when running asynchronously.\n\n            TODO: Implement this feature in the simulation or real mode.\n        ",
+      "displayName": "Set property",
+      "observable": false,
+      "parametersSchema": {
+        "type": "object",
+        "required": [
+          "Value"
+        ],
+        "properties": {
+          "Value": {
+            "title": "Value",
+            "description": "New parameter value",
+            "displayName": "Value",
+            "type": "integer"
+          }
+        }
+      },
+      "responsesSchema": {
+        "type": "object",
+        "required": [],
+        "properties": {}
+      },
+      "intermediateResponsesSchema": {
+        "type": "object",
+        "required": [],
+        "properties": {}
+      },
+      "definedExecutionErrorList": []
+    }
+  ],
+  "properties": [
+    {
+      "title": "Value",
+      "description": "\n            This property returns random integer numbers at the startup of the server while being observed.\n            Once a value is set via the :meth:`SetProperty` this value will be returned.\n\n            TODO: Implement this feature in the simulation or real mode.\n        ",
+      "displayName": "Value",
+      "observable": true,
+      "propertySchema": {
+        "type": "object",
+        "required": [
+          "Value"
+        ],
+        "properties": {
+          "Value": {
+            "title": "Value",
+            "description": "\n            This property returns random integer numbers at the startup of the server while being observed.\n            Once a value is set via the :meth:`SetProperty` this value will be returned.\n\n            TODO: Implement this feature in the simulation or real mode.\n        ",
+            "displayName": "Value",
+            "type": "integer"
+          }
+        }
+      },
+      "definedExecutionErrorList": []
+    }
+  ],
+  "metadata": [],
+  "dataTypeDefinitions": [],
+  "definedExecutionErrors": []
+}

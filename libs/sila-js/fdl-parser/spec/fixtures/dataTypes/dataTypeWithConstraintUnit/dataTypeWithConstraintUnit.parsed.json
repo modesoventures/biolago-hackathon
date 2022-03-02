@@ -1,0 +1,12 @@
+{
+  "type": "integer",
+  "silaConstraintUnit": {
+    "label": "s",
+    "factor": "1",
+    "offset": "0",
+    "unitComponent": {
+      "sIUnit": "Second",
+      "exponent": "1"
+    }
+  }
+}

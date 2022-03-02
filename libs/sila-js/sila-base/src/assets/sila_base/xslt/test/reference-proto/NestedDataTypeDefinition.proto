@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+import "SiLAFramework.proto";
+
+package sila2.org.silastandard.tests.nesteddatatypedefinition.v1;
+
+/* Provides nested DataTypeDefinitions */
+service NestedDataTypeDefinition {
+}
+
+/* A data type */
+message DataType_DataType1 {
+    sila2.org.silastandard.tests.nesteddatatypedefinition.v1.DataType_DataType2 DataType1 = 1;  /* A data type */
+}
+
+/* Another data type */
+message DataType_DataType2 {
+    sila2.org.silastandard.Integer DataType2 = 1;  /* Another data type */
+}

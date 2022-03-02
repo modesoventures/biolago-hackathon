@@ -1,0 +1,263 @@
+{
+  "sila2Version": "1.0",
+  "featureVersion": "1.0",
+  "originator": "org.silastandard",
+  "fullyQualifiedFeatureIdentifier": "org.silastandard/core/SiLAService/v1",
+  "packageNamespace": "sila2.org.silastandard.core.silaservice.v1",
+  "locale": "en-us",
+  "maturityLevel": "Normative",
+  "category": "core",
+  "title": "SiLAService",
+  "description": "\n    This Feature MUST be implemented by each SiLA Server.\n\n    It specifies Commands and Properties to discover the Features a SiLA Server implements as well as details\n    about the SiLA Server, like name, type, description, vendor and UUID.\n\n    Any interaction described in this feature MUST not affect the behaviour of any other Feature.\n  ",
+  "displayName": "SiLA Service",
+  "commands": [
+    {
+      "title": "GetFeatureDefinition",
+      "description": "\n      Get the Feature Definition of an implemented Feature by its fully qualified Feature Identifier.\n      This command has no preconditions and no further dependencies and can be called at any time.\n    ",
+      "displayName": "Get Feature Definition",
+      "observable": false,
+      "parametersSchema": {
+        "type": "object",
+        "required": [
+          "FeatureIdentifier"
+        ],
+        "properties": {
+          "FeatureIdentifier": {
+            "title": "FeatureIdentifier",
+            "description": "\n        The fully qualified Feature identifier for which the Feature definition shall be retrieved.\n      ",
+            "displayName": "Feature Identifier",
+            "type": "string",
+            "silaConstraintFullyqualifiedidentifier": "FeatureIdentifier"
+          }
+        }
+      },
+      "responsesSchema": {
+        "type": "object",
+        "required": [
+          "FeatureDefinition"
+        ],
+        "properties": {
+          "FeatureDefinition": {
+            "title": "FeatureDefinition",
+            "description": "The Feature definition in XML format (according to the Feature Definition Schema).",
+            "displayName": "Feature Definition",
+            "type": "string",
+            "silaConstraintSchema": {
+              "type": "Xml",
+              "url": "https://gitlab.com/SiLA2/sila_base/raw/master/schema/FeatureDefinition.xsd"
+            }
+          }
+        }
+      },
+      "intermediateResponsesSchema": {
+        "type": "object",
+        "required": [],
+        "properties": {}
+      },
+      "definedExecutionErrorList": [
+        "UnimplementedFeature"
+      ]
+    },
+    {
+      "title": "SetServerName",
+      "description": "\n      Sets a human readable name to the Server Name Property.Command has no preconditions and\n      no further dependencies and can be called at any time.\n    ",
+      "displayName": "Set Server Name",
+      "observable": false,
+      "parametersSchema": {
+        "type": "object",
+        "required": [
+          "ServerName"
+        ],
+        "properties": {
+          "ServerName": {
+            "title": "ServerName",
+            "description": "The human readable name to assign to the SiLA Server.",
+            "displayName": "Server Name",
+            "type": "string",
+            "maxLength": "255"
+          }
+        }
+      },
+      "responsesSchema": {
+        "type": "object",
+        "required": [],
+        "properties": {}
+      },
+      "intermediateResponsesSchema": {
+        "type": "object",
+        "required": [],
+        "properties": {}
+      },
+      "definedExecutionErrorList": []
+    }
+  ],
+  "properties": [
+    {
+      "title": "ServerName",
+      "description": "\n      Human readable name of the SiLA Server. The name can be set using the 'Set Server Name' command.\n    ",
+      "displayName": "Server Name",
+      "observable": false,
+      "propertySchema": {
+        "type": "object",
+        "required": [
+          "ServerName"
+        ],
+        "properties": {
+          "ServerName": {
+            "title": "ServerName",
+            "description": "\n      Human readable name of the SiLA Server. The name can be set using the 'Set Server Name' command.\n    ",
+            "displayName": "Server Name",
+            "type": "string",
+            "maxLength": "255"
+          }
+        }
+      },
+      "definedExecutionErrorList": []
+    },
+    {
+      "title": "ServerType",
+      "description": "\n      The type of this server. It, could be, e.g., in the case of a SiLA Device the model name.\n      It is specified by the implementer of the SiLA Server and MAY not be unique.\n    ",
+      "displayName": "Server Type",
+      "observable": false,
+      "propertySchema": {
+        "type": "object",
+        "required": [
+          "ServerType"
+        ],
+        "properties": {
+          "ServerType": {
+            "title": "ServerType",
+            "description": "\n      The type of this server. It, could be, e.g., in the case of a SiLA Device the model name.\n      It is specified by the implementer of the SiLA Server and MAY not be unique.\n    ",
+            "displayName": "Server Type",
+            "type": "string",
+            "pattern": "[A-Z][a-zA-Z0-9]*"
+          }
+        }
+      },
+      "definedExecutionErrorList": []
+    },
+    {
+      "title": "ServerUUID",
+      "description": "\n      Globally unique identifier that identifies a SiLA Server. The Server UUID MUST be generated once\n      and remain the same for all times.\n    ",
+      "displayName": "Server UUID",
+      "observable": false,
+      "propertySchema": {
+        "type": "object",
+        "required": [
+          "ServerUUID"
+        ],
+        "properties": {
+          "ServerUUID": {
+            "title": "ServerUUID",
+            "description": "\n      Globally unique identifier that identifies a SiLA Server. The Server UUID MUST be generated once\n      and remain the same for all times.\n    ",
+            "displayName": "Server UUID",
+            "type": "string",
+            "minLength": "36",
+            "maxLength": "36",
+            "pattern": "[0-9a-f]{8}\\-[0-9a-f]{4}\\-[0-9a-f]{4}\\-[0-9a-f]{4}\\-[0-9a-f]{12}"
+          }
+        }
+      },
+      "definedExecutionErrorList": []
+    },
+    {
+      "title": "ServerDescription",
+      "description": "\n      Description of the SiLA Server. This should include the use and purpose of this SiLA Server.\n    ",
+      "displayName": "Server Description",
+      "observable": false,
+      "propertySchema": {
+        "type": "object",
+        "required": [
+          "ServerDescription"
+        ],
+        "properties": {
+          "ServerDescription": {
+            "title": "ServerDescription",
+            "description": "\n      Description of the SiLA Server. This should include the use and purpose of this SiLA Server.\n    ",
+            "displayName": "Server Description",
+            "type": "string"
+          }
+        }
+      },
+      "definedExecutionErrorList": []
+    },
+    {
+      "title": "ServerVersion",
+      "description": "\n      Returns the version of the SiLA Server. A \"Major\" and a \"Minor\" version number (e.g. 1.0) MUST be provided,\n      a Patch version number MAY be provided. Optionally, an arbitrary text, separated by an underscore MAY be\n      appended, e.g. “3.19.373_mighty_lab_devices”.\n    ",
+      "displayName": "Server Version",
+      "observable": false,
+      "propertySchema": {
+        "type": "object",
+        "required": [
+          "ServerVersion"
+        ],
+        "properties": {
+          "ServerVersion": {
+            "title": "ServerVersion",
+            "description": "\n      Returns the version of the SiLA Server. A \"Major\" and a \"Minor\" version number (e.g. 1.0) MUST be provided,\n      a Patch version number MAY be provided. Optionally, an arbitrary text, separated by an underscore MAY be\n      appended, e.g. “3.19.373_mighty_lab_devices”.\n    ",
+            "displayName": "Server Version",
+            "type": "string",
+            "pattern": "(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(\\.(0|[1-9][0-9]*))?(_[_a-zA-Z0-9]+)?"
+          }
+        }
+      },
+      "definedExecutionErrorList": []
+    },
+    {
+      "title": "ServerVendorURL",
+      "description": "\n      Returns the URL to the website of the vendor or the website of the product of this SiLA Server.\n      This URL SHOULD be accessible at all times.\n      The URL is a Uniform Resource Locator as defined in RFC 1738.\n    ",
+      "displayName": "Server Vendor URL",
+      "observable": false,
+      "propertySchema": {
+        "type": "object",
+        "required": [
+          "ServerVendorURL"
+        ],
+        "properties": {
+          "ServerVendorURL": {
+            "title": "ServerVendorURL",
+            "description": "\n      Returns the URL to the website of the vendor or the website of the product of this SiLA Server.\n      This URL SHOULD be accessible at all times.\n      The URL is a Uniform Resource Locator as defined in RFC 1738.\n    ",
+            "displayName": "Server Vendor URL",
+            "type": "string",
+            "pattern": "https?://.+"
+          }
+        }
+      },
+      "definedExecutionErrorList": []
+    },
+    {
+      "title": "ImplementedFeatures",
+      "description": "\n      Returns a list of fully qualified Feature identifiers of all implemented Features of this SiLA Server.\n      This list SHOULD remain the same throughout the lifetime of the SiLA Server.\n    ",
+      "displayName": "Implemented Features",
+      "observable": false,
+      "propertySchema": {
+        "type": "object",
+        "required": [
+          "ImplementedFeatures"
+        ],
+        "properties": {
+          "ImplementedFeatures": {
+            "title": "ImplementedFeatures",
+            "description": "\n      Returns a list of fully qualified Feature identifiers of all implemented Features of this SiLA Server.\n      This list SHOULD remain the same throughout the lifetime of the SiLA Server.\n    ",
+            "displayName": "Implemented Features",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "silaConstraintFullyqualifiedidentifier": "FeatureIdentifier"
+            }
+          }
+        }
+      },
+      "definedExecutionErrorList": []
+    }
+  ],
+  "metadata": [],
+  "dataTypeDefinitions": [],
+  "definedExecutionErrors": [
+    {
+      "title": "UnimplementedFeature",
+      "description": "\n      The Feature specified by the given Feature identifier is not implemented by the server.\n    ",
+      "displayName": "Unimplemented Feature"
+    }
+  ]
+}

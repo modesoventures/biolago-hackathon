@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Feature SiLA2Version="1.0" FeatureVersion="1.0" Originator="org.silastandard"
+         Category="tests"
+         xmlns="http://www.sila-standard.org"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://www.sila-standard.org https://gitlab.com/SiLA2/sila_base/raw/master/schema/FeatureDefinition.xsd">
+    <Identifier>DuplicateDefinedExecutionError</Identifier>
+    <DisplayName>Duplicate Defined Execution Error</DisplayName>
+    <Description>Contains two defined execution errors with the same identifier</Description>
+    <Command>
+        <Identifier>TestCommand</Identifier>
+        <DisplayName>Test Command</DisplayName>
+        <Description>A test command</Description>
+        <Observable>No</Observable>
+        <DefinedExecutionErrors>
+            <Identifier>TestError</Identifier>
+        </DefinedExecutionErrors>
+    </Command>
+    <DefinedExecutionError>
+        <Identifier>TestError</Identifier>
+        <DisplayName>Test Error</DisplayName>
+        <Description>An error for testing</Description>
+    </DefinedExecutionError>
+    <DefinedExecutionError>
+        <Identifier>TestError</Identifier>
+        <DisplayName>Test Error</DisplayName>
+        <Description>An error for testing</Description>
+    </DefinedExecutionError>
+</Feature>

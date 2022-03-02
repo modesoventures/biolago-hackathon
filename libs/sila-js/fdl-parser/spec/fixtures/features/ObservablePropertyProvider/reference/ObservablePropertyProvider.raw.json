@@ -1,0 +1,215 @@
+{
+  "declaration": {
+    "attributes": {
+      "version": "1.0",
+      "encoding": "utf-8"
+    }
+  },
+  "elements": [
+    {
+      "type": "element",
+      "name": "Feature",
+      "attributes": {
+        "SiLA2Version": "1.0",
+        "FeatureVersion": "1.0",
+        "Originator": "biovt.mw.tum.de",
+        "Category": "examples",
+        "xmlns": "http://www.sila-standard.org",
+        "xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
+        "xsi:schemaLocation": "http://www.sila-standard.org https://gitlab.com/SiLA2/sila_features/raw/master/schema/FeatureDefinition.xsd"
+      },
+      "elements": [
+        {
+          "type": "element",
+          "name": "Identifier",
+          "elements": [
+            {
+              "type": "text",
+              "text": "ObservablePropertyProvider"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "name": "DisplayName",
+          "elements": [
+            {
+              "type": "text",
+              "text": "Observable Property Provider"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "name": "Description",
+          "elements": [
+            {
+              "type": "text",
+              "text": "Feature definition that defines an observable property"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "name": "Command",
+          "elements": [
+            {
+              "type": "element",
+              "name": "Identifier",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "SetProperty"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "DisplayName",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "Set property"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "Description",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "\n            Allows to set the value of the property to change its value.\n            This can be used to test if changes in the value are accepted by the property when running asynchronously.\n\n            TODO: Implement this feature in the simulation or real mode.\n        "
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "Observable",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "No"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "Parameter",
+              "elements": [
+                {
+                  "type": "element",
+                  "name": "Identifier",
+                  "elements": [
+                    {
+                      "type": "text",
+                      "text": "Value"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "name": "DisplayName",
+                  "elements": [
+                    {
+                      "type": "text",
+                      "text": "Value"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "name": "Description",
+                  "elements": [
+                    {
+                      "type": "text",
+                      "text": "New parameter value"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "name": "DataType",
+                  "elements": [
+                    {
+                      "type": "element",
+                      "name": "Basic",
+                      "elements": [
+                        {
+                          "type": "text",
+                          "text": "Integer"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "name": "Property",
+          "elements": [
+            {
+              "type": "element",
+              "name": "Identifier",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "Value"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "DisplayName",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "Value"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "Description",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "\n            This property returns random integer numbers at the startup of the server while being observed.\n            Once a value is set via the :meth:`SetProperty` this value will be returned.\n\n            TODO: Implement this feature in the simulation or real mode.\n        "
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "Observable",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "Yes"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "DataType",
+              "elements": [
+                {
+                  "type": "element",
+                  "name": "Basic",
+                  "elements": [
+                    {
+                      "type": "text",
+                      "text": "Integer"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

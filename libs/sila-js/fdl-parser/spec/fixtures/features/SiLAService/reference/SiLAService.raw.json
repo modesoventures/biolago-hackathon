@@ -1,0 +1,1080 @@
+{
+  "declaration": {
+    "attributes": {
+      "version": "1.0",
+      "encoding": "utf-8"
+    }
+  },
+  "elements": [
+    {
+      "type": "element",
+      "name": "Feature",
+      "attributes": {
+        "SiLA2Version": "1.0",
+        "FeatureVersion": "1.0",
+        "MaturityLevel": "Normative",
+        "Originator": "org.silastandard",
+        "Category": "core",
+        "xmlns": "http://www.sila-standard.org",
+        "xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
+        "xsi:schemaLocation": "http://www.sila-standard.org https://gitlab.com/SiLA2/sila_base/raw/master/schema/FeatureDefinition.xsd"
+      },
+      "elements": [
+        {
+          "type": "element",
+          "name": "Identifier",
+          "elements": [
+            {
+              "type": "text",
+              "text": "SiLAService"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "name": "DisplayName",
+          "elements": [
+            {
+              "type": "text",
+              "text": "SiLA Service"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "name": "Description",
+          "elements": [
+            {
+              "type": "text",
+              "text": "\n    This Feature MUST be implemented by each SiLA Server.\n\n    It specifies Commands and Properties to discover the Features a SiLA Server implements as well as details\n    about the SiLA Server, like name, type, description, vendor and UUID.\n\n    Any interaction described in this feature MUST not affect the behaviour of any other Feature.\n  "
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "name": "Command",
+          "elements": [
+            {
+              "type": "element",
+              "name": "Identifier",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "GetFeatureDefinition"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "DisplayName",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "Get Feature Definition"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "Description",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "\n      Get the Feature Definition of an implemented Feature by its fully qualified Feature Identifier.\n      This command has no preconditions and no further dependencies and can be called at any time.\n    "
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "Observable",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "No"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "Parameter",
+              "elements": [
+                {
+                  "type": "element",
+                  "name": "Identifier",
+                  "elements": [
+                    {
+                      "type": "text",
+                      "text": "FeatureIdentifier"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "name": "DisplayName",
+                  "elements": [
+                    {
+                      "type": "text",
+                      "text": "Feature Identifier"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "name": "Description",
+                  "elements": [
+                    {
+                      "type": "text",
+                      "text": "\n        The fully qualified Feature identifier for which the Feature definition shall be retrieved.\n      "
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "name": "DataType",
+                  "elements": [
+                    {
+                      "type": "element",
+                      "name": "Constrained",
+                      "elements": [
+                        {
+                          "type": "element",
+                          "name": "DataType",
+                          "elements": [
+                            {
+                              "type": "element",
+                              "name": "Basic",
+                              "elements": [
+                                {
+                                  "type": "text",
+                                  "text": "String"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "name": "Constraints",
+                          "elements": [
+                            {
+                              "type": "element",
+                              "name": "FullyQualifiedIdentifier",
+                              "elements": [
+                                {
+                                  "type": "text",
+                                  "text": "FeatureIdentifier"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "Response",
+              "elements": [
+                {
+                  "type": "element",
+                  "name": "Identifier",
+                  "elements": [
+                    {
+                      "type": "text",
+                      "text": "FeatureDefinition"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "name": "DisplayName",
+                  "elements": [
+                    {
+                      "type": "text",
+                      "text": "Feature Definition"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "name": "Description",
+                  "elements": [
+                    {
+                      "type": "text",
+                      "text": "The Feature definition in XML format (according to the Feature Definition Schema)."
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "name": "DataType",
+                  "elements": [
+                    {
+                      "type": "element",
+                      "name": "Constrained",
+                      "elements": [
+                        {
+                          "type": "element",
+                          "name": "DataType",
+                          "elements": [
+                            {
+                              "type": "element",
+                              "name": "Basic",
+                              "elements": [
+                                {
+                                  "type": "text",
+                                  "text": "String"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "name": "Constraints",
+                          "elements": [
+                            {
+                              "type": "element",
+                              "name": "Schema",
+                              "elements": [
+                                {
+                                  "type": "element",
+                                  "name": "Type",
+                                  "elements": [
+                                    {
+                                      "type": "text",
+                                      "text": "Xml"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "element",
+                                  "name": "Url",
+                                  "elements": [
+                                    {
+                                      "type": "text",
+                                      "text": "https://gitlab.com/SiLA2/sila_base/raw/master/schema/FeatureDefinition.xsd"
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "DefinedExecutionErrors",
+              "elements": [
+                {
+                  "type": "element",
+                  "name": "Identifier",
+                  "elements": [
+                    {
+                      "type": "text",
+                      "text": "UnimplementedFeature"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "name": "Command",
+          "elements": [
+            {
+              "type": "element",
+              "name": "Identifier",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "SetServerName"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "DisplayName",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "Set Server Name"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "Description",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "\n      Sets a human readable name to the Server Name Property.Command has no preconditions and\n      no further dependencies and can be called at any time.\n    "
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "Observable",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "No"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "Parameter",
+              "elements": [
+                {
+                  "type": "element",
+                  "name": "Identifier",
+                  "elements": [
+                    {
+                      "type": "text",
+                      "text": "ServerName"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "name": "DisplayName",
+                  "elements": [
+                    {
+                      "type": "text",
+                      "text": "Server Name"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "name": "Description",
+                  "elements": [
+                    {
+                      "type": "text",
+                      "text": "The human readable name to assign to the SiLA Server."
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "name": "DataType",
+                  "elements": [
+                    {
+                      "type": "element",
+                      "name": "Constrained",
+                      "elements": [
+                        {
+                          "type": "element",
+                          "name": "DataType",
+                          "elements": [
+                            {
+                              "type": "element",
+                              "name": "Basic",
+                              "elements": [
+                                {
+                                  "type": "text",
+                                  "text": "String"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "name": "Constraints",
+                          "elements": [
+                            {
+                              "type": "element",
+                              "name": "MaximalLength",
+                              "elements": [
+                                {
+                                  "type": "text",
+                                  "text": "255"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "name": "DefinedExecutionError",
+          "elements": [
+            {
+              "type": "element",
+              "name": "Identifier",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "UnimplementedFeature"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "DisplayName",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "Unimplemented Feature"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "Description",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "\n      The Feature specified by the given Feature identifier is not implemented by the server.\n    "
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "name": "Property",
+          "elements": [
+            {
+              "type": "element",
+              "name": "Identifier",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "ServerName"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "DisplayName",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "Server Name"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "Description",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "\n      Human readable name of the SiLA Server. The name can be set using the 'Set Server Name' command.\n    "
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "Observable",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "No"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "DataType",
+              "elements": [
+                {
+                  "type": "element",
+                  "name": "Constrained",
+                  "elements": [
+                    {
+                      "type": "element",
+                      "name": "DataType",
+                      "elements": [
+                        {
+                          "type": "element",
+                          "name": "Basic",
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "String"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "name": "Constraints",
+                      "elements": [
+                        {
+                          "type": "element",
+                          "name": "MaximalLength",
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "255"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "name": "Property",
+          "elements": [
+            {
+              "type": "element",
+              "name": "Identifier",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "ServerType"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "DisplayName",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "Server Type"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "Description",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "\n      The type of this server. It, could be, e.g., in the case of a SiLA Device the model name.\n      It is specified by the implementer of the SiLA Server and MAY not be unique.\n    "
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "Observable",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "No"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "DataType",
+              "elements": [
+                {
+                  "type": "element",
+                  "name": "Constrained",
+                  "elements": [
+                    {
+                      "type": "element",
+                      "name": "DataType",
+                      "elements": [
+                        {
+                          "type": "element",
+                          "name": "Basic",
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "String"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "name": "Constraints",
+                      "elements": [
+                        {
+                          "type": "element",
+                          "name": "Pattern",
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "[A-Z][a-zA-Z0-9]*"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "name": "Property",
+          "elements": [
+            {
+              "type": "element",
+              "name": "Identifier",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "ServerUUID"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "DisplayName",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "Server UUID"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "Description",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "\n      Globally unique identifier that identifies a SiLA Server. The Server UUID MUST be generated once\n      and remain the same for all times.\n    "
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "Observable",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "No"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "DataType",
+              "elements": [
+                {
+                  "type": "element",
+                  "name": "Constrained",
+                  "elements": [
+                    {
+                      "type": "element",
+                      "name": "DataType",
+                      "elements": [
+                        {
+                          "type": "element",
+                          "name": "Basic",
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "String"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "name": "Constraints",
+                      "elements": [
+                        {
+                          "type": "element",
+                          "name": "Length",
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "36"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "name": "Pattern",
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "[0-9a-f]{8}\\-[0-9a-f]{4}\\-[0-9a-f]{4}\\-[0-9a-f]{4}\\-[0-9a-f]{12}"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "name": "Property",
+          "elements": [
+            {
+              "type": "element",
+              "name": "Identifier",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "ServerDescription"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "DisplayName",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "Server Description"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "Description",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "\n      Description of the SiLA Server. This should include the use and purpose of this SiLA Server.\n    "
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "Observable",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "No"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "DataType",
+              "elements": [
+                {
+                  "type": "element",
+                  "name": "Basic",
+                  "elements": [
+                    {
+                      "type": "text",
+                      "text": "String"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "name": "Property",
+          "elements": [
+            {
+              "type": "element",
+              "name": "Identifier",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "ServerVersion"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "DisplayName",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "Server Version"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "Description",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "\n      Returns the version of the SiLA Server. A \"Major\" and a \"Minor\" version number (e.g. 1.0) MUST be provided,\n      a Patch version number MAY be provided. Optionally, an arbitrary text, separated by an underscore MAY be\n      appended, e.g. “3.19.373_mighty_lab_devices”.\n    "
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "Observable",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "No"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "DataType",
+              "elements": [
+                {
+                  "type": "element",
+                  "name": "Constrained",
+                  "elements": [
+                    {
+                      "type": "element",
+                      "name": "DataType",
+                      "elements": [
+                        {
+                          "type": "element",
+                          "name": "Basic",
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "String"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "name": "Constraints",
+                      "elements": [
+                        {
+                          "type": "element",
+                          "name": "Pattern",
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(\\.(0|[1-9][0-9]*))?(_[_a-zA-Z0-9]+)?"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "name": "Property",
+          "elements": [
+            {
+              "type": "element",
+              "name": "Identifier",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "ServerVendorURL"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "DisplayName",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "Server Vendor URL"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "Description",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "\n      Returns the URL to the website of the vendor or the website of the product of this SiLA Server.\n      This URL SHOULD be accessible at all times.\n      The URL is a Uniform Resource Locator as defined in RFC 1738.\n    "
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "Observable",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "No"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "DataType",
+              "elements": [
+                {
+                  "type": "element",
+                  "name": "Constrained",
+                  "elements": [
+                    {
+                      "type": "element",
+                      "name": "DataType",
+                      "elements": [
+                        {
+                          "type": "element",
+                          "name": "Basic",
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "String"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "name": "Constraints",
+                      "elements": [
+                        {
+                          "type": "element",
+                          "name": "Pattern",
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "https?://.+"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "name": "Property",
+          "elements": [
+            {
+              "type": "element",
+              "name": "Identifier",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "ImplementedFeatures"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "DisplayName",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "Implemented Features"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "Description",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "\n      Returns a list of fully qualified Feature identifiers of all implemented Features of this SiLA Server.\n      This list SHOULD remain the same throughout the lifetime of the SiLA Server.\n    "
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "Observable",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "No"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "DataType",
+              "elements": [
+                {
+                  "type": "element",
+                  "name": "List",
+                  "elements": [
+                    {
+                      "type": "element",
+                      "name": "DataType",
+                      "elements": [
+                        {
+                          "type": "element",
+                          "name": "Constrained",
+                          "elements": [
+                            {
+                              "type": "element",
+                              "name": "DataType",
+                              "elements": [
+                                {
+                                  "type": "element",
+                                  "name": "Basic",
+                                  "elements": [
+                                    {
+                                      "type": "text",
+                                      "text": "String"
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "element",
+                              "name": "Constraints",
+                              "elements": [
+                                {
+                                  "type": "element",
+                                  "name": "FullyQualifiedIdentifier",
+                                  "elements": [
+                                    {
+                                      "type": "text",
+                                      "text": "FeatureIdentifier"
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

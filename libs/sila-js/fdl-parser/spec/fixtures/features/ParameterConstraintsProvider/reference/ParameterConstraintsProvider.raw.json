@@ -1,0 +1,302 @@
+{
+  "declaration": {
+    "attributes": {
+      "version": "1.0",
+      "encoding": "utf-8"
+    }
+  },
+  "elements": [
+    {
+      "type": "element",
+      "name": "Feature",
+      "attributes": {
+        "SiLA2Version": "1.0",
+        "FeatureVersion": "1.0",
+        "MaturityLevel": "Verified",
+        "Originator": "org.silastandard",
+        "Category": "core.commands",
+        "xmlns": "http://www.sila-standard.org",
+        "xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
+        "xsi:schemaLocation": "http://www.sila-standard.org https://gitlab.com/SiLA2/sila_base/raw/master/schema/FeatureDefinition.xsd"
+      },
+      "elements": [
+        {
+          "type": "element",
+          "name": "Identifier",
+          "elements": [
+            {
+              "type": "text",
+              "text": "ParameterConstraintsProvider"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "name": "DisplayName",
+          "elements": [
+            {
+              "type": "text",
+              "text": "Parameter Constraints Provider"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "name": "Description",
+          "elements": [
+            {
+              "type": "text",
+              "text": "\n    This Feature allows a SiLA Client to receive constraints (min./max value, min./max. length for strings etc.) that\n    given parameters of a given Command have which are not defined in the respective Feature Definition;\n    also depending on other parameter or state.\n\n    It returns a list of all Constraints of a given Command. It is RECOMMENDED that a SiLA Server implements this\n    feature, if it is not possible to provide certain constraints already in the feature design phase.\n  "
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "name": "Property",
+          "elements": [
+            {
+              "type": "element",
+              "name": "Identifier",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "ParametersConstraints"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "DisplayName",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "Parameters Constraints"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "Description",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "\n      Provides a list of all constraints of Command Parameters of the SiLA Server.\n    "
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "Observable",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "Yes"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "DataType",
+              "elements": [
+                {
+                  "type": "element",
+                  "name": "List",
+                  "elements": [
+                    {
+                      "type": "element",
+                      "name": "DataType",
+                      "elements": [
+                        {
+                          "type": "element",
+                          "name": "Structure",
+                          "elements": [
+                            {
+                              "type": "element",
+                              "name": "Element",
+                              "elements": [
+                                {
+                                  "type": "element",
+                                  "name": "Identifier",
+                                  "elements": [
+                                    {
+                                      "type": "text",
+                                      "text": "CommandParameterIdentifier"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "element",
+                                  "name": "DisplayName",
+                                  "elements": [
+                                    {
+                                      "type": "text",
+                                      "text": "Command Parameter Identifier"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "element",
+                                  "name": "Description",
+                                  "elements": [
+                                    {
+                                      "type": "text",
+                                      "text": "The fully qualified identifier of a constrained parameter."
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "element",
+                                  "name": "DataType",
+                                  "elements": [
+                                    {
+                                      "type": "element",
+                                      "name": "Constrained",
+                                      "elements": [
+                                        {
+                                          "type": "element",
+                                          "name": "DataType",
+                                          "elements": [
+                                            {
+                                              "type": "element",
+                                              "name": "Basic",
+                                              "elements": [
+                                                {
+                                                  "type": "text",
+                                                  "text": "String"
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "type": "element",
+                                          "name": "Constraints",
+                                          "elements": [
+                                            {
+                                              "type": "element",
+                                              "name": "FullyQualifiedIdentifier",
+                                              "elements": [
+                                                {
+                                                  "type": "text",
+                                                  "text": "CommandParameterIdentifier"
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "element",
+                              "name": "Element",
+                              "elements": [
+                                {
+                                  "type": "element",
+                                  "name": "Identifier",
+                                  "elements": [
+                                    {
+                                      "type": "text",
+                                      "text": "Constraints"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "element",
+                                  "name": "DisplayName",
+                                  "elements": [
+                                    {
+                                      "type": "text",
+                                      "text": "Constraints"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "element",
+                                  "name": "Description",
+                                  "elements": [
+                                    {
+                                      "type": "text",
+                                      "text": "The constraints to apply on the parameter."
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "element",
+                                  "name": "DataType",
+                                  "elements": [
+                                    {
+                                      "type": "element",
+                                      "name": "Constrained",
+                                      "elements": [
+                                        {
+                                          "type": "element",
+                                          "name": "DataType",
+                                          "elements": [
+                                            {
+                                              "type": "element",
+                                              "name": "Basic",
+                                              "elements": [
+                                                {
+                                                  "type": "text",
+                                                  "text": "String"
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "type": "element",
+                                          "name": "Constraints",
+                                          "elements": [
+                                            {
+                                              "type": "element",
+                                              "name": "Schema",
+                                              "elements": [
+                                                {
+                                                  "type": "element",
+                                                  "name": "Type",
+                                                  "elements": [
+                                                    {
+                                                      "type": "text",
+                                                      "text": "Xml"
+                                                    }
+                                                  ]
+                                                },
+                                                {
+                                                  "type": "element",
+                                                  "name": "Url",
+                                                  "elements": [
+                                                    {
+                                                      "type": "text",
+                                                      "text": "https://gitlab.com/SiLA2/sila_base/raw/master/schema/Constraints.xsd"
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

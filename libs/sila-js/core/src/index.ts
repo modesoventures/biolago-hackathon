@@ -1,5 +1,3 @@
-/* eslint-disable prettier/prettier */
-/* eslint-disable camelcase */
 export { initLogging, logger } from './logging';
 export { SiLAServiceRoot, SimulationControllerRoot, standardFeatureDefinitionDir } from './framework/framework';
 export {

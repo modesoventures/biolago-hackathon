@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Feature SiLA2Version="1.0" FeatureVersion="1.0" MaturityLevel="Draft" Originator="org.silastandard" Category="core"
+         xmlns="http://www.sila-standard.org"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://www.sila-standard.org https://gitlab.com/SiLA2/sila_base/raw/master/schema/FeatureDefinition.xsd">
+    <Identifier>AuthorizationConfigurationService</Identifier>
+    <DisplayName>Authorization Configuration</DisplayName>
+    <Description>This Feature exposes the server configuration which authorization provider to use.</Description>
+    <Property>
+        <Identifier>AuthorizationProvider</Identifier>
+        <DisplayName>Authorization Provider</DisplayName>
+        <Description>The UUID of the SiLA server that this server uses to verify access tokens.</Description>
+        <Observable>No</Observable>
+        <DataType>
+            <Constrained>
+                <DataType>
+                    <Basic>String</Basic>
+                </DataType>
+                <Constraints>
+                    <Length>36</Length>
+                    <Pattern>[0-9a-f]{8}\-[0-9a-f]{4}\-[0-9a-f]{4}\-[0-9a-f]{4}\-[0-9a-f]{12}</Pattern>
+                </Constraints>
+            </Constrained>
+        </DataType>
+    </Property>
+    <Command>
+        <Identifier>SetAuthorizationProvider</Identifier>
+        <DisplayName>Set Authorization Provider</DisplayName>
+        <Description>Instructs the server to use the given authorization provider starting from the next request.</Description>
+        <Observable>No</Observable>
+        <Parameter>
+            <Identifier>AuthorizationProvider</Identifier>
+            <DisplayName>Authorization Provider</DisplayName>
+            <Description>The UUID of the SiLA server that this server uses to verify access tokens.</Description>
+            <DataType>
+                <Constrained>
+                    <DataType>
+                        <Basic>String</Basic>
+                    </DataType>
+                    <Constraints>
+                        <Length>36</Length>
+                        <Pattern>[0-9a-f]{8}\-[0-9a-f]{4}\-[0-9a-f]{4}\-[0-9a-f]{4}\-[0-9a-f]{12}</Pattern>
+                    </Constraints>
+                </Constrained>
+            </DataType>
+        </Parameter>
+    </Command>
+</Feature>

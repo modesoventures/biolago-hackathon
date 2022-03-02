@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import * as winston from 'winston';
 
 const { combine, timestamp, label, printf, splat } = winston.format;

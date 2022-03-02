@@ -1,0 +1,34 @@
+{
+  "root": "libs/sila-js/static-client",
+  "sourceRoot": "libs/sila-js/static-client/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/node:package",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/sila-js/static-client",
+        "tsConfig": "libs/sila-js/static-client/tsconfig.lib.json",
+        "packageJson": "libs/sila-js/static-client/package.json",
+        "main": "libs/sila-js/static-client/src/index.ts",
+        "assets": ["libs/sila-js/static-client/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/sila-js/static-client/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/sila-js/static-client"],
+      "options": {
+        "jestConfig": "libs/sila-js/static-client/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Feature SiLA2Version="1.0" FeatureVersion="1.0" Originator="biovt.mw.tum.de" Category="examples"
+         xmlns="http://www.sila-standard.org"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://www.sila-standard.org https://gitlab.com/SiLA2/sila_features/raw/master/schema/FeatureDefinition.xsd">
+    <Identifier>ObservableCommandProvider</Identifier>
+    <DisplayName>Observable Command Provider</DisplayName>
+    <Description>Feature definition that defines an observable command</Description>
+    <Command>
+        <Identifier>IncreaseValue</Identifier>
+        <DisplayName>Increase Property Value</DisplayName>
+        <Description>
+            This function will linearly increase the value of the property in a timeframe of ~ 30s from the given
+            starting value to the final value. You can observe the process with the appropriate commands.
+        </Description>
+        <Observable>Yes</Observable>
+        <Parameter>
+            <Identifier>Start</Identifier>
+            <DisplayName>Start Value</DisplayName>
+            <Description>The initial value of the property at t = 0 s</Description>
+            <DataType>
+                <Basic>Real</Basic>
+            </DataType>
+        </Parameter>
+        <Parameter>
+            <Identifier>End</Identifier>
+            <DisplayName>End Value</DisplayName>
+            <Description>The final value of the property at t = 30 s</Description>
+            <DataType>
+                <Basic>Real</Basic>
+            </DataType>
+        </Parameter>
+        <Response>
+            <Identifier>InfoCalls</Identifier>
+            <DisplayName>Calls to Info</DisplayName>
+            <Description>Returns the number of calls to the info function that were made during the runtime.</Description>
+            <DataType>
+                <Basic>Integer</Basic>
+            </DataType>
+        </Response>
+        <Response>
+            <Identifier>IntermediateCalls</Identifier>
+            <DisplayName>Calls to Intermediate</DisplayName>
+            <Description>Returns the number of calls to the intermediate function that were made during the runtime.</Description>
+            <DataType>
+                <Basic>Integer</Basic>
+            </DataType>
+        </Response>
+        <IntermediateResponse>
+            <Identifier>Value</Identifier>
+            <DisplayName>Value</DisplayName>
+            <Description>Returns the current value, should be similar to reading the property</Description>
+            <DataType>
+                <Basic>Real</Basic>
+            </DataType>
+        </IntermediateResponse>
+    </Command>
+    <Property>
+        <Identifier>Value</Identifier>
+        <DisplayName>Value</DisplayName>
+        <Description>
+            This property can be read to show the progress of the observable command.
+
+            I am aware that this job can normally be achieved with the corresponding command, but for the sake of this
+            example we will just go the complex way.
+        </Description>
+        <Observable>No</Observable>
+        <DataType>
+            <Basic>Real</Basic>
+        </DataType>
+    </Property>
+</Feature>

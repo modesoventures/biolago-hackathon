@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Feature SiLA2Version="1.0" FeatureVersion="1.0" MaturityLevel="Draft" Originator="ch.unitelabs" Category="robot"
+         xmlns="http://www.sila-standard.org"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://www.sila-standard.org https://gitlab.com/SiLA2/sila_base/raw/master/schema/FeatureDefinition.xsd">
+    <Identifier>RobotController</Identifier>
+    <DisplayName>Robot Controller</DisplayName>
+    <Description>Controlling the robot</Description>
+    <Command>
+        <Identifier>MoveToPosition</Identifier>
+        <DisplayName>Move To Position</DisplayName>
+        <Description>Move to a given position.</Description>
+        <Observable>Yes</Observable>
+        <Parameter>
+            <Identifier>Position</Identifier>
+            <DisplayName>Position</DisplayName>
+            <Description>Position to move to.</Description>
+            <DataType>
+                <Basic>String</Basic>
+            </DataType>
+        </Parameter>
+    </Command>
+    <Command>
+        <Identifier>MoveToSite</Identifier>
+        <DisplayName>Move To Site</DisplayName>
+        <Description>
+            Moving to a given site including calculated approach positions (if any, and without changing gripping)
+        </Description>
+        <Observable>Yes</Observable>
+        <Parameter>
+            <Identifier>Site</Identifier>
+            <DisplayName>Site</DisplayName>
+            <Description>Site to move to</Description>
+            <DataType>
+                <DataTypeIdentifier>Site</DataTypeIdentifier>
+            </DataType>
+        </Parameter>
+        <DefinedExecutionErrors>
+            <Identifier>SiteNotFound</Identifier>
+            <Identifier>InaccessibleSite</Identifier>
+        </DefinedExecutionErrors>
+    </Command>
+    <Command>
+        <Identifier>Retract</Identifier>
+        <DisplayName>Retract</DisplayName>
+        <Description>Retract from current device if not retracted already</Description>
+        <Observable>Yes</Observable>
+    </Command>
+    <Command>
+        <Identifier>ApproachTo</Identifier>
+        <DisplayName>Approach To</DisplayName>
+        <Description>
+            Moving to the safe pose to approach a device (without changing gripping)
+        </Description>
+        <Observable>Yes</Observable>
+        <Parameter>
+            <Identifier>Site</Identifier>
+            <DisplayName>Site</DisplayName>
+            <Description>Site to move approach</Description>
+            <DataType>
+                <DataTypeIdentifier>Site</DataTypeIdentifier>
+            </DataType>
+        </Parameter>
+        <DefinedExecutionErrors>
+            <Identifier>SiteNotFound</Identifier>
+            <Identifier>InaccessibleSite</Identifier>
+        </DefinedExecutionErrors>
+    </Command>
+    <Command>
+        <Identifier>MovePlate</Identifier>
+        <DisplayName>Move Plate</DisplayName>
+        <Description>Move a plate between two given sites</Description>
+        <Observable>Yes</Observable>
+        <Parameter>
+            <Identifier>OriginSite</Identifier>
+            <DisplayName>Origin Site</DisplayName>
+            <Description>Site to move the plate from</Description>
+            <DataType>
+                <DataTypeIdentifier>Site</DataTypeIdentifier>
+            </DataType>
+        </Parameter>
+        <Parameter>
+            <Identifier>DestinationSite</Identifier>
+            <DisplayName>Destination Site</DisplayName>
+            <Description>Site to move the plate to</Description>
+            <DataType>
+                <DataTypeIdentifier>Site</DataTypeIdentifier>
+            </DataType>
+        </Parameter>
+        <Parameter>
+            <Identifier>PlateType</Identifier>
+            <DisplayName>Plate Type</DisplayName>
+            <Description>The plate type to grab</Description>
+            <DataType>
+                <Basic>String</Basic>
+            </DataType>
+        </Parameter>
+        <DefinedExecutionErrors>
+            <Identifier>SiteNotFound</Identifier>
+            <Identifier>InaccessibleSite</Identifier>
+            <Identifier>LostPlate</Identifier>
+        </DefinedExecutionErrors>
+    </Command>
+    <Command>
+        <Identifier>PickPlate</Identifier>
+        <DisplayName>Pick Plate</DisplayName>
+        <Description>Pick up a plate from a given site</Description>
+        <Observable>No</Observable>
+        <Parameter>
+            <Identifier>Site</Identifier>
+            <DisplayName>Site</DisplayName>
+            <Description>Site to pick plate from</Description>
+            <DataType>
+                <DataTypeIdentifier>Site</DataTypeIdentifier>
+            </DataType>
+        </Parameter>
+        <Parameter>
+            <Identifier>PlateType</Identifier>
+            <DisplayName>Plate Type</DisplayName>
+            <Description>The plate type to grab</Description>
+            <DataType>
+                <Basic>String</Basic>
+            </DataType>
+        </Parameter>
+        <DefinedExecutionErrors>
+            <Identifier>SiteNotFound</Identifier>
+            <Identifier>InaccessibleSite</Identifier>
+            <Identifier>LostPlate</Identifier>
+        </DefinedExecutionErrors>
+    </Command>
+    <Command>
+        <Identifier>PlacePlate</Identifier>
+        <DisplayName>Place Plate</DisplayName>
+        <Description>Place a plate on a given site</Description>
+        <Observable>No</Observable>
+        <Parameter>
+            <Identifier>Site</Identifier>
+            <DisplayName>Site</DisplayName>
+            <Description>Site to place the plate on</Description>
+            <DataType>
+                <DataTypeIdentifier>Site</DataTypeIdentifier>
+            </DataType>
+        </Parameter>
+        <Parameter>
+            <Identifier>PlateType</Identifier>
+            <DisplayName>Plate Type</DisplayName>
+            <Description>The plate type to grab</Description>
+            <DataType>
+                <Basic>String</Basic>
+            </DataType>
+        </Parameter>
+        <DefinedExecutionErrors>
+            <Identifier>SiteNotFound</Identifier>
+            <Identifier>InaccessibleSite</Identifier>
+            <Identifier>LostPlate</Identifier>
+        </DefinedExecutionErrors>
+    </Command>
+    <Command>
+        <Identifier>CheckOccupied</Identifier>
+        <DisplayName>Check Occupied</DisplayName>
+        <Description>Check if the given site is occupied with a sample</Description>
+        <Observable>No</Observable>
+        <Parameter>
+            <Identifier>Site</Identifier>
+            <DisplayName>Site</DisplayName>
+            <Description>Site to check.</Description>
+            <DataType>
+                <DataTypeIdentifier>Site</DataTypeIdentifier>
+            </DataType>
+        </Parameter>
+        <Response>
+            <Identifier>Occupied</Identifier>
+            <DisplayName>Occupied</DisplayName>
+            <Description>Boolean describing if site is occupied</Description>
+            <DataType>
+                <Basic>Boolean</Basic>
+            </DataType>
+        </Response>
+        <DefinedExecutionErrors>
+            <Identifier>SiteNotFound</Identifier>
+        </DefinedExecutionErrors>
+    </Command>
+    <DataTypeDefinition>
+        <Identifier>Site</Identifier>
+        <DisplayName>Site</DisplayName>
+        <Description>Description of a given site of a device</Description>
+        <DataType>
+            <Structure>
+                <Element>
+                    <Identifier>Device</Identifier>
+                    <DisplayName>Device</DisplayName>
+                    <Description>Device the site is associated with.</Description>
+                    <DataType>
+                        <Basic>String</Basic>
+                    </DataType>
+                </Element>
+                <Element>
+                    <Identifier>SiteIndex</Identifier>
+                    <DisplayName>Site Index</DisplayName>
+                    <Description>Index of the site to access</Description>
+                    <DataType>
+                        <Constrained>
+                            <DataType>
+                                <Basic>Integer</Basic>
+                            </DataType>
+                            <Constraints>
+                                <MinimalInclusive>0</MinimalInclusive>
+                            </Constraints>
+                        </Constrained>
+                    </DataType>
+                </Element>
+            </Structure>
+        </DataType>
+    </DataTypeDefinition>
+    <DefinedExecutionError>
+        <Identifier>SiteNotFound</Identifier>
+        <DisplayName>Site not found</DisplayName>
+        <Description>Gets thrown if a site specified is not found by the robot</Description>
+    </DefinedExecutionError>
+    <DefinedExecutionError>
+        <Identifier>LostPlate</Identifier>
+        <DisplayName>Lost Plate</DisplayName>
+        <Description>In case of not being able to grip the plate or losing it in transaction</Description>
+    </DefinedExecutionError>
+    <DefinedExecutionError>
+        <Identifier>InaccessibleSite</Identifier>
+        <DisplayName>Inaccessible Site</DisplayName>
+        <Description>Unable to access the site specified due to robot limitations</Description>
+    </DefinedExecutionError>
+</Feature>

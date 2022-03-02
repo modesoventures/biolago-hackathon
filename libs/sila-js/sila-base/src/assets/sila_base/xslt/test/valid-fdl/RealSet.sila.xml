@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Feature SiLA2Version="1.0" FeatureVersion="1.0" Originator="org.silastandard"
+         Category="tests"
+         xmlns="http://www.sila-standard.org"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://www.sila-standard.org https://gitlab.com/SiLA2/sila_base/raw/master/schema/FeatureDefinition.xsd">
+    <Identifier>RealSet</Identifier>
+    <DisplayName>Real Set</DisplayName>
+    <Description>Contains a Real with Set constraint</Description>
+    <DataTypeDefinition>
+        <Identifier>TestType</Identifier>
+        <DisplayName>Test Type</DisplayName>
+        <Description>A test type</Description>
+        <DataType>
+            <Constrained>
+                <DataType>
+                    <Basic>Real</Basic>
+                </DataType>
+                <Constraints>
+                    <Set>
+                        <Value>0</Value>
+                        <Value>-.32</Value>
+                        <Value>-1</Value>
+                        <Value>+2.1</Value>
+                        <Value>12.321</Value>
+                        <Value>13</Value>
+                        <Value>51.</Value>
+                    </Set>
+                </Constraints>
+            </Constrained>
+        </DataType>
+    </DataTypeDefinition>
+</Feature>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Feature SiLA2Version="1.0" FeatureVersion="1.0" MaturityLevel="Verified" Originator="org.silastandard"
+         Category="core.commands"
+         xmlns="http://www.sila-standard.org"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://www.sila-standard.org https://gitlab.com/SiLA2/sila_base/raw/master/schema/FeatureDefinition.xsd">
+  <Identifier>CancelController</Identifier>
+  <DisplayName>Cancel Controller</DisplayName>
+  <Description>
+    This feature offers commands to cancel/terminate Commands. Cancellation is the act of stopping the running Command execution(s),
+    irrevocably. The SiLA Server SHOULD be able to be in a state where any further
+    commands can be issued after a cancellation.
+  </Description>
+  <Command>
+    <Identifier>CancelCommand</Identifier>
+    <DisplayName>Cancel Command</DisplayName>
+    <Description>
+      Cancel a specified currently running Observable Command or cancel all currently running Commands (Observable and
+      Unobservable).
+      For any canceled Observable Command the SiLA Server MUST update the Command Execution Status to "Command Finished
+      with Error".
+      The SiLA Server MUST throw a descriptive error message indicating cancellation as the reason for the Command
+      execution not being able to finish successfully for any canceled Command.
+    </Description>
+    <Observable>No</Observable>
+    <Parameter>
+      <Identifier>CommandExecutionUUID</Identifier>
+      <DisplayName>Command Execution UUID</DisplayName>
+      <Description>The Command Execution UUID according to the SiLA Standard.</Description>
+      <DataType>
+        <DataTypeIdentifier>UUID</DataTypeIdentifier>
+      </DataType>
+    </Parameter>
+    <DefinedExecutionErrors>
+      <Identifier>InvalidCommandExecutionUUID</Identifier>
+      <Identifier>OperationNotSupported</Identifier>
+    </DefinedExecutionErrors>
+  </Command>
+  <Command>
+    <Identifier>CancelAll</Identifier>
+    <DisplayName>Cancel All</DisplayName>
+    <Description>
+      Cancels all currently running Observable and Unobservable Commands running on this SiLA Server.
+      The SiLA Server MUST throw an Execution Error indicating 'cancellation' as the reason for the
+      Command not being able to finish successfully.
+    </Description>
+    <Observable>No</Observable>
+  </Command>
+  <DataTypeDefinition>
+    <Identifier>UUID</Identifier>
+    <DisplayName>UUID</DisplayName>
+    <Description>A Universally Unique Identifier (UUID) referring to observable command executions.</Description>
+    <DataType>
+      <Constrained>
+        <DataType>
+          <Basic>String</Basic>
+        </DataType>
+        <Constraints>
+          <Length>36</Length>
+          <Pattern>[0-9a-f]{8}\-[0-9a-f]{4}\-[0-9a-f]{4}\-[0-9a-f]{4}\-[0-9a-f]{12}</Pattern>
+        </Constraints>
+      </Constrained>
+    </DataType>
+  </DataTypeDefinition>
+  <DefinedExecutionError>
+    <Identifier>InvalidCommandExecutionUUID</Identifier>
+    <DisplayName>Invalid Command Execution UUID</DisplayName>
+    <Description>
+      The given Command Execution UUID does not specify a command that is currently being executed.
+    </Description>
+  </DefinedExecutionError>
+  <DefinedExecutionError>
+    <Identifier>OperationNotSupported</Identifier>
+    <DisplayName>Operation Not Supported</DisplayName>
+    <Description>
+      Canceling is not supported for the SiLA 2 Command with the
+      specified CommandExecutionUUID.
+    </Description>
+  </DefinedExecutionError>
+</Feature>

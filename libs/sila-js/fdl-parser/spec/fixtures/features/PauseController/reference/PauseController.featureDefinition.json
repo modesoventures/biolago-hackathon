@@ -1,0 +1,154 @@
+{
+  "sila2Version": "1.0",
+  "featureVersion": "1.0",
+  "originator": "org.silastandard",
+  "fullyQualifiedFeatureIdentifier": "org.silastandard/core.commands/PauseController/v1",
+  "packageNamespace": "sila2.org.silastandard.core.commands.pausecontroller.v1",
+  "locale": "en-us",
+  "maturityLevel": "Verified",
+  "category": "core.commands",
+  "title": "PauseController",
+  "description": "\n    Allows to pause or resume a currently running Observable Command. Pausing is the act of stopping the\n    progress of the desired intent of a Command with the option of continuing the execution when resuming.\n\n    A SiLA Client SHOULD be able to pause or resume the Observable Commands at any time. Not every Observable Command\n    might support this Feature. If not, an \"OperationNotSupported\" Execution Error MUST be thrown.\n  ",
+  "displayName": "Pause Controller",
+  "commands": [
+    {
+      "title": "Pause",
+      "description": "\n      Pause the Command execution. The Command can then be resumed again. The Command Execution Status of the\n      Observable Command MUST not be affected.\n    ",
+      "displayName": "Pause",
+      "observable": false,
+      "parametersSchema": {
+        "type": "object",
+        "required": [
+          "CommandExecutionUUID"
+        ],
+        "properties": {
+          "CommandExecutionUUID": {
+            "title": "CommandExecutionUUID",
+            "description": "The Command Execution UUID according to the SiLA Standard.",
+            "displayName": "Command Execution UUID",
+            "type": "string",
+            "linkedDataType": "UUID",
+            "minLength": "36",
+            "maxLength": "36",
+            "pattern": "[0-9a-f]{8}\\-[0-9a-f]{4}\\-[0-9a-f]{4}\\-[0-9a-f]{4}\\-[0-9a-f]{12}"
+          }
+        }
+      },
+      "responsesSchema": {
+        "type": "object",
+        "required": [],
+        "properties": {}
+      },
+      "intermediateResponsesSchema": {
+        "type": "object",
+        "required": [],
+        "properties": {}
+      },
+      "definedExecutionErrorList": [
+        "InvalidCommandExecutionUUID"
+      ]
+    },
+    {
+      "title": "Resume",
+      "description": "Resume the Command after it has been paused.",
+      "displayName": "Resume",
+      "observable": false,
+      "parametersSchema": {
+        "type": "object",
+        "required": [
+          "CommandExecutionUUID"
+        ],
+        "properties": {
+          "CommandExecutionUUID": {
+            "title": "CommandExecutionUUID",
+            "description": "The Command Execution UUID according to the SiLA Standard.",
+            "displayName": "Command Execution UUID",
+            "type": "string",
+            "linkedDataType": "UUID",
+            "minLength": "36",
+            "maxLength": "36",
+            "pattern": "[0-9a-f]{8}\\-[0-9a-f]{4}\\-[0-9a-f]{4}\\-[0-9a-f]{4}\\-[0-9a-f]{12}"
+          }
+        }
+      },
+      "responsesSchema": {
+        "type": "object",
+        "required": [],
+        "properties": {}
+      },
+      "intermediateResponsesSchema": {
+        "type": "object",
+        "required": [],
+        "properties": {}
+      },
+      "definedExecutionErrorList": [
+        "InvalidCommandExecutionUUID"
+      ]
+    }
+  ],
+  "properties": [
+    {
+      "title": "Paused",
+      "description": "Providing Information about the paused state of the SiLA 2 Server.",
+      "displayName": "Is SiLA 2 Server Paused ?",
+      "observable": false,
+      "propertySchema": {
+        "type": "object",
+        "required": [
+          "Paused"
+        ],
+        "properties": {
+          "Paused": {
+            "title": "Paused",
+            "description": "Providing Information about the paused state of the SiLA 2 Server.",
+            "displayName": "Is SiLA 2 Server Paused ?",
+            "type": "boolean"
+          }
+        }
+      },
+      "definedExecutionErrorList": []
+    }
+  ],
+  "metadata": [],
+  "dataTypeDefinitions": [
+    {
+      "title": "UUID",
+      "description": "A Universally Unique Identifier (UUID) referring to observable command executions.",
+      "displayName": "UUID",
+      "dataTypeDefinitionSchema": {
+        "type": "object",
+        "required": [
+          "UUID"
+        ],
+        "properties": {
+          "UUID": {
+            "title": "UUID",
+            "description": "A Universally Unique Identifier (UUID) referring to observable command executions.",
+            "displayName": "UUID",
+            "type": "string",
+            "minLength": "36",
+            "maxLength": "36",
+            "pattern": "[0-9a-f]{8}\\-[0-9a-f]{4}\\-[0-9a-f]{4}\\-[0-9a-f]{4}\\-[0-9a-f]{12}"
+          }
+        }
+      }
+    }
+  ],
+  "definedExecutionErrors": [
+    {
+      "title": "InvalidCommandExecutionUUID",
+      "description": "\n      The given Command Execution UUID does not specify a command that is currently being executed.\n    ",
+      "displayName": "Invalid Command Execution UUID"
+    },
+    {
+      "title": "InvalidCommandState",
+      "description": "\n      The specified command is not in a valid state to perform the operation (Pause or Resume).\n    ",
+      "displayName": "Invalid Command State"
+    },
+    {
+      "title": "OperationNotSupported",
+      "description": "\n      The operation (Pause or Resume) is not supported for the SiLA 2 command which the\n      specified Command Execution UUID belongs to.\n    ",
+      "displayName": "Operation Not Supported"
+    }
+  ]
+}

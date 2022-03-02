@@ -1,0 +1,104 @@
+{
+  "sila2Version": "1.0",
+  "featureVersion": "1.0",
+  "originator": "biovt.mw.tum.de",
+  "fullyQualifiedFeatureIdentifier": "biovt.mw.tum.de/examples/ObservableCommandProvider/v1",
+  "packageNamespace": "sila2.biovt.mw.tum.de.examples.observablecommandprovider.v1",
+  "locale": "en-us",
+  "maturityLevel": "Draft",
+  "category": "examples",
+  "title": "ObservableCommandProvider",
+  "description": "Feature definition that defines an observable command",
+  "displayName": "Observable Command Provider",
+  "commands": [
+    {
+      "title": "IncreaseValue",
+      "description": "\n            This function will linearly increase the value of the property in a timeframe of ~ 30s from the given\n            starting value to the final value. You can observe the process with the appropriate commands.\n        ",
+      "displayName": "Increase Property Value",
+      "observable": true,
+      "parametersSchema": {
+        "type": "object",
+        "required": [
+          "Start",
+          "End"
+        ],
+        "properties": {
+          "Start": {
+            "title": "Start",
+            "description": "The initial value of the property at t = 0 s",
+            "displayName": "Start Value",
+            "type": "number"
+          },
+          "End": {
+            "title": "End",
+            "description": "The final value of the property at t = 30 s",
+            "displayName": "End Value",
+            "type": "number"
+          }
+        }
+      },
+      "responsesSchema": {
+        "type": "object",
+        "required": [
+          "InfoCalls",
+          "IntermediateCalls"
+        ],
+        "properties": {
+          "InfoCalls": {
+            "title": "InfoCalls",
+            "description": "Returns the number of calls to the info function that were made during the runtime.",
+            "displayName": "Calls to Info",
+            "type": "integer"
+          },
+          "IntermediateCalls": {
+            "title": "IntermediateCalls",
+            "description": "Returns the number of calls to the intermediate function that were made during the runtime.",
+            "displayName": "Calls to Intermediate",
+            "type": "integer"
+          }
+        }
+      },
+      "intermediateResponsesSchema": {
+        "type": "object",
+        "required": [
+          "Value"
+        ],
+        "properties": {
+          "Value": {
+            "title": "Value",
+            "description": "Returns the current value, should be similar to reading the property",
+            "displayName": "Value",
+            "type": "number"
+          }
+        }
+      },
+      "definedExecutionErrorList": []
+    }
+  ],
+  "properties": [
+    {
+      "title": "Value",
+      "description": "\n            This property can be read to show the progress of the observable command.\n\n            I am aware that this job can normally be achieved with the corresponding command, but for the sake of this\n            example we will just go the complex way.\n        ",
+      "displayName": "Value",
+      "observable": false,
+      "propertySchema": {
+        "type": "object",
+        "required": [
+          "Value"
+        ],
+        "properties": {
+          "Value": {
+            "title": "Value",
+            "description": "\n            This property can be read to show the progress of the observable command.\n\n            I am aware that this job can normally be achieved with the corresponding command, but for the sake of this\n            example we will just go the complex way.\n        ",
+            "displayName": "Value",
+            "type": "number"
+          }
+        }
+      },
+      "definedExecutionErrorList": []
+    }
+  ],
+  "metadata": [],
+  "dataTypeDefinitions": [],
+  "definedExecutionErrors": []
+}

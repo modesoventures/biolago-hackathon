@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Feature SiLA2Version="1.0" FeatureVersion="1.0" MaturityLevel="Draft" Originator="org.silastandard" Category="core"
+         xmlns="http://www.sila-standard.org"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://www.sila-standard.org https://gitlab.com/SiLA2/sila_base/raw/master/schema/FeatureDefinition.xsd">
+  <Identifier>AuthenticationService</Identifier>
+  <DisplayName>Authentication Service</DisplayName>
+  <Description>
+    This Feature provides SiLA Clients with access tokens based on a user identification and password.
+    1. the user needs to login with the Login command into the server with a user identification (=user name) and a password
+    2. after verification, an Access Token with the Token Lifetime information will be generated and provided by the server.
+    3. the user can log-out from the server with the Logout command - a valid Access Token is required to run this command.
+  </Description>
+  <Command>
+    <Identifier>Login</Identifier>
+    <DisplayName>Login</DisplayName>
+    <Description>Provides an access token based on user information.</Description>
+    <Observable>No</Observable>
+    <Parameter>
+      <Identifier>UserIdentification</Identifier>
+      <DisplayName>User Identification</DisplayName>
+      <Description>The user identification string (e.g. a user name)</Description>
+      <DataType>
+        <Basic>String</Basic>
+      </DataType>
+    </Parameter>
+    <Parameter>
+      <Identifier>Password</Identifier>
+      <DisplayName>Password</DisplayName>
+      <Description>The (encrypted) password</Description>
+      <DataType>
+        <Basic>String</Basic>
+      </DataType>
+    </Parameter>
+    <Response>
+      <Identifier>AccessToken</Identifier>
+      <DisplayName>Access Token</DisplayName>
+      <Description>The token to be used along with accessing a Command or Property on a SiLA Server.</Description>
+      <DataType>
+        <Basic>String</Basic>
+      </DataType>
+    </Response>
+    <Response>
+      <Identifier>TokenLifetime</Identifier>
+      <DisplayName>Token Lifetime</DisplayName>
+      <Description>
+        The lifetime (in seconds) of the provided access token as the maximum validity period after the last SiLA Server
+        request.
+      </Description>
+      <DataType>
+        <Constrained>
+          <DataType>
+            <Basic>Integer</Basic>
+          </DataType>
+          <Constraints>
+            <Unit>
+              <Label>s</Label>
+              <Factor>1</Factor>
+              <Offset>0</Offset>
+              <UnitComponent>
+                <SIUnit>Second</SIUnit>
+                <Exponent>1</Exponent>
+              </UnitComponent>
+            </Unit>
+          </Constraints>
+        </Constrained>
+      </DataType>
+    </Response>
+    <DefinedExecutionErrors>
+      <Identifier>AuthenticationFailed</Identifier>
+    </DefinedExecutionErrors>
+  </Command>
+  <DefinedExecutionError>
+    <Identifier>AuthenticationFailed</Identifier>
+    <DisplayName>Authentication Failed</DisplayName>
+    <Description>The provided credentials are not valid.</Description>
+  </DefinedExecutionError>
+  <Command>
+    <Identifier>Logout</Identifier>
+    <DisplayName>Logout</DisplayName>
+    <Description>Invalidates the given access token immediately.</Description>
+    <Observable>No</Observable>
+    <Parameter>
+      <Identifier>AccessToken</Identifier>
+      <DisplayName>Access Token</DisplayName>
+      <Description>The access token to be invalidated.</Description>
+      <DataType>
+        <Basic>String</Basic>
+      </DataType>
+    </Parameter>
+    <DefinedExecutionErrors>
+      <Identifier>InvalidAccessToken</Identifier>
+    </DefinedExecutionErrors>
+  </Command>
+  <DefinedExecutionError>
+    <Identifier>InvalidAccessToken</Identifier>
+    <DisplayName>Invalid Access Token</DisplayName>
+    <Description>The sent access token is not valid.</Description>
+  </DefinedExecutionError>
+</Feature>

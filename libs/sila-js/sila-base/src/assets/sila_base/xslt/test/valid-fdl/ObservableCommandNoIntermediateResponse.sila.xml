@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Feature SiLA2Version="1.0" FeatureVersion="1.0" Originator="org.silastandard"
+         Category="tests"
+         xmlns="http://www.sila-standard.org"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://www.sila-standard.org https://gitlab.com/SiLA2/sila_base/raw/master/schema/FeatureDefinition.xsd">
+    <Identifier>ObservableCommandNoIntermediateResponse</Identifier>
+    <DisplayName>Observable Command No Intermediate Response</DisplayName>
+    <Description>Feature with an observable command without parameters, intermediate responses or responses</Description>
+    <Command>
+        <Identifier>TestCommand</Identifier>
+        <DisplayName>Test Command</DisplayName>
+        <Description>Command for testing</Description>
+        <Observable>Yes</Observable>
+    </Command>
+</Feature>
