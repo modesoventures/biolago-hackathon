@@ -93,6 +93,7 @@ export class SiLAService {
       'SiLAService',
       path.join(
         __dirname,
+        'assets',
         'feature_definitions',
         'org',
         'silastandard',

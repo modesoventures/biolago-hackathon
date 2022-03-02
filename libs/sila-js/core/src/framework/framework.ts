@@ -1,4 +1,3 @@
-/* eslint-disable import/prefer-default-export */
 import * as path from 'path';
 
 import * as grpc from '@grpc/grpc-js';
@@ -7,7 +6,7 @@ import * as protoLoader from '@grpc/proto-loader';
 import { ProtoGrpcType as ServiceType } from './static/SiLAService';
 import { ProtoGrpcType as SimulationType } from './static/SimulationController';
 
-const silaBasePath = path.join(__dirname);
+const silaBasePath = path.join(__dirname, 'assets');
 
 const serviceDefn = protoLoader.loadSync('SiLAService.proto', {
   includeDirs: [
