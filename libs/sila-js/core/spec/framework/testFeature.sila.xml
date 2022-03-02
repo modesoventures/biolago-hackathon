@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Feature SiLA2Version="1.0" FeatureVersion="1.0" MaturityLevel="Normative" Originator="org.silastandard" Category="core"
+         xmlns="http://www.sila-standard.org"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://www.sila-standard.org https://gitlab.com/SiLA2/sila_base/raw/master/schema/FeatureDefinition.xsd">
+  <Identifier>FakeService</Identifier>
+  <DisplayName>Fake Service</DisplayName>
+  <Description>Fake</Description>
+  <Property>
+    <Identifier>FakeProperty</Identifier>
+    <DisplayName>Fake property</DisplayName>
+    <Description>fake</Description>
+    <Observable>No</Observable>
+    <DataType>
+      <Basic>String</Basic>
+    </DataType>
+  </Property>
+</Feature>

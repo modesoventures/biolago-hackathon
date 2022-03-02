@@ -1,0 +1,592 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Feature SiLA2Version="1.0" FeatureVersion="1.0" Originator="org.silastandard" Category="test"
+         xmlns="http://www.sila-standard.org"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://www.sila-standard.org https://gitlab.com/SiLA2/sila_base/raw/master/schema/FeatureDefinition.xsd">
+    <Identifier>ComplexDataTypeTest</Identifier>
+    <DisplayName>ComplexDataTypeTest</DisplayName>
+    <Description>
+        This is a test feature, which can be used to test various SiLA data types.
+        It provides complex commands and properties.
+    </Description>
+
+    <!-- Date type definitions -->
+    <DataTypeDefinition>
+        <Identifier>OneDimensionalString</Identifier>
+        <DisplayName>One dimensional List of string</DisplayName>
+        <Description>A one dimensional list of string</Description>
+        <DataType>
+            <List>
+                <DataType>
+                    <Basic>String</Basic>
+                </DataType>
+            </List>
+        </DataType>
+    </DataTypeDefinition>
+
+    <DataTypeDefinition>
+        <Identifier>AnonymousList</Identifier>
+        <DisplayName>Anonymous List</DisplayName>
+        <Description>Used as a response by the ValueForTypeProvider</Description>
+        <DataType>
+            <List>
+                <DataType>
+                    <Basic>Any</Basic>
+                </DataType>
+            </List>
+        </DataType>
+    </DataTypeDefinition>
+
+    <DataTypeDefinition>
+        <Identifier>TwoDimensionalString</Identifier>
+        <DisplayName>Two dimensional List of string</DisplayName>
+        <Description>A Two dimensional list of string</Description>
+        <DataType>
+            <List>
+                <DataType>
+                    <DataTypeIdentifier>OneDimensionalString</DataTypeIdentifier>
+                </DataType>
+            </List>
+        </DataType>
+    </DataTypeDefinition>
+
+    <DataTypeDefinition>
+        <Identifier>ThreeDimensionalString</Identifier>
+        <DisplayName>Three dimensional List of string</DisplayName>
+        <Description>A Three dimensional list of string</Description>
+        <DataType>
+            <List>
+                <DataType>
+                    <DataTypeIdentifier>TwoDimensionalString</DataTypeIdentifier>
+                </DataType>
+            </List>
+        </DataType>
+    </DataTypeDefinition>
+
+    <!-- Unobservable Commands -->
+    <Command>
+        <Identifier>ListProvider</Identifier>
+        <DisplayName>List Provider</DisplayName>
+        <Description>Provide a list</Description>
+        <Observable>No</Observable>
+        <Parameter>
+            <Identifier>ListLength</Identifier>
+            <DisplayName>List Length</DisplayName>
+            <Description>Number of elements in the list</Description>
+            <DataType>
+                <Basic>Integer</Basic>
+            </DataType>
+        </Parameter>
+        <Parameter>
+            <Identifier>ElementLength</Identifier>
+            <DisplayName>Element Length</DisplayName>
+            <Description>Length of each elements</Description>
+            <DataType>
+                <Basic>Integer</Basic>
+            </DataType>
+        </Parameter>
+        <Response>
+            <Identifier>List</Identifier>
+            <DisplayName>List</DisplayName>
+            <Description>A list of string</Description>
+            <DataType>
+                <List>
+                    <DataType>
+                        <Basic>String</Basic>
+                    </DataType>
+                </List>
+            </DataType>
+        </Response>
+    </Command>
+
+    <Command>
+        <Identifier>ThreeDimensionalStruct</Identifier>
+        <DisplayName>Three dimensional structure</DisplayName>
+        <Description>Three dimensional structure</Description>
+        <Observable>No</Observable>
+        <Parameter>
+            <Identifier>StructStructStruct</Identifier>
+            <DisplayName>Structure³</DisplayName>
+            <Description>Structure of structure of structure</Description>
+            <DataType>
+                <Structure>
+                    <Element>
+                        <Identifier>FirstDimension</Identifier>
+                        <DisplayName>First Dimension</DisplayName>
+                        <Description>First Dimension</Description>
+                        <DataType>
+                            <Structure>
+                                <Element>
+                                    <Identifier>SecondDimension</Identifier>
+                                    <DisplayName>Second Dimension</DisplayName>
+                                    <Description>Second Dimension</Description>
+                                    <DataType>
+                                        <Structure>
+                                            <Element>
+                                                <Identifier>ThirdDimension</Identifier>
+                                                <DisplayName>Third Dimension</DisplayName>
+                                                <Description>Third Dimension</Description>
+                                                <DataType>
+                                                    <Basic>String</Basic>
+                                                </DataType>
+                                            </Element>
+                                        </Structure>
+                                    </DataType>
+                                </Element>
+                            </Structure>
+                        </DataType>
+                    </Element>
+                </Structure>
+            </DataType>
+        </Parameter>
+        <Response>
+            <Identifier>ThreeDimensionalListResult</Identifier>
+            <DisplayName>Three Dimensional List Result</DisplayName>
+            <Description>³d list</Description>
+            <DataType>
+                <DataTypeIdentifier>ThreeDimensionalString</DataTypeIdentifier>
+            </DataType>
+        </Response>
+    </Command>
+
+    <Command>
+        <Identifier>ThreeDimensionalList</Identifier>
+        <DisplayName>Three dimensional list</DisplayName>
+        <Description>Three dimensional list</Description>
+        <Observable>No</Observable>
+        <Parameter>
+            <Identifier>ListListList</Identifier>
+            <DisplayName>List³</DisplayName>
+            <Description>List of list of list</Description>
+            <DataType>
+                <DataTypeIdentifier>ThreeDimensionalString</DataTypeIdentifier>
+            </DataType>
+        </Parameter>
+        <Response>
+            <Identifier>ThreeDimensionalStructResult</Identifier>
+            <DisplayName>Three Dimensional Structure Result</DisplayName>
+            <Description>³d structure</Description>
+            <DataType>
+                <Structure>
+                    <Element>
+                        <Identifier>FirstDimension</Identifier>
+                        <DisplayName>First Dimension</DisplayName>
+                        <Description>First Dimension</Description>
+                        <DataType>
+                            <Structure>
+                                <Element>
+                                    <Identifier>SecondDimension</Identifier>
+                                    <DisplayName>Second Dimension</DisplayName>
+                                    <Description>Second Dimension</Description>
+                                    <DataType>
+                                        <Structure>
+                                            <Element>
+                                                <Identifier>ThirdDimension</Identifier>
+                                                <DisplayName>Third Dimension</DisplayName>
+                                                <Description>Third Dimension</Description>
+                                                <DataType>
+                                                    <Basic>String</Basic>
+                                                </DataType>
+                                            </Element>
+                                        </Structure>
+                                    </DataType>
+                                </Element>
+                            </Structure>
+                        </DataType>
+                    </Element>
+                </Structure>
+            </DataType>
+        </Response>
+    </Command>
+
+    <Command>
+        <Identifier>WhyMakeItSimpleWhenYouCanMakeItComplicated</Identifier>
+        <DisplayName>Why make it simple when you can make it complicated</DisplayName>
+        <Description>Really complicated</Description>
+        <Observable>No</Observable>
+        <Parameter>
+            <Identifier>StructListStruct</Identifier>
+            <DisplayName>Structure List Structure</DisplayName>
+            <Description>A structure of list of structure</Description>
+            <DataType>
+                <Structure>
+                    <Element>
+                        <Identifier>ListStruct</Identifier>
+                        <DisplayName>List Struct</DisplayName>
+                        <Description>List of Struct</Description>
+                        <DataType>
+                            <List>
+                                <DataType>
+                                    <Structure>
+                                        <Element>
+                                            <Identifier>Key</Identifier>
+                                            <DisplayName>Key</DisplayName>
+                                            <Description>The key</Description>
+                                            <DataType>
+                                                <Basic>String</Basic>
+                                            </DataType>
+                                        </Element>
+                                        <Element>
+                                            <Identifier>Value</Identifier>
+                                            <DisplayName>Value</DisplayName>
+                                            <Description>The value</Description>
+                                            <DataType>
+                                                <Basic>String</Basic>
+                                            </DataType>
+                                        </Element>
+                                    </Structure>
+                                </DataType>
+                            </List>
+                        </DataType>
+                    </Element>
+                </Structure>
+            </DataType>
+        </Parameter>
+        <Parameter>
+            <Identifier>ListStructList</Identifier>
+            <DisplayName>List Structure List</DisplayName>
+            <Description>A list of structure of list</Description>
+            <DataType>
+                <List>
+                    <DataType>
+                        <Structure>
+                            <Element>
+                                <Identifier>List</Identifier>
+                                <DisplayName>List</DisplayName>
+                                <Description>A list</Description>
+                                <DataType>
+                                    <List>
+                                        <DataType>
+                                            <Basic>String</Basic>
+                                        </DataType>
+                                    </List>
+                                </DataType>
+                            </Element>
+                        </Structure>
+                    </DataType>
+                </List>
+            </DataType>
+        </Parameter>
+        <Response>
+            <Identifier>FirstResponse</Identifier>
+            <DisplayName>First Response</DisplayName>
+            <Description>The first response</Description>
+            <DataType>
+                <Basic>String</Basic>
+            </DataType>
+        </Response>
+        <Response>
+            <Identifier>SecondResponse</Identifier>
+            <DisplayName>Second Response</DisplayName>
+            <Description>The second response</Description>
+            <DataType>
+                <Constrained>
+                    <DataType>
+                        <Basic>String</Basic>
+                    </DataType>
+                    <Constraints>
+                        <Set>
+                            <Value>Integer</Value>
+                            <Value>String</Value>
+                            <Value>ConstrainedReal</Value>
+                            <Value>AnonymousStructure</Value>
+                            <Value>AnonymousList</Value>
+                        </Set>
+                    </Constraints>
+                </Constrained>
+            </DataType>
+        </Response>
+    </Command>
+
+    <Command>
+        <Identifier>XOREncipher</Identifier>
+        <DisplayName>XOREncipher</DisplayName>
+        <Description>Encipher binary data using XOR Cipher</Description>
+        <Observable>No</Observable>
+        <Parameter>
+            <Identifier>Data</Identifier>
+            <DisplayName>Data</DisplayName>
+            <Description>The data to encipher</Description>
+            <DataType>
+                <Basic>Binary</Basic>
+            </DataType>
+        </Parameter>
+        <Parameter>
+            <Identifier>CipherKey</Identifier>
+            <DisplayName>CipherKey</DisplayName>
+            <Description>The key to encipher the data with</Description>
+            <DataType>
+                <Constrained>
+                    <DataType>
+                        <Basic>Integer</Basic>
+                    </DataType>
+                    <Constraints>
+                        <MinimalInclusive>0</MinimalInclusive>
+                        <MaximalInclusive>255</MaximalInclusive>
+                    </Constraints>
+                </Constrained>
+            </DataType>
+        </Parameter>
+        <Response>
+            <Identifier>Data</Identifier>
+            <DisplayName>Data</DisplayName>
+            <Description>The enciphered data</Description>
+            <DataType>
+                <Basic>Binary</Basic>
+            </DataType>
+        </Response>
+    </Command>
+
+    <Command>
+        <Identifier>ValueForTypeProvider</Identifier>
+        <DisplayName>Value For Type Provider</DisplayName>
+        <Description>Provides a value for the specified type</Description>
+        <Observable>No</Observable>
+        <Parameter>
+            <Identifier>Type</Identifier>
+            <DisplayName>Type</DisplayName>
+            <Description>The wanted type</Description>
+            <DataType>
+                <Basic>String</Basic>
+            </DataType>
+        </Parameter>
+        <Response>
+            <Identifier>Any</Identifier>
+            <DisplayName>Any</DisplayName>
+            <Description>Any</Description>
+            <DataType>
+                <Constrained>
+                    <DataType>
+                        <Basic>Any</Basic>
+                    </DataType>
+                    <Constraints>
+                        <AllowedTypes>
+                            <DataType>
+                                <Basic>Integer</Basic>
+                            </DataType>
+                            <DataType>
+                                <Basic>String</Basic>
+                            </DataType>
+                            <DataType>
+                                <Constrained>
+                                    <DataType>
+                                        <Basic>Real</Basic>
+                                    </DataType>
+                                    <Constraints>
+                                        <MinimalInclusive>4.2</MinimalInclusive>
+                                        <MaximalInclusive>133.7</MaximalInclusive>
+                                    </Constraints>
+                                </Constrained>
+                            </DataType>
+                            <DataType>
+                                <Structure>
+                                    <Element>
+                                        <Identifier>X</Identifier>
+                                        <DisplayName>X</DisplayName>
+                                        <Description>X</Description>
+                                        <DataType>
+                                            <Basic>Integer</Basic>
+                                        </DataType>
+                                    </Element>
+                                </Structure>
+                            </DataType>
+                            <DataType>
+                                <List>
+                                    <DataType>
+                                        <Basic>Any</Basic>
+                                    </DataType>
+                                </List>
+                            </DataType>
+                        </AllowedTypes>
+                    </Constraints>
+                </Constrained>
+            </DataType>
+        </Response>
+    </Command>
+
+    <!-- Metadata -->
+    <Metadata>
+        <Identifier>User</Identifier>
+        <DisplayName>User</DisplayName>
+        <Description>User information</Description>
+        <DataType>
+            <Structure>
+                <Element>
+                    <Identifier>Identifier</Identifier>
+                    <DisplayName>Identifier</DisplayName>
+                    <Description>The unique identifier of the user</Description>
+                    <DataType>
+                        <Basic>String</Basic>
+                    </DataType>
+                </Element>
+            </Structure>
+        </DataType>
+    </Metadata>
+
+    <!-- Execution Errors -->
+    <DefinedExecutionError>
+        <Identifier>SugarException</Identifier>
+        <DisplayName>Sugar Exception</DisplayName>
+        <Description>
+            Sorry but there is no more sugar !
+        </Description>
+    </DefinedExecutionError>
+
+    <!-- Data Types -->
+    <DataTypeDefinition>
+        <Identifier>DataTypeString</Identifier>
+        <DisplayName>A Data Type string</DisplayName>
+        <Description>A data type representing a String</Description>
+        <DataType>
+            <Basic>String</Basic>
+        </DataType>
+    </DataTypeDefinition>
+
+    <!-- unobservable Properties -->
+    <Property>
+        <Identifier>HugeList</Identifier>
+        <DisplayName>A Huge List</DisplayName>
+        <Description>A list containing a lot of elements</Description>
+        <Observable>No</Observable>
+        <DataType>
+            <List>
+                <DataType>
+                    <Basic>String</Basic>
+                </DataType>
+            </List>
+        </DataType>
+    </Property>
+
+    <Property>
+        <Identifier>Boolean</Identifier>
+        <DisplayName>Boolean property</DisplayName>
+        <Description>Displays a random boolean property</Description>
+        <Observable>No</Observable>
+        <DataType>
+            <Basic>Boolean</Basic>
+        </DataType>
+    </Property>
+
+    <Property>
+        <Identifier>ListString</Identifier>
+        <DisplayName>A list of string</DisplayName>
+        <Description>A list of string</Description>
+        <Observable>No</Observable>
+        <DataType>
+            <List>
+                <DataType>
+                    <Basic>String</Basic>
+                </DataType>
+            </List>
+        </DataType>
+    </Property>
+    <Property>
+        <Identifier>RandomChangingListString</Identifier>
+        <DisplayName>A randomly changing list of strings</DisplayName>
+        <Description>A randomly changing list of strings</Description>
+        <Observable>No</Observable>
+        <DataType>
+            <List>
+                <DataType>
+                    <Basic>String</Basic>
+                </DataType>
+            </List>
+        </DataType>
+    </Property>
+
+    <Property>
+        <Identifier>ListStructPairString</Identifier>
+        <DisplayName>A list of structure with a pair of string</DisplayName>
+        <Description>A list of structure with a pair of string</Description>
+        <Observable>No</Observable>
+        <DataType>
+            <List>
+                <DataType>
+                    <Structure>
+                        <Element>
+                            <Identifier>Key</Identifier>
+                            <DisplayName>Key</DisplayName>
+                            <Description>The key</Description>
+                            <DataType>
+                                <Basic>String</Basic>
+                            </DataType>
+                        </Element>
+                        <Element>
+                            <Identifier>Value</Identifier>
+                            <DisplayName>Value</DisplayName>
+                            <Description>The value</Description>
+                            <DataType>
+                                <Basic>String</Basic>
+                            </DataType>
+                        </Element>
+                    </Structure>
+                </DataType>
+            </List>
+        </DataType>
+    </Property>
+
+    <Property>
+        <Identifier>StructPairString</Identifier>
+        <DisplayName>A structure with a pair of string</DisplayName>
+        <Description>A structure with a pair of string</Description>
+        <Observable>No</Observable>
+        <DataType>
+            <Structure>
+                <Element>
+                    <Identifier>PairString</Identifier>
+                    <DisplayName>Pair String</DisplayName>
+                    <Description>Pair of String</Description>
+                    <DataType>
+                        <Structure>
+                            <Element>
+                                <Identifier>Key</Identifier>
+                                <DisplayName>Key</DisplayName>
+                                <Description>The key</Description>
+                                <DataType>
+                                    <Basic>String</Basic>
+                                </DataType>
+                            </Element>
+                            <Element>
+                                <Identifier>Value</Identifier>
+                                <DisplayName>Value</DisplayName>
+                                <Description>The value</Description>
+                                <DataType>
+                                    <Basic>String</Basic>
+                                </DataType>
+                            </Element>
+                        </Structure>
+                    </DataType>
+                </Element>
+            </Structure>
+        </DataType>
+    </Property>
+
+    <Property>
+        <Identifier>DataType</Identifier>
+        <DisplayName>A Datatype</DisplayName>
+        <Description>Return a datatype</Description>
+        <Observable>No</Observable>
+        <DataType>
+            <DataTypeIdentifier>DataTypeString</DataTypeIdentifier>
+        </DataType>
+    </Property>
+
+    <Property>
+        <Identifier>ThrowException</Identifier>
+        <DisplayName>Throw a test exception</DisplayName>
+        <Description>Throw a test exception when trying to retrieve the value of the property</Description>
+        <Observable>No</Observable>
+        <DataType>
+            <Basic>String</Basic>
+        </DataType>
+    </Property>
+
+    <!-- Execution Errors -->
+    <DefinedExecutionError>
+        <Identifier>TestException</Identifier>
+        <DisplayName>Test Exception</DisplayName>
+        <Description>
+            You just encountered a test exception !
+        </Description>
+    </DefinedExecutionError>
+</Feature>

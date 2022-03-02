@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Feature SiLA2Version="1.0" FeatureVersion="1.0" MaturityLevel="Draft" Originator="org.silastandard" Category="core"
+         xmlns="http://www.sila-standard.org"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://www.sila-standard.org https://gitlab.com/SiLA2/sila_base/raw/master/schema/FeatureDefinition.xsd">
+  <Identifier>AuthorizationService</Identifier>
+  <DisplayName>Authorization Service</DisplayName>
+  <Description>
+    This Feature provides access control for the implementing server.
+
+    It specifies the SiLA Client Metadata for the access token, that has been provided by the
+    AuthenticationService core Feature.
+  </Description>
+  <Metadata>
+    <Identifier>AccessToken</Identifier>
+    <DisplayName>AccessToken</DisplayName>
+    <Description>Token to be sent with every call in order to get access to the SiLA Server functionality.</Description>
+    <DataType>
+      <Basic>String</Basic>
+    </DataType>
+    <DefinedExecutionErrors>
+      <Identifier>InvalidAccessToken</Identifier>
+    </DefinedExecutionErrors>
+  </Metadata>
+  <DefinedExecutionError>
+    <Identifier>InvalidAccessToken</Identifier>
+    <DisplayName>Invalid Access Token</DisplayName>
+    <Description>The sent access token is not valid.</Description>
+  </DefinedExecutionError>
+</Feature>

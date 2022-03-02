@@ -1,0 +1,34 @@
+{
+  "root": "libs/sila-js/client",
+  "sourceRoot": "libs/sila-js/client/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/node:package",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/sila-js/client",
+        "tsConfig": "libs/sila-js/client/tsconfig.lib.json",
+        "packageJson": "libs/sila-js/client/package.json",
+        "main": "libs/sila-js/client/src/index.ts",
+        "assets": ["libs/sila-js/client/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/sila-js/client/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/sila-js/client"],
+      "options": {
+        "jestConfig": "libs/sila-js/client/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

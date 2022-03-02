@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Feature SiLA2Version="1.0" FeatureVersion="1.0" MaturityLevel="Draft" Originator="de.tuberlin.bioprocess" Category="storing"
+        xmlns="http://www.sila-standard.org"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sila-standard.org https://gitlab.com/SiLA2/sila_base/raw/master/schema/FeatureDefinition.xsd">
+    <Identifier>StorageService</Identifier>
+    <DisplayName>Storage Service</DisplayName>
+    <Description>This Service provides commands and informations neede to control a storage device</Description>
+    <Command>
+        <Identifier>GetLabwareInformation</Identifier>
+        <DisplayName>Get Labware Information</DisplayName>
+        <Description>Which labware is mounted in the differnt tower of the device</Description>
+        <Observable>No</Observable>
+        <Parameter>
+            <Identifier>AttainablePosition</Identifier>
+            <DisplayName>Attainable Position</DisplayName>
+            <Description>Retuns the information of the labware at the requested position as Labware Type according to the SiLA Labware Specification Standard (Version 1.0)</Description>
+            <DataType>
+                 <Basic>Integer</Basic>
+            </DataType>
+        </Parameter>
+        <Response>
+            <Identifier>LabwareType</Identifier>
+            <DisplayName>Labware Type</DisplayName>
+            <Description>Labware Type according to the SiLA Labware Specification Standard (Version 1.0)</Description>
+            <DataType>
+                <Basic>Integer</Basic>
+            </DataType>
+        </Response>
+        <DefinedExecutionErrors>
+            <Identifier>InvalidPosition</Identifier>
+        </DefinedExecutionErrors>
+    </Command>
+    <Command>
+        <Identifier>SetLabwareInformation</Identifier>
+        <DisplayName>Set Labware Information</DisplayName>
+        <Description>Which labware is mounted in the different tower of the device</Description>
+        <Observable>No</Observable>
+        <Parameter>
+            <Identifier>AttainablePosition</Identifier>
+            <DisplayName>Attainable Position</DisplayName>
+            <Description>Sets the information of the labware of the at the addressed position as Labware Type according to the SiLA Labware Specification Standard (Version 1.0)</Description>
+            <DataType>
+                 <Basic>Integer</Basic>
+            </DataType>
+        </Parameter>
+        <Response>
+            <Identifier>LabwareType</Identifier>
+            <DisplayName>Labware Type</DisplayName>
+            <Description>Labware Type according to the SiLA Labware Specification Standard (Version 1.0)</Description>
+            <DataType>
+                <Basic>Integer</Basic>
+            </DataType>
+        </Response>
+        <DefinedExecutionErrors>
+          <Identifier>InvalidPosition</Identifier>
+        </DefinedExecutionErrors>
+    </Command>
+    <Command>
+     <Identifier>GetFromPosition</Identifier>
+     <DisplayName>Get From Position</DisplayName>
+     <Description>Get a Labware from the specified position and presents it to the addressed handover position</Description>
+     <Observable>No</Observable>
+     <Parameter>
+       <Identifier>AttainablePosition</Identifier>
+       <DisplayName>Attainable Position</DisplayName>
+       <Description>Postion of the labware in the storage device</Description>
+       <DataType>
+         <Basic>Integer</Basic>
+       </DataType>
+     </Parameter>
+     <Response>
+       <Identifier>HandoverPosition</Identifier>
+       <DisplayName>Handover Postion</DisplayName>
+       <Description>Postion of the labware handover</Description>
+       <DataType>
+         <Basic>Integer</Basic>
+       </DataType>
+     </Response>
+     <DefinedExecutionErrors>
+       <Identifier>InvalidPosition</Identifier>
+     </DefinedExecutionErrors>
+   </Command>
+    <Command>
+     <Identifier>PutToPosition</Identifier>
+     <DisplayName>PutToPosition</DisplayName>
+     <Description>Take a labware from the addressed handover position an stores it at the specified position</Description>
+     <Observable>No</Observable>
+     <Parameter>
+       <Identifier>AttainablePosition</Identifier>
+       <DisplayName>Attainable Position</DisplayName>
+       <Description>Postion in the storage device where the labware will be stored</Description>
+       <DataType>
+         <Basic>Integer</Basic>
+       </DataType>
+     </Parameter>
+     <Response>
+       <Identifier>HandoverPosition</Identifier>
+       <DisplayName>Handover Postion</DisplayName>
+       <Description>Postion of the labware handover</Description>
+       <DataType>
+         <Basic>Integer</Basic>
+       </DataType>
+     </Response>
+     <DefinedExecutionErrors>
+       <Identifier>InvalidPosition</Identifier>
+     </DefinedExecutionErrors>
+    </Command>
+    <DefinedExecutionError>
+        <Identifier>InvalidPosition</Identifier>
+        <DisplayName>Invalid Position</DisplayName>
+        <Description>Somethings happens what better should not happend</Description>
+    </DefinedExecutionError>
+    <Property>
+        <Identifier>TowerNumber</Identifier>
+        <DisplayName>Tower Number</DisplayName>
+        <Description>The addressed Position is not attainable or unknown at this device</Description>
+        <Observable>No</Observable>
+        <DataType>
+            <Basic>Integer</Basic>
+        </DataType>
+    </Property>
+    <Property>
+        <Identifier>HandoverNumber</Identifier>
+        <DisplayName>Handover Number</DisplayName>
+        <Description>The number of positions where a labware could be committed</Description>
+        <Observable>No</Observable>
+        <DataType>
+            <Basic>Integer</Basic>
+        </DataType>
+    </Property>
+    <Property>
+        <Identifier>AttainablePositions</Identifier>
+        <DisplayName>Attainable Positions</DisplayName>
+        <Description>The number of positions which could be attained directly by the device</Description>
+        <Observable>No</Observable>
+        <DataType>
+            <Basic>Integer</Basic>
+        </DataType>
+    </Property>
+</Feature>

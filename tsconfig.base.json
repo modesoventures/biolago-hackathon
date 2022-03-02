@@ -17,6 +17,8 @@
     "baseUrl": ".",
     "paths": {
       "@biolago-hackathon/api-interfaces": ["libs/api-interfaces/src/index.ts"],
+      "@sila-standard/client": ["libs/sila-js/client/src/index.ts"],
+      "@sila-standard/core": ["libs/sila-js/core/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
