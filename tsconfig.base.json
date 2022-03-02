@@ -17,7 +17,6 @@
     "baseUrl": ".",
     "paths": {
       "@biolago-hackathon/api-interfaces": ["libs/api-interfaces/src/index.ts"],
-      "@biolago-hackathon/sila-js/core": ["libs/sila-js/core/src/index.ts"],
       "@biolago-hackathon/sila-js/fdl-parser": [
         "libs/sila-js/fdl-parser/src/index.ts"
       ],
@@ -29,7 +28,8 @@
       ],
       "@biolago-hackathon/sila-js/sila-base": [
         "libs/sila-js/sila-base/src/index.ts"
-      ]
+      ],
+      "@sila-standard/core": ["libs/sila-js/core/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
