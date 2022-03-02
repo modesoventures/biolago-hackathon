@@ -30,6 +30,7 @@
     "fs-extra": "^10.0.1",
     "google-protobuf": "^3.19.4",
     "protobufjs": "^6.11.2",
+    "redis": "^4.0.4",
     "reflect-metadata": "^0.1.13",
     "rxjs": "~7.4.0",
     "tslib": "^2.0.0",
