@@ -1,0 +1,613 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Feature SiLA2Version="1.0" FeatureVersion="1.0" Originator="org.silastandard" Category="test"
+         xmlns="http://www.sila-standard.org"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://www.sila-standard.org https://gitlab.com/SiLA2/sila_base/raw/master/schema/FeatureDefinition.xsd">
+    <Identifier>DataTypeTest</Identifier>
+    <DisplayName>SiLA Data Type Test</DisplayName>
+    <Description>
+        This is a test feature, which can be used to test various SiLA data types.
+        It provides commands and properties for each individual SiLA Data Type as parameter and response.
+        Furthermore a mixed datatype command with multiple SiLA data types as parameters and responses is defined.
+    </Description>
+
+    <!-- String -->
+    <Command>
+        <Identifier>EchoStringValue</Identifier>
+        <DisplayName>Echo String Value</DisplayName>
+        <Description>Echo the string that has been received.</Description>
+        <Observable>No</Observable>
+        <Parameter>
+            <Identifier>StringValue</Identifier>
+            <DisplayName>String Value</DisplayName>
+            <Description>The string value to echo.</Description>
+            <DataType>
+                <Basic>String</Basic>
+            </DataType>
+        </Parameter>
+        <Response>
+            <Identifier>ReceivedStringValue</Identifier>
+            <DisplayName>Received String Value</DisplayName>
+            <Description>A message containing the string value that has been received.</Description>
+            <DataType>
+                <Basic>String</Basic>
+            </DataType>
+        </Response>
+    </Command>
+    <Property>
+        <Identifier>StringValue</Identifier>
+        <DisplayName>String Value</DisplayName>
+        <Description>Returns the string value 'SiLA2_Test_String_Value'.</Description>
+        <Observable>No</Observable>
+        <DataType>
+            <Basic>String</Basic>
+        </DataType>
+    </Property>
+
+    <!-- Integer -->
+    <Command>
+        <Identifier>EchoIntegerValue</Identifier>
+        <DisplayName>Echo Integer Value</DisplayName>
+        <Description>Echo the integer that has been received.</Description>
+        <Observable>No</Observable>
+        <Parameter>
+            <Identifier>IntegerValue</Identifier>
+            <DisplayName>Integer Value</DisplayName>
+            <Description>The integer value to echo.</Description>
+            <DataType>
+                <Basic>Integer</Basic>
+            </DataType>
+        </Parameter>
+        <Response>
+            <Identifier>ReceivedIntegerValue</Identifier>
+            <DisplayName>Received Integer Value</DisplayName>
+            <Description>A message containing the integer value that has been received.</Description>
+            <DataType>
+                <Basic>Integer</Basic>
+            </DataType>
+        </Response>
+    </Command>
+    <Property>
+        <Identifier>IntegerValue</Identifier>
+        <DisplayName>Integer Value</DisplayName>
+        <Description>Returns the integer value '42'.</Description>
+        <Observable>No</Observable>
+        <DataType>
+            <Basic>Integer</Basic>
+        </DataType>
+    </Property>
+
+    <!-- Real -->
+    <Command>
+        <Identifier>EchoRealValue</Identifier>
+        <DisplayName>Echo Real Value</DisplayName>
+        <Description>Echo a Real that has been received.</Description>
+        <Observable>No</Observable>
+        <Parameter>
+            <Identifier>RealValue</Identifier>
+            <DisplayName>Real Value</DisplayName>
+            <Description>The real value to be echo.</Description>
+            <DataType>
+                <Basic>Real</Basic>
+            </DataType>
+        </Parameter>
+        <Response>
+            <Identifier>ReceivedRealValue</Identifier>
+            <DisplayName>Received Value</DisplayName>
+            <Description>A message containing the real value that has been received.</Description>
+            <DataType>
+                <Basic>Real</Basic>
+            </DataType>
+        </Response>
+    </Command>
+    <Property>
+        <Identifier>RealValue</Identifier>
+        <DisplayName>Real Value</DisplayName>
+        <Description>Returns the real value '3.1415926'.</Description>
+        <Observable>No</Observable>
+        <DataType>
+            <Basic>Real</Basic>
+        </DataType>
+    </Property>
+
+    <!-- Boolean -->
+    <Command>
+        <Identifier>EchoBooleanValue</Identifier>
+        <DisplayName>Echo Boolean Value</DisplayName>
+        <Description>Echo a Boolean that has been received.</Description>
+        <Observable>No</Observable>
+        <Parameter>
+            <Identifier>BooleanValue</Identifier>
+            <DisplayName>Boolean Value</DisplayName>
+            <Description>The boolean value to echo.</Description>
+            <DataType>
+                <Basic>Boolean</Basic>
+            </DataType>
+        </Parameter>
+        <Response>
+            <Identifier>ReceivedBooleanValue</Identifier>
+            <DisplayName>Received Boolean Value</DisplayName>
+            <Description>A message containing the boolean value that has been received.</Description>
+            <DataType>
+                <Basic>Boolean</Basic>
+            </DataType>
+        </Response>
+    </Command>
+    <Property>
+        <Identifier>BooleanValue</Identifier>
+        <DisplayName>Boolean Value</DisplayName>
+        <Description>Returns the boolean value 'true'.</Description>
+        <Observable>No</Observable>
+        <DataType>
+            <Basic>Boolean</Basic>
+        </DataType>
+    </Property>
+
+    <!-- Binary -->
+    <Command>
+        <Identifier>EchoBinaryValue</Identifier>
+        <DisplayName>Echo Binary Value</DisplayName>
+        <Description>Echo a Binary that has been received.</Description>
+        <Observable>No</Observable>
+        <Parameter>
+            <Identifier>BinaryValue</Identifier>
+            <DisplayName>Binary Value</DisplayName>
+            <Description>The Binary value to be echo.</Description>
+            <DataType>
+                <Basic>Binary</Basic>
+            </DataType>
+        </Parameter>
+        <Response>
+            <Identifier>ReceivedBinaryValue</Identifier>
+            <DisplayName>Received Value</DisplayName>
+            <Description>A message containing the Binary value that has been received.</Description>
+            <DataType>
+                <Basic>Binary</Basic>
+            </DataType>
+        </Response>
+    </Command>
+    <Property>
+        <Identifier>BinaryValue</Identifier>
+        <DisplayName>Binary Value</DisplayName>
+        <Description>Returns the UTF-8 encoded string 'SiLA2_Test_String_Value' as Binary value.</Description>
+        <Observable>No</Observable>
+        <DataType>
+            <Basic>Binary</Basic>
+        </DataType>
+    </Property>
+
+    <!-- Date -->
+    <Command>
+        <Identifier>EchoDateValue</Identifier>
+        <DisplayName>Echo Date Value</DisplayName>
+        <Description>Echo a Date that has been received.</Description>
+        <Observable>No</Observable>
+        <Parameter>
+            <Identifier>DateValue</Identifier>
+            <DisplayName>Date Value</DisplayName>
+            <Description>The date value to echo.</Description>
+            <DataType>
+                <Basic>Date</Basic>
+            </DataType>
+        </Parameter>
+        <Response>
+            <Identifier>ReceivedDateValue</Identifier>
+            <DisplayName>Received Date Value</DisplayName>
+            <Description>A message containing the date value that has been received.</Description>
+            <DataType>
+                <Basic>Date</Basic>
+            </DataType>
+        </Response>
+    </Command>
+    <Property>
+        <Identifier>DateValue</Identifier>
+        <DisplayName>Date Value</DisplayName>
+        <Description>Returns the date value '2019-08-24' in ISO 8601 format, corresponding to US '08/24/2018' format.</Description>
+        <Observable>No</Observable>
+        <DataType>
+            <Basic>Date</Basic>
+        </DataType>
+    </Property>
+
+    <!-- Time -->
+    <Command>
+        <Identifier>EchoTimeValue</Identifier>
+        <DisplayName>Echo Time Value</DisplayName>
+        <Description>Echo a Time that has been received.</Description>
+        <Observable>No</Observable>
+        <Parameter>
+            <Identifier>TimeValue</Identifier>
+            <DisplayName>Time Value</DisplayName>
+            <Description>The time value to echo.</Description>
+            <DataType>
+                <Basic>Time</Basic>
+            </DataType>
+        </Parameter>
+        <Response>
+            <Identifier>ReceivedTimeValue</Identifier>
+            <DisplayName>Received Time Value</DisplayName>
+            <Description>A message containing the time value that has been received.</Description>
+            <DataType>
+                <Basic>Time</Basic>
+            </DataType>
+        </Response>
+    </Command>
+    <Property>
+        <Identifier>TimeValue</Identifier>
+        <DisplayName>Time Value</DisplayName>
+        <Description>Returns the time value '12:34:56'.</Description>
+        <Observable>No</Observable>
+        <DataType>
+            <Basic>Time</Basic>
+        </DataType>
+    </Property>
+
+    <!-- Timestamp -->
+    <Command>
+        <Identifier>EchoTimestampValue</Identifier>
+        <DisplayName>Echo Timestamp Value</DisplayName>
+        <Description>Echo a Timestamp that has been received.</Description>
+        <Observable>No</Observable>
+        <Parameter>
+            <Identifier>TimestampValue</Identifier>
+            <DisplayName>Timestamp Value</DisplayName>
+            <Description>The timestamp value to echo.</Description>
+            <DataType>
+                <Basic>Timestamp</Basic>
+            </DataType>
+        </Parameter>
+        <Response>
+            <Identifier>ReceivedTimestampValue</Identifier>
+            <DisplayName>Received Timestamp Value</DisplayName>
+            <Description>A message containing the timestamp value that has been received.</Description>
+            <DataType>
+                <Basic>Timestamp</Basic>
+            </DataType>
+        </Response>
+    </Command>
+    <Property>
+        <Identifier>TimestampValue</Identifier>
+        <DisplayName>Timestamp Value</DisplayName>
+        <Description>Returns the timestamp value '2019-08-24 12:34:56'.</Description>
+        <Observable>No</Observable>
+        <DataType>
+            <Basic>Timestamp</Basic>
+        </DataType>
+    </Property>
+
+    <!-- List -->
+    <Command>
+        <Identifier>EchoStringList</Identifier>
+        <DisplayName>Echo String List</DisplayName>
+        <Description>Echo a List of String that has been received.</Description>
+        <Observable>No</Observable>
+        <Parameter>
+            <Identifier>StringList</Identifier>
+            <DisplayName>String List</DisplayName>
+            <Description>The list of String values to echo.</Description>
+            <DataType>
+                <List>
+                    <DataType>
+                        <Basic>String</Basic>
+                    </DataType>
+                </List>
+            </DataType>
+        </Parameter>
+        <Response>
+            <Identifier>ReceivedValues</Identifier>
+            <DisplayName>Received Values</DisplayName>
+            <Description>A message containing the string values that have been received.</Description>
+            <DataType>
+                <List>
+                    <DataType>
+                        <Basic>String</Basic>
+                    </DataType>
+                </List>
+            </DataType>
+        </Response>
+    </Command>
+    <Property>
+        <Identifier>StringList</Identifier>
+        <DisplayName>String List</DisplayName>
+        <Description>Returns a list with the following String values: 'SiLA 2', 'is', 'great'.</Description>
+        <Observable>No</Observable>
+        <DataType>
+            <List>
+                <DataType>
+                    <Basic>String</Basic>
+                </DataType>
+            </List>
+        </DataType>
+    </Property>
+    <Command>
+        <Identifier>EchoIntegerList</Identifier>
+        <DisplayName>Echo Integer List</DisplayName>
+        <Description>Echo a List of Integer that has been received.</Description>
+        <Observable>No</Observable>
+        <Parameter>
+            <Identifier>IntegerList</Identifier>
+            <DisplayName>Integer List</DisplayName>
+            <Description>The list of integer values to echo.</Description>
+            <DataType>
+                <List>
+                    <DataType>
+                        <Basic>Integer</Basic>
+                    </DataType>
+                </List>
+            </DataType>
+        </Parameter>
+        <Response>
+            <Identifier>ReceivedValues</Identifier>
+            <DisplayName>Received Values</DisplayName>
+            <Description>A message containing the integer values that have been received.</Description>
+            <DataType>
+                <List>
+                    <DataType>
+                        <Basic>Integer</Basic>
+                    </DataType>
+                </List>
+            </DataType>
+        </Response>
+    </Command>
+    <Property>
+        <Identifier>IntegerList</Identifier>
+        <DisplayName>Integer List</DisplayName>
+        <Description>Returns a list with the following Integer values: '1', '2', '3'.</Description>
+        <Observable>No</Observable>
+        <DataType>
+            <List>
+                <DataType>
+                    <Basic>Integer</Basic>
+                </DataType>
+            </List>
+        </DataType>
+    </Property>
+
+    <!-- Structure -->
+     <Command>
+        <Identifier>EchoStructureValues</Identifier>
+        <DisplayName>Echo Structure Values</DisplayName>
+         <Description>Echo values of different types that has been received.</Description>
+        <Observable>No</Observable>
+        <Parameter>
+            <Identifier>StructureValues</Identifier>
+            <DisplayName>Structure Values</DisplayName>
+            <Description>The structure values to echo</Description>
+            <DataType>
+              <DataTypeIdentifier>AllDatatypeStructure</DataTypeIdentifier>
+            </DataType>
+        </Parameter>
+        <Response>
+            <Identifier>ReceivedValues</Identifier>
+            <DisplayName>Received Values</DisplayName>
+            <Description>A structure containing values of different types that have been received</Description>
+            <DataType>
+              <DataTypeIdentifier>AllDatatypeStructure</DataTypeIdentifier>
+            </DataType>
+        </Response>
+     </Command>
+    <Property>
+        <Identifier>StructureValues</Identifier>
+        <DisplayName>Structure Values</DisplayName>
+        <Description>
+            Returns a Structure with the following values:
+            String: 'SiLA2_Test_String_Value'
+            Integer: '42'
+            Real: '3.1415926'
+            Boolean: 'true'
+            Binary: 'SiLA2_Test_String_Value'
+            Date: '2019-08-24'
+            Time: '12:34:56'
+            Timestamp: '2018-08-24 12:34:56'
+        </Description>
+        <Observable>No</Observable>
+        <DataType>
+            <DataTypeIdentifier>AllDatatypeStructure</DataTypeIdentifier>
+        </DataType>
+    </Property>
+
+    <DataTypeDefinition>
+        <Identifier>AllDatatypeStructure</Identifier>
+        <DisplayName>All Datatype Structure</DisplayName>
+        <Description>All Datatype Structure</Description>
+        <DataType>
+            <Structure>
+                <Element>
+                    <Identifier>StringStructureElement</Identifier>
+                    <DisplayName>String Structure Element</DisplayName>
+                    <Description>String Structure Element.</Description>
+                    <DataType>
+                        <Basic>String</Basic>
+                    </DataType>
+                </Element>
+                <Element>
+                    <Identifier>IntegerStructureElement</Identifier>
+                    <DisplayName>Integer Structure Element</DisplayName>
+                    <Description>Integer Structure Element.</Description>
+                    <DataType>
+                        <Basic>Integer</Basic>
+                    </DataType>
+                </Element>
+                <Element>
+                    <Identifier>RealStructureElement</Identifier>
+                    <DisplayName>Real Structure Element</DisplayName>
+                    <Description>Real Structure Element.</Description>
+                    <DataType>
+                        <Basic>Real</Basic>
+                    </DataType>
+                </Element>
+                <Element>
+                    <Identifier>BooleanStructureElement</Identifier>
+                    <DisplayName>Boolean Structure Element</DisplayName>
+                    <Description>Boolean Structure Element.</Description>
+                    <DataType>
+                        <Basic>Boolean</Basic>
+                    </DataType>
+                </Element>
+                <Element>
+                    <Identifier>BinaryStructureElement</Identifier>
+                    <DisplayName>Binary Structure Element</DisplayName>
+                    <Description>Binary Structure Element.</Description>
+                    <DataType>
+                        <Basic>Binary</Basic>
+                    </DataType>
+                </Element>
+                <Element>
+                    <Identifier>DateStructureElement</Identifier>
+                    <DisplayName>Date Structure Element</DisplayName>
+                    <Description>Date Structure Element.</Description>
+                    <DataType>
+                        <Basic>Date</Basic>
+                    </DataType>
+                </Element>
+                <Element>
+                    <Identifier>TimeStructureElement</Identifier>
+                    <DisplayName>Time Structure Element</DisplayName>
+                    <Description>Time Structure Element.</Description>
+                    <DataType>
+                        <Basic>Time</Basic>
+                    </DataType>
+                </Element>
+                <Element>
+                    <Identifier>TimestampStructureElement</Identifier>
+                    <DisplayName>Timestamp Structure Element</DisplayName>
+                    <Description>Timestamp Structure Element.</Description>
+                    <DataType>
+                        <Basic>Timestamp</Basic>
+                    </DataType>
+                </Element>
+            </Structure>
+        </DataType>
+    </DataTypeDefinition>
+
+    <!-- Any Type -->
+    <!-- TODO add anytype test command and property-->
+
+    <!-- Mixed Types -->
+    <Command>
+        <Identifier>EchoMultipleMixedValues</Identifier>
+        <DisplayName>Echo Multiple Mixed Values</DisplayName>
+        <Description>Echo multiple mixed values that has been received.</Description>
+        <Observable>No</Observable>
+        <Parameter>
+            <Identifier>StringValue</Identifier>
+            <DisplayName>String Value</DisplayName>
+            <Description>The string value to echo.</Description>
+            <DataType>
+                <Basic>String</Basic>
+            </DataType>
+        </Parameter>
+        <Parameter>
+            <Identifier>IntegerValue</Identifier>
+            <DisplayName>Integer Value</DisplayName>
+            <Description>The integer value to echo.</Description>
+            <DataType>
+                <Basic>Integer</Basic>
+            </DataType>
+        </Parameter>
+        <Parameter>
+            <Identifier>RealValue</Identifier>
+            <DisplayName>Real Value</DisplayName>
+            <Description>The real value to echo.</Description>
+            <DataType>
+                <Basic>Real</Basic>
+            </DataType>
+        </Parameter>
+        <Parameter>
+            <Identifier>BooleanValue</Identifier>
+            <DisplayName>Boolean Value</DisplayName>
+            <Description>The boolean value to echo.</Description>
+            <DataType>
+                <Basic>Boolean</Basic>
+            </DataType>
+        </Parameter>
+        <Parameter>
+            <Identifier>DateValue</Identifier>
+            <DisplayName>Date Value</DisplayName>
+            <Description>The date value to echo.</Description>
+            <DataType>
+                <Basic>Date</Basic>
+            </DataType>
+        </Parameter>
+        <Parameter>
+            <Identifier>TimeValue</Identifier>
+            <DisplayName>Time Value</DisplayName>
+            <Description>The time value to echo.</Description>
+            <DataType>
+                <Basic>Time</Basic>
+            </DataType>
+        </Parameter>
+        <Parameter>
+            <Identifier>TimestampValue</Identifier>
+            <DisplayName>Timestamp Value</DisplayName>
+            <Description>The timestamp value to echo.</Description>
+            <DataType>
+                <Basic>Timestamp</Basic>
+            </DataType>
+        </Parameter>
+        <Response>
+            <Identifier>ReceivedStringValue</Identifier>
+            <DisplayName>Received String Value</DisplayName>
+            <Description>A message containing the string value that has been received.</Description>
+            <DataType>
+                <Basic>String</Basic>
+            </DataType>
+        </Response>
+        <Response>
+            <Identifier>ReceivedIntegerValue</Identifier>
+            <DisplayName>Received Integer Value</DisplayName>
+            <Description>A message containing the integer value that has been received.</Description>
+            <DataType>
+                <Basic>Integer</Basic>
+            </DataType>
+        </Response>
+        <Response>
+            <Identifier>ReceivedRealValue</Identifier>
+            <DisplayName>Received Value</DisplayName>
+            <Description>A message containing the real value that has been received.</Description>
+            <DataType>
+                <Basic>Real</Basic>
+            </DataType>
+        </Response>
+        <Response>
+            <Identifier>ReceivedBooleanValue</Identifier>
+            <DisplayName>Received Boolean Value</DisplayName>
+            <Description>A message containing the boolean value that has been received.</Description>
+            <DataType>
+                <Basic>Boolean</Basic>
+            </DataType>
+        </Response>
+        <Response>
+            <Identifier>ReceivedBinaryValue</Identifier>
+            <DisplayName>Received Value</DisplayName>
+            <Description>A message containing the Binary value that has been received.</Description>
+            <DataType>
+                <Basic>Binary</Basic>
+            </DataType>
+        </Response>
+        <Response>
+            <Identifier>ReceivedDateValue</Identifier>
+            <DisplayName>Received Date Value</DisplayName>
+            <Description>A message containing the date value that has been received.</Description>
+            <DataType>
+                <Basic>Date</Basic>
+            </DataType>
+        </Response>
+        <Response>
+            <Identifier>ReceivedTimeValue</Identifier>
+            <DisplayName>Received Time Value</DisplayName>
+            <Description>A message containing the time value that has been received.</Description>
+            <DataType>
+                <Basic>Time</Basic>
+            </DataType>
+        </Response>
+        <Response>
+            <Identifier>ReceivedTimestampValue</Identifier>
+            <DisplayName>Received Timestamp Value</DisplayName>
+            <Description>A message containing the timestamp value that has been received.</Description>
+            <DataType>
+                <Basic>Timestamp</Basic>
+            </DataType>
+        </Response>
+    </Command>
+</Feature>

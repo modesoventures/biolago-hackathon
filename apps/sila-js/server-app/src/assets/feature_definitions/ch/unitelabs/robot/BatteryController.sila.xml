@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Feature SiLA2Version="1.0" FeatureVersion="1.0" MaturityLevel="Draft" Originator="ch.unitelabs" Category="robot"
+         xmlns="http://www.sila-standard.org"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://www.sila-standard.org https://gitlab.com/SiLA2/sila_base/raw/master/schema/FeatureDefinition.xsd">
+    <Identifier>BatteryController</Identifier>
+    <DisplayName>Battery Controller</DisplayName>
+    <Description>
+        Functionality to both provide information on the battery state and control automatic charging abilities.
+    </Description>
+    <Command>
+        <Identifier>Charge</Identifier>
+        <DisplayName>Charge</DisplayName>
+        <Description>
+            Automatically charges the robot by both moving to its charging location and starting the charging process.
+        </Description>
+        <Observable>Yes</Observable>
+    </Command>
+    <Property>
+        <Identifier>BatteryPercentage</Identifier>
+        <DisplayName>Battery Percentage</DisplayName>
+        <Description>The current charge percentage of the battery</Description>
+        <Observable>Yes</Observable>
+        <DataType>
+            <Constrained>
+                <DataType>
+                    <Basic>Real</Basic>
+                </DataType>
+                <Constraints>
+                    <MinimalInclusive>0</MinimalInclusive>
+                    <MaximalInclusive>100</MaximalInclusive>
+                    <Unit>
+                        <Label>%</Label>
+                        <Factor>1</Factor>
+                        <Offset>0</Offset>
+                        <UnitComponent>
+                            <SIUnit>Dimensionless</SIUnit>
+                            <Exponent>1</Exponent>
+                        </UnitComponent>
+                    </Unit>
+                </Constraints>
+            </Constrained>
+        </DataType>
+    </Property>
+    <Property>
+        <Identifier>BatteryRemainingTime</Identifier>
+        <DisplayName>BatteryRemainingTime</DisplayName>
+        <Description>
+            The remaining operation time of the robot given the current battery charge.
+        </Description>
+        <Observable>Yes</Observable>
+        <DataType>
+            <Constrained>
+                <DataType>
+                    <Basic>Real</Basic>
+                </DataType>
+                <Constraints>
+                    <Unit>
+                        <Label>minutes</Label>
+                        <Factor>60</Factor>
+                        <Offset>0</Offset>
+                        <UnitComponent>
+                            <SIUnit>Second</SIUnit>
+                            <Exponent>1</Exponent>
+                        </UnitComponent>
+                    </Unit>
+                </Constraints>
+            </Constrained>
+        </DataType>
+    </Property>
+</Feature>

@@ -6,12 +6,14 @@
     "frontend": "apps/frontend",
     "frontend-e2e": "apps/frontend-e2e",
     "sila-js-client": "libs/sila-js/client",
+    "sila-js-client-app": "apps/sila-js/client-app",
     "sila-js-core": "libs/sila-js/core",
     "sila-js-dynamic-client": "libs/sila-js/dynamic-client",
     "sila-js-fdl-parser": "libs/sila-js/fdl-parser",
     "sila-js-feature": "libs/sila-js/feature",
     "sila-js-proto-builder": "libs/sila-js/proto-builder",
     "sila-js-server": "libs/sila-js/server",
+    "sila-js-server-app": "apps/sila-js/server-app",
     "sila-js-sila-base": "libs/sila-js/sila-base",
     "sila-js-static-client": "libs/sila-js/static-client"
   }
