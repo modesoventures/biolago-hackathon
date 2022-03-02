@@ -14,7 +14,7 @@ logger.level = 'info';
 
 const endpoint: Endpoint = {
   hostname: 'localhost',
-  port: 55001,
+  port: 50051,
 };
 
 export default async function go(): Promise<void> {

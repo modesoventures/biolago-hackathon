@@ -1,4 +1,3 @@
-/* eslint prettier/prettier: ["warn"] */
 import * as path from 'path';
 
 import * as grpc from '@grpc/grpc-js';
