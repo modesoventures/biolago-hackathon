@@ -1,0 +1,137 @@
+syntax = "proto3";
+package sila2.org.silastandard;
+option java_outer_classname = "SiLACloudConnector";
+import "SiLAFramework.proto";
+import "SiLABinaryTransfer.proto";
+/*
+  Endpoint provided by SILA cloud client for servers to connect
+ */
+service CloudClientEndpoint {
+    /*
+      connect a server to stream messages
+     */
+    rpc ConnectSILAServer (stream SILAServerMessage) returns (stream SILAClientMessage) {}
+}
+message SILAServerMessage {
+    string requestUUID = 1;
+    oneof message {
+        CommandResponse commandResponse = 2;
+        ObservableCommandConfirmation observableCommandConfirmation = 3;
+        ObservableCommandExecutionInfo observableCommandExecutionInfo = 4;
+        ObservableCommandIntermediateResponse observableCommandIntermediateResponse = 5;
+        ObservableCommandResponse observableCommandResponse = 6;
+        GetFCPAffectedByMetadataResponse metadataResponse = 7;
+        PropertyValue propertyValue = 8;
+        ObservablePropertyValue observablePropertyValue = 9;
+        CreateBinaryResponse createBinaryResponse = 10;
+        UploadChunkResponse uploadChunkResponse = 11;
+        DeleteBinaryResponse deleteBinaryResponse = 12;
+        GetBinaryInfoResponse getBinaryResponse = 13;
+        GetChunkResponse getChunkResponse = 14;
+        BinaryTransferError binaryTransferError = 15;
+        SiLAError commandError = 16;
+        SiLAError propertyError = 17;
+    }
+}
+message SILAClientMessage {
+    string requestUUID = 1;
+    oneof message {
+        CommandExecution commandExecution = 2;
+        CommandInitiation commandInitiation = 3;
+        CommandExecutionInfoSubscription commandExecutionInfoSubscription = 4;
+        CommandIntermediateResponseSubscription commandIntermediateResponseSubscription = 5;
+        CommandGetResponse commandGetResponse = 6;
+        GetFCPAffectedByMetadataRequest metadataRequest = 7;
+        PropertyRead propertyRead = 8;
+        PropertySubscription propertySubscription = 9;
+        CancelCommandExecutionInfoSubscription cancelCommandExecutionInfoSubscription = 10;
+        CancelCommandIntermediateResponseSubscription cancelCommandIntermediateResponseSubscription = 11;
+        CancelPropertySubscription cancelPropertySubscription = 12;
+        CreateBinaryUploadRequest createBinaryUploadRequest = 13;
+        DeleteBinaryRequest deleteUploadedBinaryRequest = 14;
+        UploadChunkRequest uploadChunkRequest = 15;
+        GetBinaryInfoRequest getBinaryInfoRequest = 16;
+        GetChunkRequest getChunkRequest = 17;
+        DeleteBinaryRequest deleteDownloadedBinaryRequest = 18;
+    }
+}
+message CommandExecution {
+    //command id, relation to the command to be executed
+    string fullyQualifiedCommandId = 1;
+    //command payload
+    CommandParameter commandParameter = 2;
+}
+message CommandParameter {
+    //optional, metadata
+    repeated Metadata metadata = 1;
+    bytes parameters = 2;
+}
+message Metadata {
+    string fullyQualifiedMetadataId = 1;
+    bytes value = 2;
+}
+message CommandInitiation {
+    //command id, relation to the command to be executed
+    string fullyQualifiedCommandId = 1;
+    //command payload
+    CommandParameter commandParameter = 2;
+}
+message CommandExecutionInfoSubscription {
+    CommandExecutionUUID executionUUID = 1;
+}
+message CommandIntermediateResponseSubscription {
+    CommandExecutionUUID executionUUID = 1;
+}
+message CommandGetResponse {
+    CommandExecutionUUID executionUUID = 1;
+}
+message CommandResponse {
+    bytes result = 1;
+}
+message ObservableCommandConfirmation {
+    CommandConfirmation commandConfirmation = 1;
+}
+message ObservableCommandExecutionInfo {
+    CommandExecutionUUID executionUUID = 1;
+    ExecutionInfo executionInfo = 2;
+}
+message ObservableCommandIntermediateResponse {
+    CommandExecutionUUID executionUUID = 1;
+    bytes result = 2;
+}
+message ObservableCommandResponse {
+    CommandExecutionUUID executionUUID = 1;
+    bytes result = 2;
+}
+message GetFCPAffectedByMetadataRequest {
+    string fullyQualifiedMetadataId = 1;
+}
+message GetFCPAffectedByMetadataResponse {
+    repeated string affectedCalls = 1;
+}
+message PropertyRead {
+    string fullyQualifiedPropertyId = 1;
+    repeated Metadata metadata = 2;
+}
+message PropertySubscription {
+    string fullyQualifiedPropertyId = 1;
+    repeated Metadata metadata = 2;
+}
+message PropertyValue {
+    bytes result = 1;
+}
+message ObservablePropertyValue {
+    bytes result = 1;
+}
+// The requestUUID field of the encompassing SILAClientMessage is used to identify the subscription that shall be cancelled
+message CancelCommandExecutionInfoSubscription {}
+// The requestUUID field of the encompassing SILAClientMessage is used to identify the subscription that shall be cancelled
+message CancelCommandIntermediateResponseSubscription {}
+// The requestUUID field of the encompassing SILAClientMessage is used to identify the subscription that shall be cancelled
+message CancelPropertySubscription {}
+
+message CreateBinaryUploadRequest {
+    // optional
+    repeated Metadata metadata = 1;
+    CreateBinaryRequest createBinaryRequest = 2;
+}

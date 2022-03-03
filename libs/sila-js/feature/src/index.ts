@@ -160,7 +160,9 @@ export default class Feature {
         this.client,
         parameter,
         (err: grpc.ServiceError | null, value?: any) => {
-          if (err) reject(err);
+          if (err) {
+            reject(err);
+          }
 
           if (!value) {
             reject('No connection');

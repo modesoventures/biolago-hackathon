@@ -1,9 +1,23 @@
 <div style="text-align: center">
-  <h1>Welcome to frontend!</h1>
-  <img
-    width="450"
-    src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png"
-    alt="Nx - Smart, Fast and Extensible Build System"
-  />
+  <h1>Welcome to SILA integration</h1>
 </div>
-<div>Message: {{ hello$ | async | json }}</div>
+
+<mat-grid-list cols="4" rowHeight="2:1">
+  <mat-grid-tile>
+    Services
+    <list-component (selectItem)="onServiceSelect($event)" [list]="(services$ | async) || []"></list-component
+  ></mat-grid-tile>
+  <mat-grid-tile>
+    Features
+    <list-component (selectItem)="onFeatureSelect($event)" [list]="featuresNames || []"></list-component
+  ></mat-grid-tile>
+  <mat-grid-tile>
+    Commands
+    <list-component (selectItem)="selectCommand($event)" [list]="commandsNames"></list-component>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <button mat-button color="primary" (click)="execCommand()">Command Execute</button>
+    <button mat-button color="accent">Check Status</button>
+    {{commandResponse}}
+  </mat-grid-tile>
+</mat-grid-list>
